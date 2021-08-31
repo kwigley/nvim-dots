@@ -1,6 +1,3 @@
-ci:
-  skip: [stylua]
-
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
@@ -15,8 +12,9 @@ repos:
       - id: prettier
   - repo: local
     hooks:
-      - id: stylua
+      - id: StyLua
         name: Format Lua Files
-        language: system
-        entry: stylua --glob **/*.lua --
         types: [lua]
+        entry: stylua --glob **/*.lua --
+        language: rust
+        additional_dependencies: ["cli:stylua:0.10.1"]
