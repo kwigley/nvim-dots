@@ -12,6 +12,10 @@ wk.setup({
   key_labels = { ["<leader>"] = "SPC" },
 })
 
+-- Fat fingers
+util.nnoremap(":Q", ":q<CR>")
+util.nnoremap("<C-s>", ":w<CR>")
+
 -- Resize window using <shift> arrow keys
 util.nnoremap("<S-Up>", ":resize +2<CR>")
 util.nnoremap("<S-Down>", ":resize -2<CR>")
@@ -49,10 +53,6 @@ util.onoremap("N", "'nN'[v:searchforward]", { expr = true })
 
 -- Esc twice to get to normal mode
 vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
-
--- telescope <ctrl-r> in command line vim.cmd([[cmap <C-R> <Plug>(TelescopeFuzzyCommandSearch)]])
--- markdown
-util.nnoremap("=t", "<cmd>TableFormat<cr>")
 
 -- better indenting
 util.vnoremap("<", "<gv")
@@ -152,8 +152,6 @@ local leader = {
   },
   f = {
     name = "+file",
-    -- g = { "<cmd>NvimTreeFindFile<cr>", "NvimTree Current File" },
-    -- t = { "<cmd>NvimTreeToggle<cr>", "NvimTree" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
@@ -165,7 +163,6 @@ local leader = {
   o = {
     name = "+open",
     p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-    g = { "<cmd>Glow<cr>", "Markdown Glow" },
   },
   p = {
     name = "+project",
@@ -255,5 +252,3 @@ for i = 0, 10 do
 end
 
 wk.register(leader, { prefix = "<leader>" })
-
-wk.register({ g = { name = "+goto", h = "Hop Word" }, s = "Hop Word1" })

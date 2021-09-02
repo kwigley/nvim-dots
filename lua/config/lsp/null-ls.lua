@@ -5,6 +5,7 @@ local M = {}
 function M.setup()
   nls.config({
     debounce = 150,
+    debug = true,
     save_after_format = false,
     sources = {
       nls.builtins.formatting.prettier.with({
@@ -14,9 +15,7 @@ function M.setup()
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.fish_indent,
       nls.builtins.diagnostics.shellcheck,
-      nls.builtins.diagnostics.selene,
       nls.builtins.diagnostics.flake8,
-      nls.builtins.diagnostics.misspell,
     },
   })
 end
