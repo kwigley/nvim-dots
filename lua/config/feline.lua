@@ -3,8 +3,10 @@ local colors = require("feline.defaults").colors
 
 local M = {}
 
-local components = require("feline.presets")["default"].components
-local properties = require("feline.presets")["default"].properties
+local components = require("feline.presets")["noicon"].components
+local properties = require("feline.presets")["noicon"].properties
+-- file component
+components.active[1][3].type = "unique"
 
 function M.load()
   local overrides = {

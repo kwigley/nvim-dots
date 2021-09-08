@@ -1,14 +1,8 @@
 local cmd = vim.cmd
 local indent = 2
 
---[[ vim.bo.expandtab = true -- Use spaces instead of tabs
-vim.bo.shiftwidth = indent -- Size of an indent
-vim.bo.smartindent = true -- Insert indents automatically
-vim.bo.undofile = true ]]
-
 vim.g.mapleader = " "
 
--- vim.g.maplocalleader = ","
 vim.opt.autowrite = true -- enable auto write
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.conceallevel = 2 -- Hide * markup for bold and italic

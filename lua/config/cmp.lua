@@ -16,7 +16,6 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-
   completion = {
     completeopt = "menu,menuone,noinsert",
   },
@@ -51,11 +50,6 @@ cmp.setup({
       "s",
     }),
   },
-  format = function(entry, vim_item)
-    print(vim.inspect(entry))
-    print(vim.inspect(vim_item))
-    return vim_item
-  end,
   sources = {
     { name = "buffer" },
     { name = "luasnip" },
