@@ -52,7 +52,7 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
-    wants = { "LuaSnip", "nvim-autopairs" },
+    wants = { "LuaSnip", "nvim-autopairs", "plenary.nvim" },
     requires = {
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
@@ -62,6 +62,7 @@ local function plugins(use)
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
+      "saecki/crates.nvim",
       {
         "L3MON4D3/LuaSnip",
         wants = "friendly-snippets",
@@ -78,6 +79,7 @@ local function plugins(use)
       },
     },
   })
+
   use({
     "abecodes/tabout.nvim",
     config = function()
