@@ -132,7 +132,16 @@ local function plugins(use)
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup({ default = true })
+      require("nvim-web-devicons").setup({
+        override = {
+          lir_folder_icon = {
+            icon = "",
+            color = "#7ebae4",
+            name = "LirFolderNode",
+          },
+        },
+        default = true,
+      })
     end,
   })
 

@@ -14,6 +14,7 @@ wk.setup({
 
 -- Fat fingers
 util.nnoremap(":Q", ":q<CR>")
+util.nnoremap(":W", ":w<CR>")
 util.nnoremap("<C-s>", ":w<CR>")
 
 -- Resize window using <shift> arrow keys
