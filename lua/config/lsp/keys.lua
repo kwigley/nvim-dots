@@ -79,9 +79,12 @@ function M.setup(client, bufnr)
   util.nnoremap("[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   util.nnoremap("]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
+  -- This was getting kind of annoying
   local triggers =
     client.resolved_capabilities.signature_help_trigger_characters
+  triggers = { "," }
   for _, c in ipairs(triggers) do
+    print(c)
     util.inoremap(c, function()
       vim.defer_fn(vim.lsp.buf.signature_help, 0)
       return c

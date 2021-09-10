@@ -20,7 +20,7 @@ cmp.setup({
     completeopt = "menu,menuone,noinsert",
   },
   mapping = {
-    ["<CR>"] = cmp.mapping.confirm(),
+    -- ["<CR>"] = cmp.mapping.confirm(), -- nvim-autopairs overrides this
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -51,9 +51,9 @@ cmp.setup({
     }),
   },
   sources = {
+    { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "luasnip" },
-    { name = "nvim_lsp" },
     { name = "path" },
     { name = "nvim_lua" },
     { name = "calc" },
