@@ -52,26 +52,25 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
-    -- wants = { "LuaSnip", "nvim-autopairs", "plenary.nvim" },
-    wants = { "nvim-autopairs", "plenary.nvim" },
+    wants = { "LuaSnip", "nvim-autopairs", "plenary.nvim" },
     requires = {
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-path",
-      -- "saadparwaiz1/cmp_luasnip",
+      "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "saecki/crates.nvim",
+      {
+        "L3MON4D3/LuaSnip",
+        -- wants = "friendly-snippets",
+        config = function()
+          require("config.snippets")
+        end,
+      },
       -- I don't really use snippets 🤷
-      -- {
-      --   "L3MON4D3/LuaSnip",
-      --   wants = "friendly-snippets",
-      --   config = function()
-      --     require("config.snippets")
-      --   end,
-      -- },
       -- "rafamadriz/friendly-snippets",
       {
         "windwp/nvim-autopairs",
