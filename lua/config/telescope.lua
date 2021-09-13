@@ -11,6 +11,7 @@ telescope.setup({
     prompt_prefix = "❯ ",
     selection_caret = " ",
     winblend = 5,
+    layout_strategy = "flex",
   },
 })
 

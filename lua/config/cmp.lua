@@ -51,6 +51,7 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "nvim_lua" },
     { name = "buffer" },
     { name = "spell" },
@@ -58,7 +59,6 @@ cmp.setup({
     { name = "crates" },
     { name = "calc" },
     { name = "emoji" },
-    { name = "luasnip" },
   },
 })
 
