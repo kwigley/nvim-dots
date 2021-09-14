@@ -84,7 +84,6 @@ function M.setup(client, bufnr)
     client.resolved_capabilities.signature_help_trigger_characters
   triggers = { "," }
   for _, c in ipairs(triggers) do
-    print(c)
     util.inoremap(c, function()
       vim.defer_fn(vim.lsp.buf.signature_help, 0)
       return c
