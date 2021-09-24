@@ -3,11 +3,6 @@ local colors = require("feline.defaults").colors
 
 local M = {}
 
-local components = require("feline.presets")["noicon"].components
-local properties = require("feline.presets")["noicon"].properties
--- file component
-components.active[1][3].type = "unique"
-
 function M.load()
   local overrides = {
     fg = tokyonight.fg,
@@ -28,8 +23,7 @@ function M.load()
   end
   require("feline").setup({
     colors = colors,
-    components = components,
-    properties = properties,
+    preset = "noicon",
   })
 end
 
