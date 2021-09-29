@@ -5,9 +5,9 @@
 ### Highlights
 
 - built-in lsp ❤️
-- [nvim-compe](https://github.com/hrsh7th/nvim-compe) - autocompletion
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
-- [lualine](https://github.com/hoob3rt/lualine.nvim) - status line
+- [feline](https://github.com/famiu/feline.nvim) - status line
 - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
