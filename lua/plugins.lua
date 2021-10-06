@@ -173,6 +173,14 @@ local function plugins(use)
     end,
   })
 
+  use({
+    "kyazdani42/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFile" },
+    config = function()
+      require("config.tree")
+    end,
+  })
+
   -- Fuzzy finder
   use({
     "nvim-telescope/telescope.nvim",
