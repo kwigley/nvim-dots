@@ -11,3 +11,9 @@
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
 - [feline](https://github.com/famiu/feline.nvim) - status line
 - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
+
+### Installation
+
+- Clone this repo to where your neovim config lives (`~/.config/nvim`)
+- Start neovim, run `:PackerSync`
+- Profit
