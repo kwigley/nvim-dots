@@ -65,13 +65,10 @@ local function plugins(use)
       "saecki/crates.nvim",
       {
         "L3MON4D3/LuaSnip",
-        -- wants = "friendly-snippets",
         config = function()
           require("config.snippets")
         end,
       },
-      -- I don't really use snippets 🤷
-      -- "rafamadriz/friendly-snippets",
       {
         "windwp/nvim-autopairs",
         config = function()
