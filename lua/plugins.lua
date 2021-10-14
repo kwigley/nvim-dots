@@ -186,19 +186,15 @@ local function plugins(use)
       require("config.telescope")
     end,
     cmd = { "Telescope" },
-    keys = { "<leader><space>", "<leader>fz", "<leader>pp", "<leader>fd" },
+    keys = { "<leader><space>", "<leader>fd" },
     wants = {
       "plenary.nvim",
       "popup.nvim",
-      "telescope-z.nvim",
       "telescope-fzy-native.nvim",
-      "telescope-project.nvim",
       "trouble.nvim",
       "telescope-symbols.nvim",
     },
     requires = {
-      "nvim-telescope/telescope-z.nvim",
-      "nvim-telescope/telescope-project.nvim",
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
