@@ -1,9 +1,3 @@
-local gcc = vim.fn.getenv("NIX_GCC")
-
-if gcc and gcc ~= vim.NIL then
-  require("nvim-treesitter.install").compilers = { gcc }
-end
-
 local ts_configs = require("nvim-treesitter.configs")
 ts_configs.setup({
   -- autopairs = { enable = true },
@@ -108,6 +102,7 @@ ts_configs.setup({
 })
 
 -- Add Markdown
+-- May need to run `:TSInstall markdown jinja2`
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.jsonc.used_by = "json"
 parser_config.markdown = {
