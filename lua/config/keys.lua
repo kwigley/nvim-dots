@@ -160,7 +160,6 @@ local leader = {
     n = { "<cmd>enew<cr>", "New File" },
     c = { "<cmd>let @*=expand('%')<cr>", "Copy relative path" },
     C = { "<cmd>let @*=expand('%:p')<cr>", "Copy absolute path" },
-    z = "Zoxide",
     d = "Dot Files",
   },
   o = {
