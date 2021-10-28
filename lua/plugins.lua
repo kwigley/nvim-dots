@@ -414,6 +414,8 @@ local function plugins(use)
   })
 
   use({ "knubie/vim-kitty-navigator", run = { "cp *.py $HOME/.config/kitty" } })
+
+  use({ "sotte/presenting.vim" })
 end
 
 return packer.setup(config, plugins)
