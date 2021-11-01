@@ -20,6 +20,7 @@ cmp.setup({
     end,
   },
   mapping = {
+    ["<CR>"] = cmp.mapping.confirm(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -62,8 +63,8 @@ cmp.setup({
   },
 })
 
-require("nvim-autopairs.completion.cmp").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` after select function or method item
-  auto_select = true, -- automatically select the first item
-})
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on(
+  "confirm_done",
+  cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
+)
