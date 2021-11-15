@@ -72,25 +72,3 @@ for server, config in pairs(servers) do
     util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
   end
 end
-
-local installer_servers = require("nvim-lsp-installer.servers")
-local server = require("nvim-lsp-installer.server")
-local installers = require("nvim-lsp-installer.installers")
-local npm = require("nvim-lsp-installer.installers.npm")
-local root_dir = server.get_server_root_path("null-ls")
-local path = require("nvim-lsp-installer.path")
-local shell = require("nvim-lsp-installer.installers.shell")
-
-local my_server = server.Server:new({
-  name = "null-ls",
-  root_dir = root_dir,
-  installer = installers.pipe({
-    npm.packages({ "prettier_d_slim", "prettier" }),
-    shell.polyshell("cargo install stylua"),
-  }),
-  default_options = {
-    cmd = { path.concat({ root_dir, "prettier" }) },
-  },
-})
-
-installer_servers.register(my_server)

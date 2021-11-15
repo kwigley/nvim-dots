@@ -5,13 +5,28 @@ local M = {}
 function M.setup()
   nls.config({
     debounce = 150,
-    debug = true,
     save_after_format = false,
     sources = {
       nls.builtins.formatting.prettier.with({
-        filetypes = { "css", "html", "json", "yaml", "markdown" },
+        filetypes = {
+          "svelte",
+        },
       }),
-      nls.builtins.formatting.prettier_d_slim,
+      nls.builtins.formatting.prettier_d_slim.with({
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "yaml",
+        "markdown",
+        "graphql",
+      }),
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.fish_indent,
       nls.builtins.diagnostics.shellcheck,

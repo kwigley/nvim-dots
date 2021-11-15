@@ -42,7 +42,7 @@ local function plugins(use)
       "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      "williamboman/nvim-lsp-installer",
+      "alexaandru/nvim-lspupdate",
     },
   })
 
