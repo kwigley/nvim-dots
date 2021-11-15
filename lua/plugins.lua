@@ -42,6 +42,7 @@ local function plugins(use)
       "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      "williamboman/nvim-lsp-installer",
     },
   })
 
@@ -413,7 +414,10 @@ local function plugins(use)
     event = "CursorMoved",
   })
 
-  use({ "knubie/vim-kitty-navigator", run = { "cp *.py $HOME/.config/kitty" } })
+  use({
+    "knubie/vim-kitty-navigator",
+    run = { "cp *.py $HOME/.config/kitty" },
+  })
 end
 
 return packer.setup(config, plugins)
