@@ -63,7 +63,12 @@ local function plugins(use)
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
-      "saecki/crates.nvim",
+      {
+        "saecki/crates.nvim",
+        config = function()
+          require("crates").setup()
+        end,
+      },
       {
         "L3MON4D3/LuaSnip",
         config = function()
