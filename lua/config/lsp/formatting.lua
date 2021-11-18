@@ -27,7 +27,16 @@ function M.setup(client, buf)
   if nls.has_formatter(ft) then
     enable = client.name == "null-ls"
   else
-    enable = not (client.name == "null-ls")
+    -- svelte lsp has good formatting integration!
+    if ft == "svelte" then
+      if client.name == "svelte" then
+        enable = true
+      else
+        enable = false
+      end
+    else
+      enable = not (client.name == "null-ls")
+    end
   end
 
   client.resolved_capabilities.document_formatting = enable
