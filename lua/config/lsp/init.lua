@@ -32,7 +32,18 @@ local servers = {
   rnix = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   html = { cmd = { "html-languageserver", "--stdio" } },
-  tailwindcss = {},
+  tailwindcss = {
+    root_dir = require("lspconfig/util").root_pattern(
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.ts",
+      "postcss.config.js",
+      "postcss.config.ts",
+      "package.json",
+      "node_modules",
+      ".git"
+    ),
+  },
   clangd = {},
   gopls = {},
   ["null-ls"] = {},
