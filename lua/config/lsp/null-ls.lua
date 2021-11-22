@@ -7,11 +7,6 @@ function M.setup()
     debounce = 150,
     -- save_after_format = false,
     sources = {
-      -- nls.builtins.formatting.prettier.with({
-      --   filetypes = {
-      --     "svelte",
-      --   },
-      -- }),
       nls.builtins.formatting.prettier_d_slim.with({
         "javascript",
         "javascriptreact",
