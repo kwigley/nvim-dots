@@ -175,4 +175,12 @@ function M.docs()
   docgen.generate_readme(metadata)
 end
 
+local path_sep = "/"
+M.cache_dir = os.getenv("HOME")
+  .. path_sep
+  .. ".cache"
+  .. path_sep
+  .. "nvim"
+  .. path_sep
+
 return M

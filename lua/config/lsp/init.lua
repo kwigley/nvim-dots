@@ -14,13 +14,6 @@ local function on_attach(client, bufnr)
 end
 
 -- TODO move this to a util package
-local path_sep = "/"
-local cache_dir = os.getenv("HOME")
-  .. path_sep
-  .. ".cache"
-  .. path_sep
-  .. "nvim"
-  .. path_sep
 
 local servers = {
   pyright = {},
@@ -30,7 +23,14 @@ local servers = {
   svelte = {},
   cssls = { cmd = { "css-languageserver", "--stdio" } },
   rnix = {},
-  jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
+  jsonls = {
+    cmd = { "vscode-json-languageserver", "--stdio" },
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+      },
+    },
+  },
   html = { cmd = { "html-languageserver", "--stdio" } },
   tailwindcss = {
     root_dir = require("lspconfig/util").root_pattern(
@@ -50,9 +50,9 @@ local servers = {
   sumneko_lua = require("lua-dev").setup({
     lspconfig = {
       cmd = {
-        cache_dir .. "lua-language-server/bin/macOS/lua-language-server",
+        util.cache_dir .. "lua-language-server/bin/macOS/lua-language-server",
         "-E",
-        cache_dir .. "lua-language-server/main.lua",
+        util.cache_dir .. "lua-language-server/main.lua",
       },
     },
   }),
