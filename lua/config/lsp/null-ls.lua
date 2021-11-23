@@ -5,6 +5,7 @@ local M = {}
 function M.setup()
   nls.config({
     debounce = 150,
+    -- debug = true,
     -- save_after_format = false,
     sources = {
       nls.builtins.formatting.prettier_d_slim.with({
