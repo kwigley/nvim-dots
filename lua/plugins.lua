@@ -351,7 +351,7 @@ local function plugins(use)
     config = function()
       require("trouble").setup({
         auto_open = false,
-        mode = "lsp_document_diagnostics",
+        mode = "document_diagnostics",
       })
     end,
   })
