@@ -1,6 +1,6 @@
 local ts_configs = require("nvim-treesitter.configs")
 ts_configs.setup({
-  -- autopairs = { enable = true },
+  autopairs = { enable = true },
   ensure_installed = {
     "bash",
     "c",

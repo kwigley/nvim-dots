@@ -39,7 +39,12 @@ local function plugins(use)
       "mattn/webapi-vim",
       "mfussenegger/nvim-dap",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
-      "jose-elias-alvarez/null-ls.nvim",
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require("config.lsp.null-ls").setup()
+        end,
+      },
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",

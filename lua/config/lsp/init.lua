@@ -44,7 +44,6 @@ local servers = {
   },
   clangd = {},
   gopls = {},
-  ["null-ls"] = {},
   sumneko_lua = require("lua-dev").setup({
     lspconfig = {
       cmd = {
@@ -61,7 +60,6 @@ local servers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-require("config.lsp.null-ls").setup()
 
 local server_opts = {
   on_attach = on_attach,
