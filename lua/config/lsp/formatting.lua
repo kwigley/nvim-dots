@@ -41,7 +41,7 @@ function M.setup(client, buf)
 
   client.resolved_capabilities.document_formatting = enable
   -- format on save
-  if client.resolved_capabilities.document_formatting then
+  if enable then
     vim.cmd([[
       augroup LspFormat
         autocmd! * <buffer>

@@ -21,16 +21,18 @@ local servers = {
   dockerls = {},
   tsserver = {},
   svelte = {},
-  cssls = {},
+  cssls = { cmd = { "css-languageserver", "--stdio" } },
   jsonls = {
+    cmd = { "vscode-json-languageserver", "--stdio" },
     settings = {
       json = {
         schemas = require("schemastore").json.schemas(),
       },
     },
   },
-  html = {},
+  html = { cmd = { "html-languageserver", "--stdio" } },
   tailwindcss = {
+    cmd = { "tailwindcss-language-server", "--stdio" },
     root_dir = require("lspconfig/util").root_pattern(
       "tailwind.config.js",
       "tailwind.config.cjs",
@@ -79,3 +81,32 @@ for server, config in pairs(servers) do
     util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
   end
 end
+
+local nls = require("null-ls")
+nls.setup({
+  debug = true,
+  save_after_format = false,
+  sources = {
+    nls.builtins.formatting.prettier.with({
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue",
+      "css",
+      "scss",
+      "less",
+      "html",
+      "json",
+      "yaml",
+      "toml",
+      "markdown",
+      "graphql",
+    }),
+    nls.builtins.formatting.stylua,
+    nls.builtins.formatting.fish_indent,
+    nls.builtins.diagnostics.shellcheck,
+    nls.builtins.diagnostics.flake8,
+  },
+  on_attach = on_attach,
+})

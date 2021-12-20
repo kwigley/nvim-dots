@@ -94,7 +94,7 @@ function M.setup(client, bufnr)
   -- This was getting kind of annoying
   local triggers =
     client.resolved_capabilities.signature_help_trigger_characters
-  triggers = { "," }
+  -- triggers = { "," }
   for _, c in ipairs(triggers) do
     util.inoremap(c, function()
       vim.defer_fn(vim.lsp.buf.signature_help, 0)
