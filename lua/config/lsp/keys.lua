@@ -23,7 +23,10 @@ function M.setup(client, bufnr)
           "Restart Lsp",
         },
         i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-        a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
+        a = {
+          "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
+          "Add Folder",
+        },
         r = {
           "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>",
           "Remove Folder",
@@ -67,12 +70,21 @@ function M.setup(client, bufnr)
     r = { "<cmd>Telescope lsp_references<cr>", "References" },
     R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
     d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    dv = { "<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    ds = { "<Cmd>split | lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
+    dv = {
+      "<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+      "Goto Definition",
+    },
+    ds = {
+      "<Cmd>split | lua vim.lsp.buf.definition()<CR>",
+      "Goto Definition",
+    },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
     -- I = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declaration" },
-    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+    t = {
+      "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+      "Goto Type Definition",
+    },
   }
 
   util.nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)

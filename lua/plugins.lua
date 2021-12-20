@@ -304,8 +304,12 @@ local function plugins(use)
   use({
     "famiu/feline.nvim",
     event = "VimEnter",
+    branch = "develop",
     config = function()
-      require("config.feline")
+      require("feline").setup({
+        -- theme = "tokyonight",
+        preset = "noicon",
+      })
     end,
     wants = "nvim-web-devicons",
   })

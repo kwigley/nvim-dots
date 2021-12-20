@@ -144,9 +144,15 @@ local leader = {
   s = {
     name = "+search",
     g = { "<cmd>Telescope live_grep theme=get_ivy<cr>", "Grep" },
-    b = { "<cmd>Telescope current_buffer_fuzzy_find theme=get_ivy<cr>", "Buffer" },
+    b = {
+      "<cmd>Telescope current_buffer_fuzzy_find theme=get_ivy<cr>",
+      "Buffer",
+    },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Goto Symbol" },
-    h = { "<cmd>Telescope command_history theme=get_ivy<cr>", "Command History" },
+    h = {
+      "<cmd>Telescope command_history theme=get_ivy<cr>",
+      "Command History",
+    },
     m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
     w = { "<cmd>Telescope grep_string<cr>", "Grep current string" },
     r = { "<cmd>lua require('spectre').open()<CR>", "Replace (Spectre)" },
@@ -169,7 +175,10 @@ local leader = {
   p = {
     name = "+project",
     p = "Open Project",
-    b = { ":Telescope file_browser cwd=~/workspace<CR>", "Browse ~/workspace" },
+    b = {
+      ":Telescope file_browser cwd=~/workspace<CR>",
+      "Browse ~/workspace",
+    },
   },
   t = {
     name = "toggle",
@@ -212,7 +221,10 @@ local leader = {
   ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
   [" "] = "Find File",
   ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
-  [","] = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch Buffer" },
+  [","] = {
+    "<cmd>Telescope buffers show_all_buffers=true<cr>",
+    "Switch Buffer",
+  },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
   [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
   q = {
@@ -224,7 +236,10 @@ local leader = {
       [[<cmd>lua require("persistence").load({last=true})<cr>]],
       "Restore Last Session",
     },
-    d = { [[<cmd>lua require("persistence").stop()<cr>]], "Stop Current Session" },
+    d = {
+      [[<cmd>lua require("persistence").stop()<cr>]],
+      "Stop Current Session",
+    },
   },
   x = {
     name = "+errors",
@@ -233,7 +248,10 @@ local leader = {
       "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>",
       "Workspace Trouble",
     },
-    d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Document Trouble" },
+    d = {
+      "<cmd>TroubleToggle lsp_document_diagnostics<cr>",
+      "Document Trouble",
+    },
     l = { "<cmd>TroubleToggle loclist<cr>", "Open Location List" },
     q = { "<cmd>TroubleToggle quickfix<cr>", "Open Quickfix List" },
     t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
