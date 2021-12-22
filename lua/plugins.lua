@@ -299,7 +299,6 @@ local function plugins(use)
   use({
     "famiu/feline.nvim",
     event = "VimEnter",
-    branch = "develop",
     config = function()
       require("feline").setup({
         -- theme = "tokyonight",
