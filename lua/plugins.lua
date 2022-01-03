@@ -203,6 +203,8 @@ local function plugins(use)
     },
   })
 
+  use({ "stevearc/dressing.nvim" })
+
   -- Indent Guides
   use({
     "lukas-reineke/indent-blankline.nvim",
