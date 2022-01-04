@@ -31,10 +31,6 @@ util.nnoremap("<A-k>", ":m .-2<CR>==")
 util.vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
 util.inoremap("<A-k>", "<Esc>:m .-2<CR>==gi")
 
--- Switch buffers with tab
-util.nnoremap("<Tab>", ":bnext<cr>")
-util.nnoremap("<S-Tab>", ":bprevious<cr>")
-
 -- Easier pasting
 util.nnoremap("[p", ":pu!<cr>")
 util.nnoremap("]p", ":pu<cr>")

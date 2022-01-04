@@ -63,6 +63,8 @@ local function plugins(use)
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-copilot",
+      -- "github/copilot.vim",
       {
         "saecki/crates.nvim",
         config = function()
