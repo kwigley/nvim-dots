@@ -114,15 +114,15 @@ function M.log(msg, hl, name)
 end
 
 function M.warn(msg, name)
-  M.log(msg, "LspDiagnosticsDefaultWarning", name)
+  vim.notify(msg, vim.log.levels.WARN, { title = name })
 end
 
 function M.error(msg, name)
-  M.log(msg, "LspDiagnosticsDefaultError", name)
+  vim.notify(msg, vim.log.levels.ERROR, { title = name })
 end
 
 function M.info(msg, name)
-  M.log(msg, "LspDiagnosticsDefaultInformation", name)
+  vim.notify(msg, vim.log.levels.INFO, { title = name })
 end
 
 function M.toggle(option, silent)

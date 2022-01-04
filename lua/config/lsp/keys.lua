@@ -12,10 +12,7 @@ function M.setup(client, bufnr)
       name = "+code",
       r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
       a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-      d = {
-        "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
-        "Line Diagnostics",
-      },
+      d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
       l = {
         name = "+lsp",
         x = {
@@ -39,11 +36,11 @@ function M.setup(client, bufnr)
     },
     x = {
       s = {
-        "<cmd>Telescope lsp_document_diagnostics<CR>",
+        "<cmd>Telescope document_diagnostics<cr>",
         "Search Document Diagnostics",
       },
       w = {
-        "<cmd>Telescope lsp_workspace_diagnostics<CR>",
+        "<cmd>Telescope workspace_diagnostics<cr>",
         "Workspace Diagnostics",
       },
     },
@@ -91,13 +88,14 @@ function M.setup(client, bufnr)
   util.nnoremap("[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   util.nnoremap("]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
-  -- This was getting kind of annoying
-  local triggers =
+  local trigger_chars =
     client.resolved_capabilities.signature_help_trigger_characters
-  -- triggers = { "," }
-  for _, c in ipairs(triggers) do
+  trigger_chars = { "," }
+  for _, c in ipairs(trigger_chars) do
     util.inoremap(c, function()
-      vim.defer_fn(vim.lsp.buf.signature_help, 0)
+      vim.defer_fn(function()
+        pcall(vim.lsp.buf.signature_help)
+      end, 0)
       return c
     end, {
       noremap = true,

@@ -59,6 +59,23 @@ vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 util.vnoremap("<", "<gv")
 util.vnoremap(">", ">gv")
 
+wk.register({
+  ["]"] = {
+    name = "next",
+    r = {
+      '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>',
+      "Next Reference",
+    },
+  },
+  ["["] = {
+    name = "previous",
+    r = {
+      '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>',
+      "Next Reference",
+    },
+  },
+})
+
 -- makes * and # work on visual mode too.
 vim.api.nvim_exec(
   [[

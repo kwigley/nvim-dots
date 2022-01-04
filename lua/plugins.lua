@@ -342,7 +342,7 @@ local function plugins(use)
 
   use({
     "ggandor/lightspeed.nvim",
-    event = "BufReadPost",
+    keys = { "s", "S", "f", "F", "t", "T" },
     config = function()
       require("config.lightspeed")
     end,
