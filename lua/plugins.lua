@@ -22,6 +22,14 @@ local function plugins(use)
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
 
+  use({
+    "rcarriga/nvim-notify",
+    event = "BufRead",
+    config = function()
+      require("config.notify").setup()
+    end,
+  })
+
   -- LSP
   use({
     "neovim/nvim-lspconfig",
@@ -37,7 +45,6 @@ local function plugins(use)
     requires = {
       "simrat39/rust-tools.nvim",
       "mattn/webapi-vim",
-      "mfussenegger/nvim-dap",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
       "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
