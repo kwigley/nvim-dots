@@ -105,6 +105,7 @@ local leader = {
     ["L"] = { "<C-W>5>", "expand-window-right" },
     ["K"] = { ":resize -5", "expand-window-up" },
     ["="] = { "<C-W>=", "balance-window" },
+    ["t"] = { "<C-W>v:terminal<CR>", "split-terminal-right" },
     ["s"] = { "<C-W>s", "split-window-below" },
     ["v"] = { "<C-W>v", "split-window-right" },
   },
