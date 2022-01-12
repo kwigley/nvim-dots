@@ -99,6 +99,15 @@ local function plugins(use)
   })
 
   use({
+    "abecodes/tabout.nvim",
+    config = function()
+      require("config.tabout")
+    end,
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+    after = { "luasnip" }, -- if a completion plugin is using tabs load it before
+  })
+
+  use({
     "b3nj5m1n/kommentary",
     opt = true,
     wants = "nvim-ts-context-commentstring",

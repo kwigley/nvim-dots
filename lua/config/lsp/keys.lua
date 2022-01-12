@@ -88,23 +88,6 @@ function M.setup(client, bufnr)
   util.nnoremap("[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   util.nnoremap("]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
-  local trigger_chars =
-    client.resolved_capabilities.signature_help_trigger_characters
-  trigger_chars = { "," }
-  for _, c in ipairs(trigger_chars) do
-    util.inoremap(c, function()
-      vim.defer_fn(function()
-        pcall(vim.lsp.buf.signature_help)
-      end, 0)
-      return c
-    end, {
-      noremap = true,
-      silent = true,
-      buffer = bufnr,
-      expr = true,
-    })
-  end
-
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
