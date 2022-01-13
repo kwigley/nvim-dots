@@ -60,7 +60,7 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
-    wants = { "LuaSnip", "nvim-autopairs", "plenary.nvim" },
+    wants = { "tabout.nvim", "LuaSnip", "nvim-autopairs", "plenary.nvim" },
     requires = {
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
@@ -81,8 +81,15 @@ local function plugins(use)
       {
         "L3MON4D3/LuaSnip",
         config = function()
-          require("config.snippets")
+          require("config.luasnip")
         end,
+      },
+      {
+        "abecodes/tabout.nvim",
+        config = function()
+          require("tabout").setup()
+        end,
+        wants = { "nvim-treesitter" },
       },
       {
         "windwp/nvim-autopairs",
@@ -96,15 +103,6 @@ local function plugins(use)
   use({
     "simrat39/symbols-outline.nvim",
     cmd = { "SymbolsOutline" },
-  })
-
-  use({
-    "abecodes/tabout.nvim",
-    config = function()
-      require("config.tabout")
-    end,
-    wants = { "nvim-treesitter" }, -- or require if not used so far
-    after = { "luasnip" }, -- if a completion plugin is using tabs load it before
   })
 
   use({
