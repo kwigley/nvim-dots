@@ -2,7 +2,7 @@
 
 # neovim dots
 
-My personal [neovim](https://neovim.io/) config. Written in lua and configured to mimic VSCode UX and modern IDE capabilities.
+My personal [neovim](https://neovim.io/) config. Written in lua and configured to mimic VS Code UX and modern IDE capabilities.
 
 ### Highlights
 
