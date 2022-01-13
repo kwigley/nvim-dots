@@ -6,7 +6,7 @@ My personal [neovim](https://neovim.io/) config. Written in lua and configured t
 
 ### Highlights
 
-- built-in lsp ❤️
+- utilizes the built-in lsp ❤️
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
