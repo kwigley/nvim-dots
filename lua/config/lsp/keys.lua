@@ -85,8 +85,8 @@ function M.setup(client, bufnr)
   }
 
   util.nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  util.nnoremap("[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  util.nnoremap("]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  util.nnoremap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+  util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
