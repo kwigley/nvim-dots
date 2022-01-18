@@ -29,7 +29,7 @@ ts_configs.setup({
   },
   highlight = { enable = true, use_languagetree = true },
   indent = { enable = true },
-  context_commentstring = { enable = true },
+  context_commentstring = { enable = true, enable_autocmd = false },
   incremental_selection = {
     enable = true,
     keymaps = {

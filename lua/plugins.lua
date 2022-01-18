@@ -106,7 +106,7 @@ local function plugins(use)
   })
 
   use({
-    "b3nj5m1n/kommentary",
+    "numToStr/Comment.nvim",
     opt = true,
     wants = "nvim-ts-context-commentstring",
     keys = { "gc", "gcc" },
@@ -287,18 +287,6 @@ local function plugins(use)
       require("config.gitlinker")
     end,
   })
-  use({
-    "sindrets/diffview.nvim",
-    cmd = {
-      "DiffviewOpen",
-      "DiffviewClose",
-      "DiffviewToggleFiles",
-      "DiffviewFocusFiles",
-    },
-    config = function()
-      require("config.diffview")
-    end,
-  })
 
   use({
     "TimUntersberger/neogit",
@@ -307,7 +295,15 @@ local function plugins(use)
       "plenary.nvim",
       "diffview.nvim",
     },
-    requires = { "sindrets/diffview.nvim", "nvim-lua/plenary.nvim" },
+    requires = {
+      {
+        "sindrets/diffview.nvim",
+        config = function()
+          require("diffview").setup({})
+        end,
+      },
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
       require("config.neogit")
     end,
