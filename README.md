@@ -14,6 +14,24 @@ My personal [neovim](https://neovim.io/) config. Written in lua and configured t
 - [feline](https://github.com/famiu/feline.nvim) - status line
 - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Installation
 
 - Clone this repo to where your neovim config lives (`~/.config/nvim`)
