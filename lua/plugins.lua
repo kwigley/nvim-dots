@@ -50,6 +50,12 @@ local function plugins(use)
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
+      {
+        "j-hui/fidget.nvim",
+        config = function()
+          require("fidget").setup()
+        end,
+      },
     },
   })
 
@@ -315,7 +321,6 @@ local function plugins(use)
     event = "VimEnter",
     config = function()
       require("feline").setup({
-        -- theme = "tokyonight",
         preset = "noicon",
       })
     end,
