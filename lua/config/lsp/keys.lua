@@ -53,6 +53,9 @@ function M.setup(client, bufnr)
 
   if client.name == "rust_analyzer" then
     keymap.c.R = { "<CMD>RustRunnables<CR>", "Rust Runnables" }
+    keymap.t = {
+      i = { "<CMD>RustToggleInlayHints<CR>", "Rust Toggle Inlay Hints" },
+    }
   end
 
   local keymap_visual = {
