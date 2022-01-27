@@ -71,7 +71,10 @@ local server_opts = {
   },
 }
 
-require("rust-tools").setup({ server = server_opts })
+require("rust-tools").setup({
+  server = server_opts,
+  tools = { autoSetHints = false },
+})
 
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
