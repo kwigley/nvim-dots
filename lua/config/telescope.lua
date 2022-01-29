@@ -4,10 +4,10 @@ local telescope = require("telescope")
 
 telescope.setup({
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
-    },
+    -- fzy_native = {
+    --  override_generic_sorter = false,
+    --  override_file_sorter = true,
+    --},
   },
   defaults = {
     mappings = { i = { ["<c-t>"] = trouble.open_with_trouble } },
@@ -18,7 +18,9 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("fzy_native")
+-- telescope.load_extension("fzy_native")
+require("telescope").load_extension("fzf")
+telescope.load_extension("gh")
 
 local M = {}
 

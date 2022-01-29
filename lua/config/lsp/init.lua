@@ -57,6 +57,7 @@ local servers = {
   }),
   vimls = {},
   terraformls = {},
+  taplo = {},
   yamlls = {},
 }
 
@@ -102,7 +103,6 @@ nls.setup({
       "html",
       "json",
       "yaml",
-      "toml",
       "markdown",
       "graphql",
     }),

@@ -213,15 +213,19 @@ local function plugins(use)
     wants = {
       "plenary.nvim",
       "popup.nvim",
-      "telescope-fzy-native.nvim",
+      -- "telescope-fzy-native.nvim",
+      "telescope-fzf-native.nvim",
       "trouble.nvim",
       "telescope-symbols.nvim",
+      "telescope-github.nvim",
     },
     requires = {
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
-      "nvim-telescope/telescope-fzy-native.nvim",
+      -- "nvim-telescope/telescope-fzy-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      "nvim-telescope/telescope-github.nvim",
     },
   })
 

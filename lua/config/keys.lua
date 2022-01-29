@@ -128,6 +128,9 @@ local leader = {
     c = { "<Cmd>Telescope git_commits<CR>", "commits" },
     b = { "<Cmd>Telescope git_branches<CR>", "branches" },
     s = { "<Cmd>Telescope git_status<CR>", "status" },
+    r = { "<Cmd>Telescope gh run<CR>", "runs" },
+    i = { "<Cmd>Telescope gh issues<CR>", "issues" },
+    p = { "<Cmd>Telescope gh pull_request<CR>", "PRs" },
     h = { name = "+hunk" },
   },
   ["h"] = {
@@ -233,7 +236,6 @@ local leader = {
   },
   ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
   [" "] = "Find File",
-  ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
   [","] = {
     "<cmd>Telescope buffers show_all_buffers=true<cr>",
     "Switch Buffer",
