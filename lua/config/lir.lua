@@ -37,7 +37,7 @@ require("lir").setup({
 })
 
 require("lir.git_status").setup({
-  show_ignored = false,
+  show_ignored = true,
 })
 
 -- use visual mode

@@ -17,7 +17,7 @@ vim.opt.ignorecase = true -- Ignore case
 vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
 vim.opt.list = true -- Show some invisible characters (tabs...
-vim.opt.listchars:append("eol:↴") -- show eol character
+-- vim.opt.listchars:append("eol:↴") -- show eol character
 vim.opt.mouse = "a" -- enable mouse mode
 vim.opt.number = true -- Print line number
 vim.opt.pumblend = 10 -- Popup blend
