@@ -86,10 +86,12 @@ local function plugins(use)
       },
       {
         "L3MON4D3/LuaSnip",
+        wants = "friendly-snippets",
         config = function()
           require("config.luasnip")
         end,
       },
+      "rafamadriz/friendly-snippets",
       {
         "abecodes/tabout.nvim",
         config = function()
