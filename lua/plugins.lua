@@ -51,9 +51,15 @@ local function plugins(use)
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
       {
+        "kosayoda/nvim-lightbulb",
+        config = function()
+          vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
+        end,
+      },
+      {
         "j-hui/fidget.nvim",
         config = function()
-          require("fidget").setup({ text = { spinner = "circle" } })
+          require("fidget").setup({ text = { spinner = "dots" } })
         end,
       },
     },

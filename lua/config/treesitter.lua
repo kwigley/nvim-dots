@@ -28,7 +28,10 @@ ts_configs.setup({
     "yaml",
   },
   highlight = { enable = true, use_languagetree = true },
-  indent = { enable = true, disable = { "yaml", "lua", "go" } },
+  indent = {
+    enable = true,
+    disable = { "yaml", "lua", "go", "typescriptreact" },
+  },
   context_commentstring = { enable = true, enable_autocmd = false },
   incremental_selection = {
     enable = true,
