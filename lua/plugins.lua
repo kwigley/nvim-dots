@@ -53,7 +53,9 @@ local function plugins(use)
       {
         "kosayoda/nvim-lightbulb",
         config = function()
-          vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
+          vim.cmd(
+            [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+          )
         end,
       },
       {
