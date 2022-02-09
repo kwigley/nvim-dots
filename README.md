@@ -8,7 +8,7 @@ My personal [neovim](https://neovim.io/) config.
 
 - utilizes the built-in lsp ❤️
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
-- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
 - [feline](https://github.com/famiu/feline.nvim) - status line
