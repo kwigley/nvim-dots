@@ -1,8 +1,8 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/kwigley/nvim-dots/main.svg)](https://results.pre-commit.ci/latest/github/kwigley/nvim-dots/main)
 
-# neovim dots
+# nvim dots
 
-My personal [neovim](https://neovim.io/) config. Written in lua and configured to mimic VS Code UX and modern IDE capabilities.
+My personal [neovim](https://neovim.io/) config.
 
 ### Highlights
 
