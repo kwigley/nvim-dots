@@ -16,6 +16,7 @@ ts_configs.setup({
     "jsonc",
     "latex",
     "lua",
+    "markdown",
     "nix",
     "python",
     "regex",
@@ -110,16 +111,8 @@ ts_configs.setup({
   },
 })
 
--- Add Markdown
--- May need to run `:TSInstall markdown jinja2`
+-- May need to run `:TSInstall jinja2`
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
--- parser_config.jsonc.used_by = "json"
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-}
 parser_config.jinja2 = {
   install_info = {
     url = "https://github.com/dbt-labs/tree-sitter-jinja2",
