@@ -117,6 +117,13 @@ local function plugins(use)
   })
 
   use({
+    "alvan/vim-closetag",
+    config = function()
+      require("config.closetag")
+    end,
+  })
+
+  use({
     "simrat39/symbols-outline.nvim",
     cmd = { "SymbolsOutline" },
   })
