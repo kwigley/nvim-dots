@@ -128,7 +128,7 @@ local leader = {
     c = { "<Cmd>Telescope git_commits<CR>", "commits" },
     b = { "<Cmd>Telescope git_branches<CR>", "branches" },
     s = { "<Cmd>Telescope git_status<CR>", "status" },
-    r = { "<Cmd>Telescope gh run<CR>", "runs" },
+    w = { "<Cmd>Telescope gh run<CR>", "runs" },
     i = { "<Cmd>Telescope gh issues<CR>", "issues" },
     p = { "<Cmd>Telescope gh pull_request<CR>", "PRs" },
     h = { name = "+hunk" },

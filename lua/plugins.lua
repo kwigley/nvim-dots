@@ -328,6 +328,7 @@ local function plugins(use)
         config = function()
           require("diffview").setup({})
         end,
+        after = "plenary.nvim",
       },
       "nvim-lua/plenary.nvim",
     },
