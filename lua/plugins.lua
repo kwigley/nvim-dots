@@ -149,7 +149,7 @@ local function plugins(use)
         "nvim-treesitter/playground",
         cmd = "TSHighlightCapturesUnderCursor",
       },
-      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
     },
     config = function()
@@ -341,9 +341,7 @@ local function plugins(use)
     "famiu/feline.nvim",
     event = "VimEnter",
     config = function()
-      require("feline").setup({
-        preset = "noicon",
-      })
+      require("config.feline")
     end,
     wants = "nvim-web-devicons",
   })
