@@ -13,6 +13,7 @@ require("lir").setup({
 
     ["-"] = actions.up,
     ["q"] = actions.quit,
+    ["<ESC>"] = actions.quit,
 
     ["K"] = actions.mkdir,
     ["N"] = actions.newfile,
@@ -33,7 +34,6 @@ require("lir").setup({
   float = {
     winblend = 10,
   },
-  hide_cursor = true,
 })
 
 require("lir.git_status").setup({
