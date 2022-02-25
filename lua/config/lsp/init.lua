@@ -72,8 +72,21 @@ local server_opts = {
   },
 }
 
+local rust_analyzer_settings = {
+  settings = {
+    -- to enable rust-analyzer settings visit:
+    -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+    ["rust-analyzer"] = {
+      -- enable clippy on save
+      checkOnSave = {
+        command = "clippy",
+      },
+    },
+  },
+}
+
 require("rust-tools").setup({
-  server = server_opts,
+  server = vim.tbl_deep_extend("force", server_opts, rust_analyzer_settings),
   tools = { autoSetHints = false },
 })
 

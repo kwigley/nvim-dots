@@ -87,7 +87,7 @@ cmd([[autocmd BufRead,BufNewFile *.fish setfiletype fish]])
 cmd([[autocmd BufRead,BufNewFile *.nix setfiletype nix]])
 
 -- windows to close with "q"
-vim.cmd(
+cmd(
   [[autocmd FileType help,startuptime,qf,lspinfo,spectre_panel nnoremap <buffer><silent> q :close<CR>]]
 )
-vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
