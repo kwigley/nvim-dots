@@ -6,7 +6,7 @@ vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_disable_netrw = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
-vim.g.nvim_tree_quit_on_open = 1
+-- vim.g.nvim_tree_quit_on_open = 1
 
 require("nvim-tree").setup({
   update_to_buf_dir = {
