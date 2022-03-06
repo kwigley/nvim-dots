@@ -60,7 +60,7 @@ components.active[1] = {
     provider = {
       name = "file_info",
       opts = {
-        type = "unique",
+        type = "relative",
       },
     },
     hl = {
@@ -128,43 +128,25 @@ components.active[2] = {
     provider = "git_branch",
     hl = {
       fg = "white",
-      bg = "black",
       style = "bold",
-    },
-    right_sep = {
-      str = " ",
-      hl = {
-        fg = "NONE",
-        bg = "black",
-      },
     },
   },
   {
     provider = "git_diff_added",
     hl = {
       fg = "green",
-      bg = "black",
     },
   },
   {
     provider = "git_diff_changed",
     hl = {
       fg = "orange",
-      bg = "black",
     },
   },
   {
     provider = "git_diff_removed",
     hl = {
       fg = "red",
-      bg = "black",
-    },
-    right_sep = {
-      str = " ",
-      hl = {
-        fg = "NONE",
-        bg = "black",
-      },
     },
   },
   {
