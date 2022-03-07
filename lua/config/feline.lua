@@ -168,6 +168,31 @@ components.active[2] = {
 
 components.inactive[1] = {
   {
+    provider = {
+      name = "file_info",
+      opts = {
+        type = "relative",
+      },
+    },
+    hl = {
+      fg = "white",
+      bg = "oceanblue",
+      style = "bold",
+    },
+    left_sep = {
+      str = " ",
+      hl = { bg = "oceanblue", fg = "NONE" },
+    },
+    right_sep = {
+      { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
+      "slant_right_2",
+      " ",
+    },
+  },
+}
+
+components.inactive[2] = {
+  {
     provider = "file_type",
     hl = {
       fg = "white",
@@ -193,7 +218,7 @@ components.inactive[1] = {
     },
   },
   -- Empty component to fix the highlight till the end of the statusline
-  {},
+  -- {},
 }
 
 require("feline").setup({
