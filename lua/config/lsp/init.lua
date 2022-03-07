@@ -87,7 +87,6 @@ local rust_analyzer_settings = {
 
 require("rust-tools").setup({
   server = vim.tbl_deep_extend("force", server_opts, rust_analyzer_settings),
-  tools = { autoSetHints = false },
 })
 
 local lspconfig = require("lspconfig")
