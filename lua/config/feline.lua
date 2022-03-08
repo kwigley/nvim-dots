@@ -60,7 +60,7 @@ components.active[1] = {
     provider = {
       name = "file_info",
       opts = {
-        type = "relative",
+        type = "unique",
       },
     },
     hl = {
@@ -76,19 +76,6 @@ components.active[1] = {
       { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
       "slant_right_2",
       " ",
-    },
-  },
-  {
-    provider = "file_size",
-    right_sep = {
-      " ",
-      {
-        str = "vertical_bar_thin",
-        hl = {
-          fg = "fg",
-          bg = "bg",
-        },
-      },
     },
   },
   {
@@ -150,15 +137,9 @@ components.active[2] = {
     },
   },
   {
-    provider = "line_percentage",
-    hl = {
-      style = "bold",
-    },
-    left_sep = "  ",
-    right_sep = " ",
-  },
-  {
     provider = "scroll_bar",
+
+    left_sep = "  ",
     hl = {
       fg = "skyblue",
       style = "bold",
