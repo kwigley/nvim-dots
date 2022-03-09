@@ -213,7 +213,7 @@ local function plugins(use)
 
   use({
     "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFile" },
+    cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFileToggle" },
     config = function()
       require("config.tree")
     end,
