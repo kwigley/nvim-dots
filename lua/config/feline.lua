@@ -82,14 +82,7 @@ components.active[1] = {
     provider = "position",
     left_sep = " ",
     right_sep = {
-      " ",
-      {
-        str = "vertical_bar_thin",
-        hl = {
-          fg = "fg",
-          bg = "bg",
-        },
-      },
+      "  ",
     },
   },
   {
@@ -111,13 +104,6 @@ components.active[1] = {
 }
 
 components.active[2] = {
-  {
-    provider = "git_branch",
-    hl = {
-      fg = "white",
-      style = "bold",
-    },
-  },
   {
     provider = "git_diff_added",
     hl = {
