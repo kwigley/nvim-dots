@@ -159,14 +159,14 @@ local leader = {
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
   s = {
     name = "+search",
-    g = { "<cmd>Telescope live_grep theme=get_ivy<cr>", "Grep" },
+    g = { "<cmd>Telescope live_grep<cr>", "Grep" },
     b = {
-      "<cmd>Telescope current_buffer_fuzzy_find theme=get_ivy<cr>",
+      "<cmd>Telescope current_buffer_fuzzy_find<cr>",
       "Buffer",
     },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Goto Symbol" },
     h = {
-      "<cmd>Telescope command_history theme=get_ivy<cr>",
+      "<cmd>Telescope command_history<cr>",
       "Command History",
     },
     m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
@@ -270,7 +270,7 @@ local leader = {
     l = { "<cmd>TroubleToggle loclist<cr>", "Open Location List" },
     q = { "<cmd>TroubleToggle quickfix<cr>", "Open Quickfix List" },
     t = { "<cmd>TodoTrouble<cr>", "Todo Trouble" },
-    T = { "<cmd>TodoTelescope theme=get_ivy<cr>", "Todo Telescope" },
+    T = { "<cmd>TodoTelescope<cr>", "Todo Telescope" },
   },
   z = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
   T = { [[<Plug>PlenaryTestFile]], "Plenary Test" },

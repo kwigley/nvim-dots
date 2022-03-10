@@ -4,21 +4,22 @@ local telescope = require("telescope")
 
 telescope.setup({
   extensions = {
-    -- fzy_native = {
-    --  override_generic_sorter = false,
-    --  override_file_sorter = true,
-    --},
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+    },
   },
   defaults = {
+    layout_strategy = "vertical",
     mappings = { i = { ["<c-t>"] = trouble.open_with_trouble } },
     prompt_prefix = "❯ ",
     selection_caret = " ",
     winblend = 5,
-    layout_strategy = "flex",
   },
 })
 
--- telescope.load_extension("fzy_native")
 require("telescope").load_extension("fzf")
 telescope.load_extension("gh")
 

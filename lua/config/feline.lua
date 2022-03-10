@@ -79,13 +79,6 @@ components.active[1] = {
     },
   },
   {
-    provider = "position",
-    left_sep = " ",
-    right_sep = {
-      "  ",
-    },
-  },
-  {
     provider = "diagnostic_errors",
     hl = { fg = "red" },
   },
@@ -123,8 +116,11 @@ components.active[2] = {
     },
   },
   {
+    provider = "position",
+    left_sep = "  ",
+  },
+  {
     provider = "scroll_bar",
-
     left_sep = "  ",
     hl = {
       fg = "skyblue",
