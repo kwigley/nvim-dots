@@ -42,12 +42,14 @@ function M.setup(client, buf)
   client.resolved_capabilities.document_formatting = enable
   -- format on save
   if enable then
-    vim.cmd([[
-      augroup LspFormat
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua require("config.lsp.formatting").format()
-      augroup END
-    ]])
+    local group = vim.api.nvim_create_augroup("lsp-format", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = 0,
+      callback = function()
+        require("config.lsp.formatting").format()
+      end,
+      group = group,
+    })
   end
 end
 

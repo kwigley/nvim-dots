@@ -40,24 +40,23 @@ require("lir.git_status").setup({
   show_ignored = true,
 })
 
--- use visual mode
-function _G.LirSettings()
-  vim.api.nvim_buf_set_keymap(
-    0,
-    "x",
-    "J",
-    ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
-    { noremap = true, silent = true }
-  )
+local group = vim.api.nvim_create_augroup("lir-settings", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "lir",
+  callback = function()
+    vim.api.nvim_buf_set_keymap(
+      0,
+      "x",
+      "J",
+      ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
+      { noremap = true, silent = true }
+    )
 
-  -- echo cwd
-  vim.api.nvim_echo({ { vim.fn.expand("%:p"), "Normal" } }, false, {})
-end
-
-vim.cmd([[augroup lir-settings]])
-vim.cmd([[  autocmd!]])
-vim.cmd([[  autocmd Filetype lir :lua LirSettings()]])
-vim.cmd([[augroup END]])
+    -- echo cwd
+    vim.api.nvim_echo({ { vim.fn.expand("%:p"), "Normal" } }, false, {})
+  end,
+  group = group,
+})
 
 vim.api.nvim_set_keymap(
   "n",

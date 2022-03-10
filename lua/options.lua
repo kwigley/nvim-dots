@@ -66,28 +66,47 @@ vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 
 -- Check if we need to reload the file when it changed
-cmd("au FocusGained * :checktime")
+vim.api.nvim_create_autocmd("FocusGained", { command = "checktime" })
 
 -- show cursor line only in active window
-cmd([[
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
-]])
+vim.api.nvim_create_autocmd(
+  { "InsertLeave", "WinEnter" },
+  { command = "set cursorline" }
+)
+vim.api.nvim_create_autocmd(
+  { "InsertEnter", "WinLeave" },
+  { command = "set nocursorline" }
+)
 
 -- go to last loc when opening a buffer
-cmd([[
-  autocmd BufReadPost *\(.git/COMMIT_EDITMSG\)\@<! if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-]])
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = [[*\(.git/COMMIT_EDITMSG\|.git/NEOGIT_COMMIT_EDITMSG\|plugins.lua\)\@<!]],
+  command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]],
+})
 
 -- Highlight on yank
-cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 -- ftdetect
-cmd([[autocmd BufRead,BufNewFile *.fish setfiletype fish]])
-cmd([[autocmd BufRead,BufNewFile *.nix setfiletype nix]])
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = "*.fish", command = "setfiletype fish" }
+)
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = "*.nix", command = "setfiletype nix" }
+)
 
 -- windows to close with "q"
-cmd(
-  [[autocmd FileType help,startuptime,qf,lspinfo,spectre_panel nnoremap <buffer><silent> q :close<CR>]]
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "help,startuptime,qf,lspinfo,spectre_panel",
+  command = "nnoremap <buffer><silent> q :close<CR>",
+})
+vim.api.nvim_create_autocmd(
+  "Filetype",
+  { pattern = "man", command = "nnoremap <buffer><silent> q :quit<CR>" }
 )
-cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
