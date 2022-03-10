@@ -4,7 +4,13 @@
 
 My personal [neovim](https://neovim.io/) config.
 
-### Highlights
+## Install
+
+- Clone this repo to where your neovim config lives (`~/.config/nvim`)
+- Start neovim, run `:PackerSync`
+- Profit
+
+## Highlights
 
 - utilizes the built-in lsp ❤️
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
@@ -14,8 +20,4 @@ My personal [neovim](https://neovim.io/) config.
 - [feline](https://github.com/famiu/feline.nvim) - status line
 - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
 
-### Installation
-
-- Clone this repo to where your neovim config lives (`~/.config/nvim`)
-- Start neovim, run `:PackerSync`
-- Profit
+You can check out the rest of my [dotfiles](https://dotfiles.github.io/) in https://github.com/kwigley/dots
