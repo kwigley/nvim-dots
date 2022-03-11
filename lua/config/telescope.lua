@@ -13,7 +13,10 @@ telescope.setup({
   },
   defaults = {
     layout_strategy = "vertical",
-    mappings = { i = { ["<c-t>"] = trouble.open_with_trouble } },
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
+    },
     prompt_prefix = "❯ ",
     selection_caret = " ",
     winblend = 5,

@@ -233,7 +233,6 @@ local function plugins(use)
     wants = {
       "plenary.nvim",
       "popup.nvim",
-      -- "telescope-fzy-native.nvim",
       "telescope-fzf-native.nvim",
       "trouble.nvim",
       "telescope-symbols.nvim",
@@ -243,7 +242,6 @@ local function plugins(use)
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
-      -- "nvim-telescope/telescope-fzy-native.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       "nvim-telescope/telescope-github.nvim",
     },
@@ -429,7 +427,6 @@ local function plugins(use)
 
   use({
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
     event = "BufReadPost",
     config = function()
       require("config.todo")

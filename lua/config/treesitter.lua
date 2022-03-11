@@ -11,6 +11,7 @@ ts_configs.setup({
     "fish",
     "go",
     "graphql",
+    "hcl",
     "html",
     "javascript",
     "jsonc",
