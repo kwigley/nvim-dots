@@ -19,9 +19,13 @@ local config = {
 }
 
 local function plugins(use)
+  use({ "nvim-lua/plenary.nvim", module = "plenary" })
+  use({ "nvim-lua/popup.nvim", module = "popup" })
+
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
 
+  -- UI notifications
   use({
     "rcarriga/nvim-notify",
     event = "BufRead",
@@ -70,6 +74,21 @@ local function plugins(use)
     },
   })
 
+  -- LSP ui
+  use({
+    "folke/trouble.nvim",
+    event = "BufReadPre",
+    wants = "nvim-web-devicons",
+    cmd = { "TroubleToggle", "Trouble" },
+    config = function()
+      require("trouble").setup({
+        auto_open = false,
+        mode = "document_diagnostics",
+      })
+    end,
+  })
+
+  -- LSP + autocompletion
   use({
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -87,8 +106,6 @@ local function plugins(use)
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
-      -- "hrsh7th/cmp-copilot",
-      -- "github/copilot.vim",
       {
         "saecki/crates.nvim",
         config = function()
@@ -119,6 +136,7 @@ local function plugins(use)
     },
   })
 
+  -- auto close html/jsx tags
   use({
     "alvan/vim-closetag",
     config = function()
@@ -126,11 +144,7 @@ local function plugins(use)
     end,
   })
 
-  use({
-    "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline" },
-  })
-
+  -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
     opt = true,
@@ -193,8 +207,6 @@ local function plugins(use)
       require("terminal").setup()
     end,
   })
-  use({ "nvim-lua/plenary.nvim", module = "plenary" })
-  use({ "nvim-lua/popup.nvim", module = "popup" })
 
   use({
     "windwp/nvim-spectre",
@@ -247,6 +259,7 @@ local function plugins(use)
     },
   })
 
+  -- UI sugar
   use({ "stevearc/dressing.nvim" })
 
   -- Indent Guides
@@ -315,7 +328,6 @@ local function plugins(use)
       require("config.gitlinker")
     end,
   })
-
   use({
     "TimUntersberger/neogit",
     cmd = "Neogit",
@@ -348,14 +360,6 @@ local function plugins(use)
     wants = "nvim-web-devicons",
   })
 
-  use({
-    "norcalli/nvim-colorizer.lua",
-    event = "BufReadPre",
-    config = function()
-      require("config.colorizer")
-    end,
-  })
-
   -- Writing
   use({
     "iamcco/markdown-preview.nvim",
@@ -371,19 +375,6 @@ local function plugins(use)
     keys = { "s", "S", "f", "F", "t", "T" },
     config = function()
       require("config.lightspeed")
-    end,
-  })
-
-  use({
-    "folke/trouble.nvim",
-    event = "BufReadPre",
-    wants = "nvim-web-devicons",
-    cmd = { "TroubleToggle", "Trouble" },
-    config = function()
-      require("trouble").setup({
-        auto_open = false,
-        mode = "document_diagnostics",
-      })
     end,
   })
 
@@ -410,6 +401,14 @@ local function plugins(use)
       require("zen-mode").setup({
         plugins = { gitsigns = true, kitty = { enabled = true, font = "+2" } },
       })
+    end,
+  })
+
+  use({
+    "norcalli/nvim-colorizer.lua",
+    event = "BufReadPre",
+    config = function()
+      require("config.colorizer")
     end,
   })
 
