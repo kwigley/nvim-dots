@@ -1,3 +1,6 @@
+ci:
+  skip: [stylua]
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
@@ -13,4 +16,4 @@ repos:
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v0.12.5
     hooks:
-      - id: stylua-github
+      - id: stylua
