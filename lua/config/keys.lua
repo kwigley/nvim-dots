@@ -161,7 +161,7 @@ local leader = {
     name = "+search",
     g = { "<cmd>Telescope live_grep<cr>", "Grep" },
     b = {
-      "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+      "<cmd>Telescope current_buffer_fuzzy_find theme=ivy <cr>",
       "Buffer",
     },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Goto Symbol" },

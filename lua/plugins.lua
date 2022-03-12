@@ -367,18 +367,6 @@ local function plugins(use)
   })
 
   use({
-    "phaazon/hop.nvim",
-    keys = { "gh" },
-    cmd = { "HopWord", "HopLine" },
-    config = function()
-      require("util").nmap("gh", "<cmd>HopWord<CR>")
-      require("util").nmap("gl", "<cmd>HopLine<CR>")
-      -- you can configure Hop the way you like here; see :h hop-config
-      require("hop").setup({})
-    end,
-  })
-
-  use({
     "ggandor/lightspeed.nvim",
     keys = { "s", "S", "f", "F", "t", "T" },
     config = function()

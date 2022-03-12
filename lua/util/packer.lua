@@ -17,15 +17,6 @@ function M.bootstrap()
     vim.cmd("packadd packer.nvim")
   end
   vim.cmd([[packadd packer.nvim]])
-  local group = vim.api.nvim_create_augroup(
-    "packer-user-config",
-    { clear = true }
-  )
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "plugins.lua",
-    command = "source <afile> | PackerCompile",
-    group = group,
-  })
 end
 
 function M.get_name(pkg)

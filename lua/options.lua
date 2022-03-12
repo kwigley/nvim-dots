@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local indent = 2
 
 vim.g.mapleader = " "
@@ -17,7 +16,7 @@ vim.opt.ignorecase = true -- Ignore case
 vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
 vim.opt.list = true -- Show some invisible characters (tabs...
--- vim.opt.listchars:append("eol:↴") -- show eol character
+vim.opt.listchars:append("eol:↴") -- show eol character
 vim.opt.mouse = "a" -- enable mouse mode
 vim.opt.number = true -- Print line number
 vim.opt.pumblend = 10 -- Popup blend
@@ -80,7 +79,7 @@ vim.api.nvim_create_autocmd(
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = [[*\(.git/COMMIT_EDITMSG\|.git/NEOGIT_COMMIT_EDITMSG\|plugins.lua\)\@<!]],
+  pattern = [[*\(.git/COMMIT_EDITMSG\|.git/NEOGIT_COMMIT_EDITMSG\)\@<!]],
   command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]],
 })
 
