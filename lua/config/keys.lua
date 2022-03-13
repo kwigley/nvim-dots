@@ -170,7 +170,7 @@ local leader = {
       "Command History",
     },
     m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
-    w = { "<cmd>Telescope grep_string<cr>", "Grep current string" },
+    w = { "<cmd>Telescope grep_string theme=ivy<cr>", "Grep current string" },
     r = { "<cmd>lua require('spectre').open()<CR>", "Replace (Spectre)" },
   },
   f = {

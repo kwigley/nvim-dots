@@ -52,9 +52,45 @@ function M.setup(client, bufnr)
   end
 
   if client.name == "rust_analyzer" then
-    keymap.c.R = { "<CMD>RustRunnables<CR>", "Rust Runnables" }
+    local Terminal = require("toggleterm.terminal").Terminal
+    local clippy = Terminal:new({
+      cmd = "cargo clippy",
+      close_on_exit = false,
+      on_exit = function(t, _, exit_code, _)
+        if exit_code == 0 then
+          t:close()
+        end
+      end,
+    })
+    ---@diagnostic disable-next-line: lowercase-global
+    function _clippy_toggle()
+      clippy:toggle()
+    end
+    local test = Terminal:new({
+      cmd = "cargo test",
+      close_on_exit = false,
+      on_exit = function(t, _, exit_code, _)
+        if exit_code == 0 then
+          t:close()
+        end
+      end,
+    })
+    ---@diagnostic disable-next-line: lowercase-global
+    function _test_toggle()
+      test:toggle()
+    end
+
+    keymap.c.R = { "<cmd>RustRunnables<CR>", "Rust Runnables" }
     keymap.t = {
-      i = { "<CMD>RustToggleInlayHints<CR>", "Rust Toggle Inlay Hints" },
+      i = { "<cmd>RustToggleInlayHints<CR>", "Rust Toggle Inlay Hints" },
+    }
+    keymap.c.c = {
+      "<cmd>lua _clippy_toggle()<CR>",
+      "Run Clippy",
+    }
+    keymap.c.t = {
+      "<cmd>lua _test_toggle()<CR>",
+      "Run Tests",
     }
   end
 
@@ -80,7 +116,6 @@ function M.setup(client, bufnr)
     },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-    -- I = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declaration" },
     t = {
       "<cmd>lua vim.lsp.buf.type_definition()<CR>",
       "Goto Type Definition",
