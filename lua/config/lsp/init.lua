@@ -122,6 +122,7 @@ nls.setup({
     nls.builtins.formatting.fish_indent,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.flake8,
+    nls.builtins.diagnostics.golangci_lint,
   },
   on_attach = on_attach,
 })
