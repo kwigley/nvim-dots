@@ -137,12 +137,12 @@ local function plugins(use)
   })
 
   -- auto close html/jsx tags
-  use({
-    "alvan/vim-closetag",
-    config = function()
-      require("config.closetag")
-    end,
-  })
+  -- use({
+  --   "alvan/vim-closetag",
+  --   config = function()
+  --     require("config.closetag")
+  --   end,
+  -- })
 
   -- code commenting shortcut
   use({
@@ -168,6 +168,7 @@ local function plugins(use)
       },
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
+      "windwp/nvim-ts-autotag",
     },
     config = function()
       require("config.treesitter")
