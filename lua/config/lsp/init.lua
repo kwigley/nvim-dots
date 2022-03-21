@@ -100,7 +100,6 @@ end
 
 local nls = require("null-ls")
 nls.setup({
-  -- debug = true,
   save_after_format = false,
   sources = {
     nls.builtins.formatting.prettier.with({
