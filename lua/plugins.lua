@@ -349,7 +349,12 @@ local function plugins(use)
       require("config.neogit")
     end,
   })
-
+  use({
+    "akinsho/git-conflict.nvim",
+    config = function()
+      require("git-conflict").setup()
+    end,
+  })
   -- Statusline
   use({
     "famiu/feline.nvim",
