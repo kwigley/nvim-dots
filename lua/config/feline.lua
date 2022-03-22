@@ -70,13 +70,10 @@ components.active[1] = {
       style = "bold",
     },
     left_sep = {
-      "slant_left_2",
       { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
     },
     right_sep = {
       { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
-      "slant_right_2",
-      " ",
     },
   },
   {

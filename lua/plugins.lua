@@ -351,22 +351,22 @@ local function plugins(use)
   })
 
   -- Statusline
-  -- use({
-  --   "famiu/feline.nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("config.feline")
-  --   end,
-  --   wants = "nvim-web-devicons",
-  -- })
   use({
-    "windwp/windline.nvim",
+    "famiu/feline.nvim",
     event = "VimEnter",
     config = function()
-      require("config.windline")
+      require("config.feline")
     end,
     wants = "nvim-web-devicons",
   })
+  -- use({
+  --   "windwp/windline.nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  --     require("config.windline")
+  --   end,
+  --   wants = "nvim-web-devicons",
+  -- })
 
   -- Writing
   use({

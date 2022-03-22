@@ -1,152 +1,139 @@
 local windline = require("windline")
+local helper = require("windline.helpers")
 local b_components = require("windline.components.basic")
-local vim_components = require("windline.components.vim")
-local git_rev_components = require("windline.components.git_rev")
-
 local state = _G.WindLine.state
-local utils = require("windline.utils")
 
 local lsp_comps = require("windline.components.lsp")
 local git_comps = require("windline.components.git")
 
 local hl_list = {
+  Black = { "white", "black" },
+  White = { "black", "white" },
   Inactive = { "InactiveFg", "InactiveBg" },
   Active = { "ActiveFg", "ActiveBg" },
-  default = { "StatusFg", "StatusBg" },
 }
 local basic = {}
 
-local medium_width = 100
-local large_width = 140
+local breakpoint_width = 90
 basic.divider = { b_components.divider, "" }
+basic.bg = { " ", "StatusLine" }
 
--- stylua: ignore
-utils.change_mode_name({
-    ['n']    = { ' -- Normal -- '   , 'Normal'  } ,
-    ['no']   = { ' -- Visual -- '   , 'Visual'  } ,
-    ['nov']  = { ' -- Visual -- '   , 'Visual'  } ,
-    ['noV']  = { ' -- Visual -- '   , 'Visual'  } ,
-    ['no'] = { ' -- Visual -- '   , 'Visual'  } ,
-    ['niI']  = { ' -- Normal -- '   , 'Normal'  } ,
-    ['niR']  = { ' -- Normal -- '   , 'Normal'  } ,
-    ['niV']  = { ' -- Normal -- '   , 'Normal'  } ,
-    ['v']    = { ' -- Visual -- '   , 'Visual'  } ,
-    ['V']    = { ' -- Visual -- '   , 'Visual'  } ,
-    ['']   = { ' -- Visual -- '   , 'Visual'  } ,
-    ['s']    = { ' -- Visual -- '   , 'Visual'  } ,
-    ['S']    = { ' -- Visual -- '   , 'Visual'  } ,
-    ['']   = { ' -- Visual -- '   , 'Visual'  } ,
-    ['i']    = { ' -- Insert -- '   , 'Insert'  } ,
-    ['ic']   = { ' -- Insert -- '   , 'Insert'  } ,
-    ['ix']   = { ' -- Insert -- '   , 'Insert'  } ,
-    ['R']    = { ' -- Replace -- '  , 'Replace' } ,
-    ['Rc']   = { ' -- Replace -- '  , 'Replace' } ,
-    ['Rv']   = { ' -- Normal -- '   , 'Normal'  } ,
-    ['Rx']   = { ' -- Normal -- '   , 'Normal'  } ,
-    ['c']    = { ' -- Commmand -- ' , 'Command' } ,
-    ['cv']   = { ' -- Commmand -- ' , 'Command' } ,
-    ['ce']   = { ' -- Commmand -- ' , 'Command' } ,
-    ['r']    = { ' -- Replace -- '  , 'Replace' } ,
-    ['rm']   = { ' -- Normal -- '   , 'Normal'  } ,
-    ['r?']   = { ' -- Normal -- '   , 'Normal'  } ,
-    ['!']    = { ' -- Normal -- '   , 'Normal'  } ,
-    ['t']    = { ' -- Normal -- '   , 'Command' } ,
-    ['nt']   = { ' -- Terminal -- ' , 'Command' } ,
-})
+local colors_mode = {
+  Normal = { "red", "black" },
+  Insert = { "green", "black" },
+  Visual = { "yellow", "black" },
+  Replace = { "blue_light", "black" },
+  Command = { "magenta", "black" },
+}
 
 basic.vi_mode = {
   name = "vi_mode",
-  hl_colors = hl_list.default,
+  hl_colors = colors_mode,
   text = function()
-    return state.mode[1]
+    return { { "  ", state.mode[2] } }
+  end,
+}
+basic.square_mode = {
+  hl_colors = colors_mode,
+  text = function()
+    return { { "▊", state.mode[2] } }
   end,
 }
 
 basic.lsp_diagnos = {
   name = "diagnostic",
-  hl_colors = hl_list.default,
-  width = large_width,
+  hl_colors = {
+    red = { "red", "black" },
+    yellow = { "yellow", "black" },
+    blue = { "blue", "black" },
+  },
+  width = breakpoint_width,
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
-            -- stylua: ignore
-            return {
-                { lsp_comps.lsp_error({ format = '  %s', show_zero = true }), '' },
-                { lsp_comps.lsp_warning({ format = '  %s', show_zero = true }), '' },
-            }
+      return {
+        {
+          lsp_comps.lsp_error({ format = "  %s", show_zero = true }),
+          "red",
+        },
+        {
+          lsp_comps.lsp_warning({ format = "  %s", show_zero = true }),
+          "yellow",
+        },
+        {
+          lsp_comps.lsp_hint({ format = "  %s", show_zero = true }),
+          "blue",
+        },
+      }
     end
     return ""
   end,
 }
-
 basic.file = {
-  name = "file_name",
-  text = function()
-    return {
-      { b_components.cache_file_icon() },
-      { " " },
-      { b_components.cache_file_name("", "unique"), "" },
-      { b_components.file_modified(" ") },
-    }
-  end,
-}
-
-local line_col = function()
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return string.format(" Ln %3s, Col %-2s ", row, col + 1)
-end
-
-local spaces = function()
-  return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
-end
-
-local line_format = function()
-  local format_icons = {
-    unix = "LF",
-    dos = "CRLF",
-    mac = "LF",
-  }
-  return function()
-    return format_icons[vim.bo.fileformat] or vim.bo.fileformat
-  end
-end
-
-basic.line_col_right = {
-  hl_colors = hl_list.default,
+  name = "file",
+  hl_colors = {
+    default = hl_list.Black,
+    white = { "white", "black" },
+    magenta = { "magenta", "black" },
+  },
   text = function(_, _, width)
-    if
-      vim.api.nvim_buf_get_option(0, "filetype") == ""
-      and vim.fn.wordcount().bytes < 1
-    then
-      return ""
-    end
-    if width > medium_width then
+    if width > breakpoint_width then
       return {
-        { line_col },
-        { spaces },
-        { b_components.file_encoding() },
-        { " " },
-        { line_format() },
-        { " " },
+        { b_components.cache_file_size(), "default" },
+        { " ", "" },
+        { b_components.cache_file_name("[No Name]", "unique"), "magenta" },
+        { b_components.line_col_lua, "white" },
+        { b_components.progress_lua, "" },
+        { " ", "" },
+        { b_components.file_modified(" "), "magenta" },
+      }
+    else
+      return {
+        { b_components.cache_file_size(), "default" },
+        { " ", "" },
+        { b_components.cache_file_name("[No Name]", "unique"), "magenta" },
+        { " ", "" },
+        { b_components.file_modified(" "), "magenta" },
       }
     end
-    return {
-      { line_col, "" },
-    }
   end,
 }
-
-basic.git_branch = {
-  name = "git_branch",
-  hl_colors = hl_list.default,
-  width = medium_width,
+basic.file_right = {
+  hl_colors = {
+    default = hl_list.Black,
+    white = { "white", "black" },
+    magenta = { "magenta", "black" },
+  },
+  text = function(_, _, width)
+    if width < breakpoint_width then
+      return {
+        { b_components.line_col_lua, "white" },
+        { b_components.progress_lua, "" },
+      }
+    end
+  end,
+}
+basic.git = {
+  name = "git",
+  hl_colors = {
+    green = { "green", "black" },
+    red = { "red", "black" },
+    blue = { "blue", "black" },
+  },
+  width = breakpoint_width,
   text = function(bufnr)
     if git_comps.is_git(bufnr) then
       return {
-        { git_comps.git_branch(), hl_list.default, large_width },
         {
-          git_rev_components.git_rev(),
-          hl_list.default,
-          large_width,
+          git_comps.diff_added({ format = "  %s", show_zero = true }),
+          "green",
+        },
+        {
+          git_comps.diff_removed({ format = "  %s", show_zero = true }),
+          "red",
+        },
+        {
+          git_comps.diff_changed({ format = " 柳%s", show_zero = true }),
+          "blue",
         },
       }
     end
@@ -154,27 +141,72 @@ basic.git_branch = {
   end,
 }
 
+local quickfix = {
+  filetypes = { "qf", "Trouble" },
+  active = {
+    { "🚦 Quickfix ", { "white", "black" } },
+    { helper.separators.slant_right, { "black", "black_light" } },
+    {
+      function()
+        return vim.fn.getqflist({ title = 0 }).title
+      end,
+      { "cyan", "black_light" },
+    },
+    { " Total : %L ", { "cyan", "black_light" } },
+    { helper.separators.slant_right, { "black_light", "InactiveBg" } },
+    { " ", { "InactiveFg", "InactiveBg" } },
+    basic.divider,
+    { helper.separators.slant_right, { "InactiveBg", "black" } },
+    { "🧛 ", { "white", "black" } },
+  },
+
+  always_active = true,
+  show_last_status = true,
+}
+
 local explorer = {
   filetypes = { "fern", "NvimTree", "lir" },
   active = {
-    { "  ", hl_list.Inactive },
-    { b_components.divider },
-    { b_components.file_name("") },
+    { "  ", { "black", "red" } },
+    { helper.separators.slant_right, { "red", "NormalBg" } },
+    { b_components.divider, "" },
+    { b_components.file_name(""), { "white", "NormalBg" } },
   },
   always_active = true,
   show_last_status = true,
 }
 
+basic.lsp_name = {
+  width = breakpoint_width,
+  name = "lsp_name",
+  hl_colors = {
+    magenta = { "magenta", "black" },
+  },
+  text = function(bufnr)
+    if lsp_comps.check_lsp(bufnr) then
+      return {
+        { lsp_comps.lsp_name(), "magenta" },
+      }
+    end
+    return {
+      { b_components.cache_file_type({ icon = true }), "magenta" },
+    }
+  end,
+}
+
 local default = {
   filetypes = { "default" },
   active = {
-    basic.git_branch,
-    basic.lsp_diagnos,
+    basic.square_mode,
     basic.vi_mode,
-    { vim_components.search_count() },
-    basic.divider,
     basic.file,
-    basic.line_col_right,
+    basic.lsp_diagnos,
+    basic.divider,
+    basic.file_right,
+    basic.lsp_name,
+    basic.git,
+    { " ", hl_list.Black },
+    basic.square_mode,
   },
   inactive = {
     { b_components.full_file_name, hl_list.Inactive },
@@ -186,28 +218,13 @@ local default = {
   },
 }
 
-local M = {}
-M.setup = function()
-  windline.setup({
-    colors_name = function(colors)
-      colors.StatusFg = colors.ActiveFg
-      colors.StatusBg = colors.ActiveBg
-      return colors
-    end,
-    statuslines = {
-      default,
-      explorer,
-    },
-  })
-end
-
-M.setup()
-
-M.change_color = function(bgcolor, fgcolor)
-  local colors = windline.get_colors()
-  colors.StatusFg = fgcolor or colors.StatusFg
-  colors.StatusBg = bgcolor or colors.StatusBg
-  windline.on_colorscheme(colors)
-end
-
-return M
+windline.setup({
+  colors_name = function(colors)
+    return colors
+  end,
+  statuslines = {
+    default,
+    quickfix,
+    explorer,
+  },
+})
