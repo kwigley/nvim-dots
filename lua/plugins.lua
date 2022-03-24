@@ -364,14 +364,6 @@ local function plugins(use)
     end,
     wants = "nvim-web-devicons",
   })
-  -- use({
-  --   "windwp/windline.nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("config.windline")
-  --   end,
-  --   wants = "nvim-web-devicons",
-  -- })
 
   -- Writing
   use({
