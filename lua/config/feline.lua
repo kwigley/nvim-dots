@@ -74,6 +74,7 @@ components.active[1] = {
     },
     right_sep = {
       { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
+      " ",
     },
   },
   {
@@ -146,7 +147,6 @@ components.inactive[1] = {
     },
     right_sep = {
       { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
-      "slant_right_2",
       " ",
     },
   },
