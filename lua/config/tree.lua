@@ -8,7 +8,6 @@ require("nvim-tree").setup({
   },
   ignore_ft_on_setup = { "dashboard", "startify" },
   disable_netrw = true,
-  auto_close = true,
   diagnostics = {
     enable = true,
   },
