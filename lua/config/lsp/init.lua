@@ -57,7 +57,7 @@ local servers = {
   }),
   vimls = {},
   terraformls = {},
-  taplo = {},
+  taplo = { cmd = { "taplo-lsp", "run" } },
   yamlls = {},
 }
 
