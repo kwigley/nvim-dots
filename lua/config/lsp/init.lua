@@ -125,3 +125,10 @@ nls.setup({
   },
   on_attach = on_attach,
 })
+
+local signature_config = {
+  hint_enable = false,
+  max_width = 80,
+}
+
+require("lsp_signature").setup(signature_config)

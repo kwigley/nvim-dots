@@ -55,6 +55,7 @@ local function plugins(use)
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
+      "ray-x/lsp_signature.nvim",
       {
         "kosayoda/nvim-lightbulb",
         config = function()
@@ -134,6 +135,10 @@ local function plugins(use)
         end,
       },
     },
+  })
+
+  use({
+    "jjo/vim-cue",
   })
 
   -- auto close html/jsx tags
