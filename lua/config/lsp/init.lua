@@ -117,6 +117,7 @@ nls.setup({
       "markdown",
       "graphql",
     }),
+    nls.builtins.formatting.sqlfluff,
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.fish_indent,
     nls.builtins.diagnostics.shellcheck,
