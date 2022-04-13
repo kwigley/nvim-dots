@@ -11,7 +11,7 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<CR>"] = cmp.mapping.confirm(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
@@ -25,7 +25,6 @@ cmp.setup({
       "i",
       "s",
     }),
-
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
@@ -36,18 +35,18 @@ cmp.setup({
       "i",
       "s",
     }),
-  },
-  sources = {
+  }),
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "buffer" },
     { name = "luasnip" },
+    { name = "buffer" },
     { name = "spell" },
     { name = "path" },
     { name = "crates" },
     { name = "calc" },
     { name = "emoji" },
-  },
+  }),
   experimental = {
     ghost_text = {
       hl_group = "LspCodeLens",
