@@ -152,6 +152,7 @@ local function plugins(use)
   -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
+    tag = "v0.6", -- TODO: not sure why the latest commit won't work
     opt = true,
     wants = "nvim-ts-context-commentstring",
     keys = { "gc", "gcc" },
