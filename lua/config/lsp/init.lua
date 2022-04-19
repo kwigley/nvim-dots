@@ -124,6 +124,11 @@ nls.setup({
     }),
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.fish_indent,
+    nls.builtins.completion.spell.with({
+      filetypes = {
+        "markdown",
+      },
+    }),
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.flake8,
     nls.builtins.diagnostics.golangci_lint,
