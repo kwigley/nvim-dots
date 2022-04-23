@@ -21,16 +21,15 @@ local servers = {
   dockerls = {},
   tsserver = {},
   svelte = {},
-  cssls = { cmd = { "css-languageserver", "--stdio" } },
+  cssls = {},
   jsonls = {
-    cmd = { "vscode-json-languageserver", "--stdio" },
     settings = {
       json = {
         schemas = require("schemastore").json.schemas(),
       },
     },
   },
-  html = { cmd = { "html-languageserver", "--stdio" } },
+  html = {},
   tailwindcss = {
     cmd = { "tailwindcss-language-server", "--stdio" },
     root_dir = require("lspconfig/util").root_pattern(
