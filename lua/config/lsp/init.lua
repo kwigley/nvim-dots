@@ -118,9 +118,9 @@ nls.setup({
         "graphql",
       },
     }),
-    nls.builtins.formatting.sqlfluff.with({
-      extra_args = { "--dialect", "postgres" },
-    }),
+    -- nls.builtins.formatting.sqlfluff.with({
+    --   extra_args = { "--dialect", "postgres" },
+    -- }),
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.fish_indent,
     nls.builtins.completion.spell.with({
