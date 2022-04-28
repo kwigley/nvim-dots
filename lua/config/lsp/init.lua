@@ -131,9 +131,9 @@ nls.setup({
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.flake8,
     nls.builtins.diagnostics.golangci_lint,
-    nls.builtins.diagnostics.sqlfluff.with({
-      extra_args = { "--dialect", "postgres" },
-    }),
+    -- nls.builtins.diagnostics.sqlfluff.with({
+    --   extra_args = { "--dialect", "postgres" },
+    -- }),
   },
   on_attach = on_attach,
 })
