@@ -152,10 +152,8 @@ local function plugins(use)
   -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
-    tag = "v0.6", -- TODO: not sure why the latest commit won't work
-    opt = true,
+    -- tag = "v0.6", -- TODO: not sure why the latest commit won't work
     wants = "nvim-ts-context-commentstring",
-    keys = { "gc", "gcc" },
     config = function()
       require("config.comments")
     end,
@@ -165,8 +163,6 @@ local function plugins(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    opt = true,
-    event = "BufRead",
     requires = {
       {
         "nvim-treesitter/playground",
