@@ -41,7 +41,7 @@ components.active[1] = {
   {
     provider = "▊ ",
     hl = {
-      fg = "skyblue",
+      fg = "blue",
     },
   },
   {
@@ -60,20 +60,18 @@ components.active[1] = {
     provider = {
       name = "file_info",
       opts = {
-        -- type = "unique",
         type = "relative",
       },
     },
     hl = {
       fg = "white",
-      bg = "oceanblue",
       style = "bold",
     },
     left_sep = {
-      { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
+      { str = " ", hl = { fg = "NONE" } },
     },
     right_sep = {
-      { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
+      { str = " ", hl = { fg = "NONE" } },
       " ",
     },
   },
