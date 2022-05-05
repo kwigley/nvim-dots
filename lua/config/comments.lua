@@ -25,3 +25,5 @@ require("Comment").setup({
     end
   end,
 })
+
+require("Comment.ft").set("text", "#%s")

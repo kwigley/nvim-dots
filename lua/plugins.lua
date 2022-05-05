@@ -141,18 +141,9 @@ local function plugins(use)
     "jjo/vim-cue",
   })
 
-  -- auto close html/jsx tags
-  -- use({
-  --   "alvan/vim-closetag",
-  --   config = function()
-  --     require("config.closetag")
-  --   end,
-  -- })
-
   -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
-    -- tag = "v0.6", -- TODO: not sure why the latest commit won't work
     wants = "nvim-ts-context-commentstring",
     config = function()
       require("config.comments")
