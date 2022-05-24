@@ -15,7 +15,7 @@ end
 
 function M.format()
   if M.autoformat then
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
   end
 end
 
@@ -39,7 +39,7 @@ function M.setup(client, buf)
     end
   end
 
-  client.resolved_capabilities.document_formatting = enable
+  client.server_capabilities.document_formatting = enable
   -- format on save
   if enable then
     local group = vim.api.nvim_create_augroup("lsp-format", { clear = true })

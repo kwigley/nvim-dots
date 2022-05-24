@@ -127,9 +127,9 @@ function M.setup(client, bufnr)
   util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     keymap_visual.c.f = {
       "<cmd>lua vim.lsp.buf.range_formatting()<CR>",
       "Format Range",

@@ -168,6 +168,10 @@ local function plugins(use)
     end,
   })
 
+  use({
+    "SmiteshP/nvim-gps",
+  })
+
   -- Theme: colors
   use({
     "folke/tokyonight.nvim",
@@ -353,7 +357,7 @@ local function plugins(use)
   -- Statusline
   use({
     "famiu/feline.nvim",
-    event = "VimEnter",
+    -- event = "VimEnter",
     config = function()
       require("config.feline")
     end,
