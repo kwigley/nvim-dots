@@ -69,27 +69,19 @@ components.active[1] = {
     right_sep = " ",
   },
   {
+    enabled = function()
+      return vim.bo.filetype ~= ""
+    end,
     provider = {
-      name = "file_info",
+      name = "file_type",
       opts = {
-        type = "unique",
+        case = "titlecase",
+        filetype_icon = true,
         colored_icon = false,
       },
     },
-
     left_sep = " ",
     right_sep = "  ",
-  },
-  {
-    enabled = function()
-      return gps.is_available()
-    end,
-    provider = function()
-      return gps.get_location()
-    end,
-    hl = {
-      fg = "white",
-    },
   },
 }
 components.active[2] = {
@@ -139,74 +131,6 @@ components.active[2] = {
   },
 }
 
-components.inactive[1] = {
-  {
-    provider = {
-      name = "file_info",
-      opts = {
-        type = "relative",
-      },
-    },
-    hl = {
-      fg = "white",
-      bg = "oceanblue",
-      style = "bold",
-    },
-    left_sep = {
-      str = " ",
-      hl = { bg = "oceanblue", fg = "NONE" },
-    },
-    right_sep = {
-      { str = " ", hl = { bg = "oceanblue", fg = "NONE" } },
-      " ",
-    },
-  },
-}
-
-components.inactive[1] = {
-
-  {
-    provider = "▊ ",
-    hl = {
-      fg = "blue",
-    },
-  },
-  {
-    provider = "vi_mode",
-    hl = function()
-      return {
-        name = vi_mode.get_mode_highlight_name(),
-        fg = vi_mode.get_mode_color(),
-        style = "bold",
-      }
-    end,
-    right_sep = " ",
-    icon = "",
-  },
-  {
-    enabled = function()
-      return vim.bo.filetype ~= ""
-    end,
-    provider = {
-      name = "file_type",
-      opts = {
-        case = "titlecase",
-        filetype_icon = true,
-        colored_icon = false,
-      },
-    },
-    left_sep = " ",
-    right_sep = "  ",
-  },
-}
-
-components.inactive[2] = {
-  {
-    provider = "position_custom",
-    right_sep = " ",
-  },
-}
-
 require("feline").setup({
   components = components,
   vi_mode_colors = vi_mode_colors,
@@ -240,24 +164,33 @@ require("feline").setup({
 local winbar_components = {
   active = {
     {
-      {},
-    },
-    {
       {
         provider = "file_info",
-        hl = {
-          fg = theme_colors.fg,
+        opts = {
+          type = "unique",
         },
+      },
+      {
+        enabled = function()
+          return gps.is_available()
+        end,
+        provider = function()
+          local location = gps.get_location()
+          if location ~= "" then
+            return " > " .. location
+          end
+          return ""
+        end,
       },
     },
   },
   inactive = {
     {
-      {},
-    },
-    {
       {
         provider = "file_info",
+        opts = {
+          type = "unique",
+        },
         hl = {
           fg = theme_colors.dark5,
         },

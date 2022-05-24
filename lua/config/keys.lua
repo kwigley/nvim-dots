@@ -220,6 +220,18 @@ local leader = {
       end,
       "Line Numbers",
     },
+    t = {
+      function()
+        util.toggle_tabline()
+      end,
+      "Buffer Line",
+    },
+    d = {
+      function()
+        util.toggle_diagnostics()
+      end,
+      "Diagnostics",
+    },
   },
   ["<tab>"] = {
     name = "workspace",
@@ -259,11 +271,11 @@ local leader = {
     name = "+errors",
     x = { "<cmd>TroubleToggle<cr>", "Trouble" },
     w = {
-      "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>",
+      "<cmd>TroubleToggle workspace_diagnostics<cr>",
       "Workspace Trouble",
     },
     d = {
-      "<cmd>TroubleToggle lsp_document_diagnostics<cr>",
+      "<cmd>TroubleToggle document_diagnostics<cr>",
       "Document Trouble",
     },
     l = { "<cmd>TroubleToggle loclist<cr>", "Open Location List" },
