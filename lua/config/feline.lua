@@ -201,4 +201,10 @@ local winbar_components = {
 
 require("feline").winbar.setup({
   components = winbar_components,
+
+  disable = {
+    filetypes = {
+      "^NvimTree$",
+    },
+  },
 })
