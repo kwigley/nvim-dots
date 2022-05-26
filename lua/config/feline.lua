@@ -205,6 +205,7 @@ require("feline").winbar.setup({
   disable = {
     filetypes = {
       "^NvimTree$",
+      "^lir$",
     },
   },
 })
