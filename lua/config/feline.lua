@@ -91,12 +91,15 @@ components.active[2] = {
   },
   {
     provider = "git_diff_added",
+    -- hl = { fg = "green" },
   },
   {
     provider = "git_diff_changed",
+    -- hl = { fg = "orange" },
   },
   {
     provider = "git_diff_removed",
+    -- hl = { fg = "red" },
   },
   {
     enabled = function()
@@ -106,15 +109,19 @@ components.active[2] = {
   },
   {
     provider = "diagnostic_errors",
+    -- hl = { fg = "red" },
   },
   {
     provider = "diagnostic_warnings",
+    -- hl = { fg = "yellow" },
   },
   {
     provider = "diagnostic_hints",
+    -- hl = { fg = "cyan" },
   },
   {
     provider = "diagnostic_info",
+    -- hl = { fg = "skyblue" },
   },
   {
     enabled = function()

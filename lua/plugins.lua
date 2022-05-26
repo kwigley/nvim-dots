@@ -21,6 +21,7 @@ local config = {
 local function plugins(use)
   use({ "nvim-lua/plenary.nvim", module = "plenary" })
   use({ "nvim-lua/popup.nvim", module = "popup" })
+  use({ "lewis6991/impatient.nvim" })
 
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
