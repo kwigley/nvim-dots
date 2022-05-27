@@ -36,6 +36,7 @@ function M.setup(client, buf)
       end
     else
       enable = not (client.name == "null-ls")
+        and client.supports_method("textDocument/formatting")
     end
   end
 
