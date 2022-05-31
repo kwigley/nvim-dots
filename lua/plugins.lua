@@ -374,6 +374,7 @@ local function plugins(use)
     ft = "markdown",
     cmd = { "MarkdownPreview" },
   })
+  use({ "jxnblk/vim-mdx-js" })
 
   use({
     "ggandor/lightspeed.nvim",

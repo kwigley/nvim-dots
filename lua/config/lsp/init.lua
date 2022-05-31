@@ -115,25 +115,21 @@ nls.setup({
         "json",
         "yaml",
         "markdown",
+        "markdown.mdx",
         "graphql",
       },
     }),
-    -- nls.builtins.formatting.sqlfluff.with({
-    --   extra_args = { "--dialect", "postgres" },
-    -- }),
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.fish_indent,
     nls.builtins.completion.spell.with({
       filetypes = {
         "markdown",
+        "markdown.mdx",
       },
     }),
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.diagnostics.flake8,
     nls.builtins.diagnostics.golangci_lint,
-    -- nls.builtins.diagnostics.sqlfluff.with({
-    --   extra_args = { "--dialect", "postgres" },
-    -- }),
   },
   on_attach = on_attach,
 })
