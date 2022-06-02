@@ -1,4 +1,4 @@
-vim.g.nvim_tree_git_hl = 1
+-- vim.g.nvim_tree_git_hl = 1
 
 require("nvim-tree").setup({
   hijack_directories = {
@@ -19,6 +19,7 @@ require("nvim-tree").setup({
         none = "  ",
       },
     },
+    highlight_git = true,
     icons = {
       webdev_colors = true,
     },
