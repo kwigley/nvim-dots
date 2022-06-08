@@ -155,6 +155,10 @@ local leader = {
       c = { "<cmd>PackerCompile<cr>", "Compile" },
     },
   },
+  ["J"] = {
+    "<cmd>lua require('trevj').format_at_cursor()<CR>",
+    "Split args",
+  },
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
   s = {
     name = "+search",

@@ -170,6 +170,14 @@ local function plugins(use)
   })
 
   use({
+    "AckslD/nvim-trevJ.lua",
+    wants = { "nvim-treesitter" },
+    config = function()
+      require("trevj").setup()
+    end,
+  })
+
+  use({
     "SmiteshP/nvim-gps",
   })
 
