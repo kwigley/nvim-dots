@@ -64,7 +64,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local server_opts = {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    require("nvim-navic").attach(client, bufnr)
+  end,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,

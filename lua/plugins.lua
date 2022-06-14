@@ -48,6 +48,7 @@ local function plugins(use)
       require("config.lsp")
     end,
     requires = {
+      "SmiteshP/nvim-navic",
       "simrat39/rust-tools.nvim",
       "mfussenegger/nvim-dap",
       "mattn/webapi-vim",
@@ -175,10 +176,6 @@ local function plugins(use)
     config = function()
       require("trevj").setup()
     end,
-  })
-
-  use({
-    "SmiteshP/nvim-gps",
   })
 
   -- Theme: colors

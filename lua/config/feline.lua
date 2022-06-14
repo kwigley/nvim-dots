@@ -1,12 +1,12 @@
 local api = vim.api
+local fn = vim.fn
+local bo = vim.bo
 
+local feline = require("feline")
 local vi_mode = require("feline.providers.vi_mode")
 local git = require("feline.providers.git")
-local lsp = require("feline.providers.lsp")
 local theme_colors = require("tokyonight.colors").setup()
-local gps = require("nvim-gps")
-
-gps.setup()
+local navic = require("nvim-navic")
 
 local colors = {
   bg = theme_colors.bg_dark,
@@ -81,7 +81,23 @@ components.active[1] = {
       },
     },
     left_sep = " ",
-    right_sep = "  ",
+    right_sep = " ",
+  },
+  {
+    provider = "diagnostic_errors",
+    hl = { fg = "red" },
+  },
+  {
+    provider = "diagnostic_warnings",
+    hl = { fg = "yellow" },
+  },
+  {
+    provider = "diagnostic_hints",
+    hl = { fg = "cyan" },
+  },
+  {
+    provider = "diagnostic_info",
+    hl = { fg = "skyblue" },
   },
 }
 components.active[2] = {
@@ -108,28 +124,6 @@ components.active[2] = {
     right_sep = { str = " ", always_visible = true },
   },
   {
-    provider = "diagnostic_errors",
-    -- hl = { fg = "red" },
-  },
-  {
-    provider = "diagnostic_warnings",
-    -- hl = { fg = "yellow" },
-  },
-  {
-    provider = "diagnostic_hints",
-    -- hl = { fg = "cyan" },
-  },
-  {
-    provider = "diagnostic_info",
-    -- hl = { fg = "skyblue" },
-  },
-  {
-    enabled = function()
-      return lsp.diagnostics_exist()
-    end,
-    right_sep = { str = " ", always_visible = true },
-  },
-  {
     provider = "scroll_bar",
     hl = {
       fg = "skyblue",
@@ -138,7 +132,7 @@ components.active[2] = {
   },
 }
 
-require("feline").setup({
+feline.setup({
   components = components,
   vi_mode_colors = vi_mode_colors,
   theme = colors,
@@ -165,6 +159,77 @@ require("feline").setup({
 
       return string.format("Ln %d, Col %d", line, col)
     end,
+    relative_file_path_parts = function()
+      local filename = api.nvim_buf_get_name(0)
+      if filename == "" then
+        return " "
+      end
+      local fileparts = fn.fnamemodify(filename, ":~:.:h")
+      if fileparts == "." then
+        return " "
+      end
+      return " " .. fn.fnamemodify(fileparts, ":gs?/? > ?") .. " > "
+    end,
+    file_info_custom = function(component, opts)
+      local readonly_str, modified_str, icon
+
+      -- Avoid loading nvim-web-devicons if an icon is provided already
+      if not component.icon then
+        local icon_str, icon_color =
+          require("nvim-web-devicons").get_icon_color(
+            fn.expand("%:t"),
+            nil, -- extension is already computed by nvim-web-devicons
+            { default = true }
+          )
+
+        icon = { str = icon_str }
+
+        if opts.colored_icon == nil or opts.colored_icon then
+          icon.hl = { fg = icon_color }
+        end
+      end
+
+      local filename = api.nvim_buf_get_name(0)
+      local type = opts.type or "base-only"
+      if filename == "" then
+        filename = "[No Name]"
+      elseif type == "short-path" then
+        filename = fn.pathshorten(filename)
+      elseif type == "base-only" then
+        filename = fn.fnamemodify(filename, ":t")
+      elseif type == "relative" then
+        filename = fn.fnamemodify(filename, ":~:.")
+      elseif type == "relative-short" then
+        filename = fn.pathshorten(fn.fnamemodify(filename, ":~:."))
+      elseif type ~= "full-path" then
+        filename = fn.fnamemodify(filename, ":t")
+      end
+
+      if opts.show_readonly_icon and bo.readonly then
+        readonly_str = opts.file_readonly_icon or "🔒"
+      else
+        readonly_str = ""
+      end
+
+      -- Add a space at the beginning of the provider if there is an icon
+      if (icon and icon ~= "") or (component.icon and component.icon ~= "") then
+        readonly_str = " " .. readonly_str
+      end
+
+      if opts.show_modified_icon and bo.modified then
+        modified_str = opts.file_modified_icon or "●"
+
+        if modified_str ~= "" then
+          modified_str = " " .. modified_str
+        end
+      else
+        modified_str = ""
+      end
+
+      -- escape any special statusline characters in the filename
+      filename = filename:gsub("%%", "%%%%")
+      return string.format("%s%s%s", readonly_str, filename, modified_str), icon
+    end,
   },
 })
 
@@ -172,17 +237,22 @@ local winbar_components = {
   active = {
     {
       {
-        provider = "file_info",
+        provider = "relative_file_path_parts",
+      },
+      {
+        provider = "file_info_custom",
         opts = {
-          type = "unique",
+          type = "base-only",
+          colored_icon = false,
+          show_modified_icon = false,
         },
       },
       {
         enabled = function()
-          return gps.is_available()
+          return navic.is_available()
         end,
         provider = function()
-          local location = gps.get_location()
+          local location = navic.get_location()
           if location ~= "" then
             return " > " .. location
           end
@@ -195,6 +265,7 @@ local winbar_components = {
     {
       {
         provider = "file_info",
+        left_sep = " ",
         opts = {
           type = "unique",
         },
@@ -206,9 +277,8 @@ local winbar_components = {
   },
 }
 
-require("feline").winbar.setup({
+feline.winbar.setup({
   components = winbar_components,
-
   disable = {
     filetypes = {
       "^NvimTree$",
