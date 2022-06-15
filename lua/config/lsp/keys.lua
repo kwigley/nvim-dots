@@ -128,7 +128,10 @@ function M.setup(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.document_formatting then
-    keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
+    keymap.c.f = {
+      "<cmd>lua vim.lsp.buf.format({ async = true })<CR>",
+      "Format Document",
+    }
   elseif client.server_capabilities.document_range_formatting then
     keymap_visual.c.f = {
       "<cmd>lua vim.lsp.buf.range_formatting()<CR>",

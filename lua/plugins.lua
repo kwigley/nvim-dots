@@ -22,6 +22,7 @@ local function plugins(use)
   use({ "nvim-lua/plenary.nvim", module = "plenary" })
   use({ "nvim-lua/popup.nvim", module = "popup" })
   use({ "lewis6991/impatient.nvim" })
+  use({ "nathom/filetype.nvim" })
 
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
@@ -115,7 +116,6 @@ local function plugins(use)
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp",
       {
         "saecki/crates.nvim",
         config = function()
