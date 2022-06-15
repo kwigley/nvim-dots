@@ -168,7 +168,7 @@ feline.setup({
       if fileparts == "." then
         return " "
       end
-      return " " .. fn.fnamemodify(fileparts, ":gs?/? > ?") .. " > "
+      return fn.fnamemodify(fileparts, ":gs?/? > ?") .. " > "
     end,
     file_info_custom = function(component, opts)
       local readonly_str, modified_str, icon
@@ -236,7 +236,11 @@ feline.setup({
 local winbar_components = {
   active = {
     {
+      { provider = " " },
       {
+        enabled = function()
+          return bo.buftype ~= "terminal" and bo.buftype ~= "nofile"
+        end,
         provider = "relative_file_path_parts",
       },
       {
@@ -250,6 +254,8 @@ local winbar_components = {
       {
         enabled = function()
           return navic.is_available()
+            and bo.buftype ~= "terminal"
+            and bo.buftype ~= "nofile"
         end,
         provider = function()
           local location = navic.get_location()
