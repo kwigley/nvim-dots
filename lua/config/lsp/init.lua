@@ -11,6 +11,9 @@ local function on_attach(client, bufnr)
   if client.name == "typescript" or client.name == "tsserver" then
     require("config.lsp.ts-utils").setup(client)
   end
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 end
 
 -- TODO move this to a util package
@@ -31,7 +34,6 @@ local servers = {
   },
   html = {},
   tailwindcss = {
-    cmd = { "tailwindcss-language-server", "--stdio" },
     root_dir = require("lspconfig/util").root_pattern(
       "tailwind.config.js",
       "tailwind.config.cjs",
@@ -64,10 +66,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local server_opts = {
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    require("nvim-navic").attach(client, bufnr)
-  end,
+  on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
