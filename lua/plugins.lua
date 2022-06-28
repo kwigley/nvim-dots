@@ -21,6 +21,8 @@ local config = {
 local function plugins(use)
   use({ "nvim-lua/plenary.nvim", module = "plenary" })
   use({ "nvim-lua/popup.nvim", module = "popup" })
+
+  -- improve startup time
   use({ "lewis6991/impatient.nvim" })
   use({ "nathom/filetype.nvim" })
 
@@ -92,6 +94,7 @@ local function plugins(use)
     end,
   })
 
+  -- rename vscode style
   use({
     "smjonas/inc-rename.nvim",
     config = function()
@@ -99,7 +102,7 @@ local function plugins(use)
     end,
   })
 
-  -- LSP + autocompletion
+  -- autocompletion
   use({
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -146,20 +149,7 @@ local function plugins(use)
     },
   })
 
-  use({
-    "jjo/vim-cue",
-  })
-
-  -- code commenting shortcut
-  use({
-    "numToStr/Comment.nvim",
-    wants = "nvim-ts-context-commentstring",
-    config = function()
-      require("config.comments")
-    end,
-    requires = "JoosepAlviste/nvim-ts-context-commentstring",
-  })
-
+  -- Treesitter: syntax highlighting
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -177,12 +167,22 @@ local function plugins(use)
     end,
   })
 
+  -- Treesitter: convert long function signature to multiline signature
   use({
     "AckslD/nvim-trevJ.lua",
     wants = { "nvim-treesitter" },
     config = function()
       require("trevj").setup()
     end,
+  })
+  -- code commenting shortcut
+  use({
+    "numToStr/Comment.nvim",
+    wants = "nvim-ts-context-commentstring",
+    config = function()
+      require("config.comments")
+    end,
+    requires = "JoosepAlviste/nvim-ts-context-commentstring",
   })
 
   -- Theme: colors
@@ -464,6 +464,11 @@ local function plugins(use)
   use({
     "knubie/vim-kitty-navigator",
     run = { "cp *.py $HOME/.config/kitty" },
+  })
+
+  -- cue language support
+  use({
+    "jjo/vim-cue",
   })
 end
 

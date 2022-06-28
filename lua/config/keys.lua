@@ -130,6 +130,7 @@ local leader = {
     w = { "<Cmd>Telescope gh run<CR>", "runs" },
     i = { "<Cmd>Telescope gh issues<CR>", "issues" },
     p = { "<Cmd>Telescope gh pull_request<CR>", "PRs" },
+    x = { "<Cmd>GitConflictListQf<CR>", "list conflicts" },
     h = { name = "+hunk" },
   },
   ["h"] = {
