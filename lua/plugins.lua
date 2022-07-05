@@ -5,11 +5,11 @@ local config = {
     enable = false,
     threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
   },
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "single" })
-    end,
-  },
+  -- display = {
+  --   open_fn = function()
+  --     return require("packer.util").float({ border = "single" })
+  --   end,
+  -- },
   -- list of plugins that should be taken from ~/workspace
   -- this is NOT packer functionality!
   -- local_plugins = {
@@ -91,14 +91,6 @@ local function plugins(use)
         auto_open = false,
         mode = "document_diagnostics",
       })
-    end,
-  })
-
-  -- rename vscode style
-  use({
-    "smjonas/inc-rename.nvim",
-    config = function()
-      require("inc_rename").setup()
     end,
   })
 
