@@ -47,15 +47,7 @@ local servers = {
   },
   clangd = {},
   gopls = {},
-  sumneko_lua = require("lua-dev").setup({
-    lspconfig = {
-      cmd = {
-        util.cache_dir .. "lua-language-server/bin/macOS/lua-language-server",
-        "-E",
-        util.cache_dir .. "lua-language-server/main.lua",
-      },
-    },
-  }),
+  sumneko_lua = require("lua-dev").setup({}),
   vimls = {},
   terraformls = {},
   prismals = {},
