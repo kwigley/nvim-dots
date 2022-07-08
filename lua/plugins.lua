@@ -51,7 +51,12 @@ local function plugins(use)
       require("config.lsp")
     end,
     requires = {
-      "SmiteshP/nvim-navic",
+      {
+        "SmiteshP/nvim-navic",
+        config = function()
+          require("nvim-navic").setup({ separator = " ❯ " })
+        end,
+      },
       "simrat39/rust-tools.nvim",
       "mfussenegger/nvim-dap",
       "mattn/webapi-vim",
@@ -317,14 +322,14 @@ local function plugins(use)
   })
 
   -- Tabs
-  use({
-    "akinsho/nvim-bufferline.lua",
-    event = "BufReadPre",
-    wants = "nvim-web-devicons",
-    config = function()
-      require("config.bufferline")
-    end,
-  })
+  -- use({
+  --   "akinsho/nvim-bufferline.lua",
+  --   event = "BufReadPre",
+  --   wants = "nvim-web-devicons",
+  --   config = function()
+  --     require("config.bufferline")
+  --   end,
+  -- })
   use({
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },

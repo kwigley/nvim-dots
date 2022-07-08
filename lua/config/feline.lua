@@ -107,15 +107,15 @@ components.active[2] = {
   },
   {
     provider = "git_diff_added",
-    -- hl = { fg = "green" },
+    hl = { fg = "green" },
   },
   {
     provider = "git_diff_changed",
-    -- hl = { fg = "orange" },
+    hl = { fg = "orange" },
   },
   {
     provider = "git_diff_removed",
-    -- hl = { fg = "red" },
+    hl = { fg = "red" },
   },
   {
     enabled = function()
@@ -168,56 +168,39 @@ feline.setup({
       if fileparts == "." then
         return " "
       end
-      return fn.fnamemodify(fileparts, ":gs?/? > ?") .. " > "
+      return fn.fnamemodify(fileparts, ":gs?/? ❯ ?") .. " ❯ "
     end,
-    file_info_custom = function(component, opts)
+    file_info_custom = function()
       local readonly_str, modified_str, icon
 
-      -- Avoid loading nvim-web-devicons if an icon is provided already
-      if not component.icon then
-        local icon_str, icon_color =
-          require("nvim-web-devicons").get_icon_color(
-            fn.expand("%:t"),
-            nil, -- extension is already computed by nvim-web-devicons
-            { default = true }
-          )
+      local icon_str, icon_color = require("nvim-web-devicons").get_icon_color(
+        fn.expand("%:t"),
+        nil, -- extension is already computed by nvim-web-devicons
+        { default = true }
+      )
 
-        icon = { str = icon_str }
-
-        if opts.colored_icon == nil or opts.colored_icon then
-          icon.hl = { fg = icon_color }
-        end
-      end
+      icon = { str = icon_str, hl = { fg = icon_color } }
 
       local filename = api.nvim_buf_get_name(0)
-      local type = opts.type or "base-only"
       if filename == "" then
         filename = "[No Name]"
-      elseif type == "short-path" then
-        filename = fn.pathshorten(filename)
-      elseif type == "base-only" then
-        filename = fn.fnamemodify(filename, ":t")
-      elseif type == "relative" then
-        filename = fn.fnamemodify(filename, ":~:.")
-      elseif type == "relative-short" then
-        filename = fn.pathshorten(fn.fnamemodify(filename, ":~:."))
-      elseif type ~= "full-path" then
+      else
         filename = fn.fnamemodify(filename, ":t")
       end
 
-      if opts.show_readonly_icon and bo.readonly then
-        readonly_str = opts.file_readonly_icon or "🔒"
+      if bo.readonly then
+        readonly_str = "🔒"
       else
         readonly_str = ""
       end
 
       -- Add a space at the beginning of the provider if there is an icon
-      if (icon and icon ~= "") or (component.icon and component.icon ~= "") then
+      if icon and icon ~= "" then
         readonly_str = " " .. readonly_str
       end
 
-      if opts.show_modified_icon and bo.modified then
-        modified_str = opts.file_modified_icon or "●"
+      if bo.modified then
+        modified_str = "●"
 
         if modified_str ~= "" then
           modified_str = " " .. modified_str
@@ -238,31 +221,26 @@ local winbar_components = {
     {
       { provider = " " },
       {
+        provider = "relative_file_path_parts",
         enabled = function()
           return bo.buftype ~= "terminal" and bo.buftype ~= "nofile"
         end,
-        provider = "relative_file_path_parts",
       },
       {
         provider = "file_info_custom",
-        opts = {
-          type = "base-only",
-          colored_icon = false,
-          show_modified_icon = false,
-        },
       },
       {
+        provider = function()
+          local location = navic.get_location()
+          if location ~= "" then
+            return " ❯ " .. location
+          end
+          return ""
+        end,
         enabled = function()
           return navic.is_available()
             and bo.buftype ~= "terminal"
             and bo.buftype ~= "nofile"
-        end,
-        provider = function()
-          local location = navic.get_location()
-          if location ~= "" then
-            return " > " .. location
-          end
-          return ""
         end,
       },
     },
@@ -273,7 +251,7 @@ local winbar_components = {
         provider = "file_info",
         left_sep = " ",
         opts = {
-          type = "unique",
+          type = "relative",
         },
         hl = {
           fg = theme_colors.dark5,
