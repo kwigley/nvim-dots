@@ -75,9 +75,8 @@ components.active[1] = {
     provider = {
       name = "file_type",
       opts = {
-        case = "titlecase",
         filetype_icon = true,
-        colored_icon = false,
+        colored_icon = true,
       },
     },
     left_sep = " ",
