@@ -1,35 +1,22 @@
 local packer = require("util.packer")
 
-local config = {
+local packer_config = {
   profile = {
     enable = false,
-    threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    threshold = 0,
   },
-  -- display = {
-  --   open_fn = function()
-  --     return require("packer.util").float({ border = "single" })
-  --   end,
-  -- },
-  -- list of plugins that should be taken from ~/workspace
-  -- this is NOT packer functionality!
-  -- local_plugins = {
-  --   kwigley = true,
-  --   ["null-ls.nvim"] = true,
-  -- },
 }
 
 local function plugins(use)
+  -- common modules used by plugins
   use({ "nvim-lua/plenary.nvim", module = "plenary" })
   use({ "nvim-lua/popup.nvim", module = "popup" })
-
   -- improve startup time
   use({ "lewis6991/impatient.nvim" })
   use({ "nathom/filetype.nvim" })
-
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
-
-  -- UI notifications
+  -- better UI notifications
   use({
     "rcarriga/nvim-notify",
     event = "BufRead",
@@ -37,7 +24,6 @@ local function plugins(use)
       require("config.notify").setup()
     end,
   })
-
   -- LSP
   use({
     "neovim/nvim-lspconfig",
@@ -84,7 +70,6 @@ local function plugins(use)
       },
     },
   })
-
   -- LSP ui
   use({
     "folke/trouble.nvim",
@@ -92,13 +77,9 @@ local function plugins(use)
     wants = "nvim-web-devicons",
     cmd = { "TroubleToggle", "Trouble" },
     config = function()
-      require("trouble").setup({
-        auto_open = false,
-        mode = "document_diagnostics",
-      })
+      require("config.trouble")
     end,
   })
-
   -- autocompletion
   use({
     "hrsh7th/nvim-cmp",
@@ -119,7 +100,7 @@ local function plugins(use)
       {
         "saecki/crates.nvim",
         config = function()
-          require("crates").setup()
+          require("config.crates")
         end,
       },
       {
@@ -133,7 +114,7 @@ local function plugins(use)
       {
         "abecodes/tabout.nvim",
         config = function()
-          require("tabout").setup()
+          require("config.tabout")
         end,
         wants = { "nvim-treesitter" },
       },
@@ -145,7 +126,6 @@ local function plugins(use)
       },
     },
   })
-
   -- surround selections
   use({
     "kylechui/nvim-surround",
@@ -187,7 +167,6 @@ local function plugins(use)
       })
     end,
   })
-
   -- Treesitter: syntax highlighting
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -205,7 +184,6 @@ local function plugins(use)
       require("config.treesitter")
     end,
   })
-
   -- Treesitter: convert long function signature to multiline signature
   use({
     "AckslD/nvim-trevJ.lua",
@@ -223,7 +201,6 @@ local function plugins(use)
     end,
     requires = "JoosepAlviste/nvim-ts-context-commentstring",
   })
-
   -- Theme: colors
   use({
     "folke/tokyonight.nvim",
@@ -231,7 +208,6 @@ local function plugins(use)
       require("config.theme")
     end,
   })
-
   -- Theme: icons
   use({
     "kyazdani42/nvim-web-devicons",
@@ -249,7 +225,6 @@ local function plugins(use)
       })
     end,
   })
-
   use({
     "norcalli/nvim-terminal.lua",
     ft = "terminal",
@@ -257,7 +232,6 @@ local function plugins(use)
       require("terminal").setup()
     end,
   })
-
   use({
     "windwp/nvim-spectre",
     opt = true,
@@ -265,7 +239,6 @@ local function plugins(use)
     wants = { "plenary.nvim", "popup.nvim" },
     requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
   })
-
   use({
     "tamago324/lir.nvim",
     wants = { "nvim-web-devicons", "plenary.nvim", "lir-git-status.nvim" },
@@ -274,7 +247,6 @@ local function plugins(use)
       require("config.lir")
     end,
   })
-
   use({
     "kyazdani42/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFileToggle" },
@@ -282,7 +254,6 @@ local function plugins(use)
       require("config.tree")
     end,
   })
-
   -- Fuzzy finder
   use({
     "nvim-telescope/telescope.nvim",
@@ -308,10 +279,8 @@ local function plugins(use)
       "nvim-telescope/telescope-github.nvim",
     },
   })
-
   -- UI sugar
   use({ "stevearc/dressing.nvim" })
-
   -- Indent Guides
   use({
     "lukas-reineke/indent-blankline.nvim",
@@ -320,7 +289,6 @@ local function plugins(use)
       require("config.blankline")
     end,
   })
-
   -- Tabs
   -- use({
   --   "akinsho/nvim-bufferline.lua",
@@ -334,7 +302,6 @@ local function plugins(use)
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },
   })
-
   -- Terminal
   use({
     "akinsho/nvim-toggleterm.lua",
@@ -342,7 +309,6 @@ local function plugins(use)
       require("config.terminal")
     end,
   })
-
   -- Smooth Scrolling
   use({
     "karb94/neoscroll.nvim",
@@ -358,7 +324,6 @@ local function plugins(use)
       require("config.specs")
     end,
   })
-
   -- Git
   use({
     "lewis6991/gitsigns.nvim",
@@ -415,7 +380,6 @@ local function plugins(use)
     end,
     wants = "nvim-web-devicons",
   })
-
   -- Writing
   use({
     "iamcco/markdown-preview.nvim",
@@ -426,7 +390,6 @@ local function plugins(use)
     cmd = { "MarkdownPreview" },
   })
   use({ "jxnblk/vim-mdx-js" })
-
   use({
     "ggandor/lightspeed.nvim",
     keys = { "s", "S", "f", "F", "t", "T" },
@@ -434,7 +397,6 @@ local function plugins(use)
       require("config.lightspeed")
     end,
   })
-
   use({
     "folke/persistence.nvim",
     event = "BufReadPre",
@@ -443,11 +405,8 @@ local function plugins(use)
       require("persistence").setup()
     end,
   })
-
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
-
   use({ "mbbill/undotree", cmd = "UndotreeToggle" })
-
   use({
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -460,7 +419,6 @@ local function plugins(use)
       })
     end,
   })
-
   use({
     "norcalli/nvim-colorizer.lua",
     event = "BufReadPre",
@@ -468,7 +426,6 @@ local function plugins(use)
       require("config.colorizer")
     end,
   })
-
   use({
     "folke/todo-comments.nvim",
     event = "BufReadPost",
@@ -476,7 +433,6 @@ local function plugins(use)
       require("config.todo")
     end,
   })
-
   use({
     "folke/which-key.nvim",
     event = "VimEnter",
@@ -484,7 +440,6 @@ local function plugins(use)
       require("config.keys")
     end,
   })
-
   use({
     "RRethy/vim-illuminate",
     event = "CursorHold",
@@ -494,21 +449,25 @@ local function plugins(use)
       vim.g.Illuminate_ftblacklist = { "lir", "nvimtree" }
     end,
   })
-
   use({
     "andymass/vim-matchup",
     event = "CursorMoved",
   })
-
   use({
     "knubie/vim-kitty-navigator",
     run = { "cp *.py $HOME/.config/kitty" },
   })
-
   -- cue language support
   use({
     "jjo/vim-cue",
   })
+  -- qf/loc list helpers
+  use({
+    "stevearc/qf_helper.nvim",
+    config = function()
+      require("qf_helper").setup()
+    end,
+  })
 end
 
-return packer.setup(config, plugins)
+return packer.setup(packer_config, plugins)

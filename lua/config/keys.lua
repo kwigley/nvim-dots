@@ -125,6 +125,13 @@ local leader = {
     ["a"] = { "<cmd>:Bdelete all<CR>", "Delete All Buffers" },
     -- ["g"] = { "<cmd>:BufferLinePick<CR>", "Goto Buffer" },
   },
+  c = {
+    name = "+{qf,loc}list",
+    c = { "<cmd>QFToggle!<CR>", "Toggle qf list" },
+    l = { "<cmd>LLToggle!<CR>", "Toggle loc list" },
+    n = { "<cmd>QNext<CR>", "Next item on the qf/loc list" },
+    p = { "<cmd>QPrev<CR>", "Prev item on the qf/loc list" },
+  },
   g = {
     name = "+git",
     g = { "<cmd>Neogit<CR>", "NeoGit" },

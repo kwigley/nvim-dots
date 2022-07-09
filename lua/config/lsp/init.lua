@@ -6,7 +6,6 @@ local function on_attach(client, bufnr)
   require("config.lsp.formatting").setup(client, bufnr)
   require("config.lsp.keys").setup(client, bufnr)
   require("config.lsp.highlighting").setup(client)
-
   -- TypeScript specific stuff
   if client.name == "typescript" or client.name == "tsserver" then
     require("config.lsp.ts-utils").setup(client)
@@ -17,7 +16,6 @@ local function on_attach(client, bufnr)
 end
 
 -- TODO move this to a util package
-
 local servers = {
   pyright = {},
   bashls = {},
@@ -128,10 +126,8 @@ nls.setup({
   },
   on_attach = on_attach,
 })
-
 local signature_config = {
   hint_enable = false,
   max_width = 80,
 }
-
 require("lsp_signature").setup(signature_config)

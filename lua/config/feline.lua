@@ -247,11 +247,17 @@ local winbar_components = {
   inactive = {
     {
       {
-        provider = "file_info",
+        provider = "relative_file_path_parts",
+        enabled = function()
+          return bo.buftype ~= "terminal" and bo.buftype ~= "nofile"
+        end,
         left_sep = " ",
-        opts = {
-          type = "relative",
+        hl = {
+          fg = theme_colors.dark5,
         },
+      },
+      {
+        provider = "file_info_custom",
         hl = {
           fg = theme_colors.dark5,
         },
