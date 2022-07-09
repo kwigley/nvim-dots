@@ -262,7 +262,6 @@ local leader = {
     l = { "<cmd>tablast<CR>", "Last" },
   },
   ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
-  [" "] = "Find File",
   [","] = {
     "<cmd>Telescope buffers show_all_buffers=true<cr>",
     "Switch Buffer",

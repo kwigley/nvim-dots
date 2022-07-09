@@ -1,3 +1,4 @@
+local M = {}
 local api = vim.api
 local fn = vim.fn
 local bo = vim.bo
@@ -5,7 +6,7 @@ local bo = vim.bo
 local feline = require("feline")
 local vi_mode = require("feline.providers.vi_mode")
 local git = require("feline.providers.git")
-local theme_colors = require("tokyonight.colors").setup()
+local theme_colors = require("tokyonight.colors").setup({})
 local navic = require("nvim-navic")
 
 local colors = {
@@ -266,12 +267,16 @@ local winbar_components = {
   },
 }
 
-feline.winbar.setup({
-  components = winbar_components,
-  disable = {
-    filetypes = {
-      "^NvimTree$",
-      "^lir$",
+function M.setup()
+  feline.winbar.setup({
+    components = winbar_components,
+    disable = {
+      filetypes = {
+        "^NvimTree$",
+        "^lir$",
+      },
     },
-  },
-})
+  })
+end
+
+return M

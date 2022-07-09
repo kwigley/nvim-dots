@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  require("terminal").setup({})
+  require("persistence").setup()
 end
 
 return M

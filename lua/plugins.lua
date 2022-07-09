@@ -25,6 +25,7 @@ local function plugins(use)
     end,
   })
   -- LSP
+  -- TODO: break up this config into more managable pieces
   use({
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -40,7 +41,7 @@ local function plugins(use)
       {
         "SmiteshP/nvim-navic",
         config = function()
-          require("nvim-navic").setup({ separator = " ❯ " })
+          require("config.navic").setup()
         end,
       },
       "simrat39/rust-tools.nvim",
@@ -55,17 +56,13 @@ local function plugins(use)
       {
         "kosayoda/nvim-lightbulb",
         config = function()
-          vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-            callback = function()
-              require("nvim-lightbulb").update_lightbulb()
-            end,
-          })
+          require("config.lightbulb").setup()
         end,
       },
       {
         "j-hui/fidget.nvim",
         config = function()
-          require("fidget").setup({ text = { spinner = "dots" } })
+          require("config.fidget").setup()
         end,
       },
     },
@@ -77,7 +74,7 @@ local function plugins(use)
     wants = "nvim-web-devicons",
     cmd = { "TroubleToggle", "Trouble" },
     config = function()
-      require("config.trouble")
+      require("config.trouble").setup()
     end,
   })
   -- autocompletion
@@ -86,7 +83,7 @@ local function plugins(use)
     event = "InsertEnter",
     opt = true,
     config = function()
-      require("config.cmp")
+      require("config.cmp").setup()
     end,
     wants = { "tabout.nvim", "LuaSnip", "nvim-autopairs", "plenary.nvim" },
     requires = {
@@ -100,28 +97,28 @@ local function plugins(use)
       {
         "saecki/crates.nvim",
         config = function()
-          require("config.crates")
+          require("config.crates").setup()
         end,
       },
       {
         "L3MON4D3/LuaSnip",
         wants = "friendly-snippets",
         config = function()
-          require("config.luasnip")
+          require("config.luasnip").setup()
         end,
       },
       "rafamadriz/friendly-snippets",
       {
         "abecodes/tabout.nvim",
         config = function()
-          require("config.tabout")
+          require("config.tabout").setup()
         end,
         wants = { "nvim-treesitter" },
       },
       {
         "windwp/nvim-autopairs",
         config = function()
-          require("config.autopairs")
+          require("config.autopairs").setup()
         end,
       },
     },
@@ -130,41 +127,7 @@ local function plugins(use)
   use({
     "kylechui/nvim-surround",
     config = function()
-      require("nvim-surround").setup({
-        keymaps = { -- vim-surround style keymaps
-          insert = "ys",
-          visual = "S",
-          delete = "ds",
-          change = "cs",
-        },
-        delimiters = {
-          pairs = {
-            ["("] = { "( ", " )" },
-            [")"] = { "(", ")" },
-            ["{"] = { "{ ", " }" },
-            ["}"] = { "{", "}" },
-            ["<"] = { "< ", " >" },
-            [">"] = { "<", ">" },
-            ["["] = { "[ ", " ]" },
-            ["]"] = { "[", "]" },
-          },
-          separators = {
-            ["'"] = { "'", "'" },
-            ['"'] = { '"', '"' },
-            ["`"] = { "`", "`" },
-          },
-          HTML = {
-            ["t"] = true, -- Use "t" for HTML-style mappings
-          },
-          aliases = {
-            ["a"] = ">", -- Single character aliases apply everywhere
-            ["b"] = ")",
-            ["B"] = "}",
-            ["r"] = "]",
-            ["q"] = { '"', "'", "`" }, -- Table aliases only apply for changes/deletions
-          },
-        },
-      })
+      require("config.surround").setup()
     end,
   })
   -- Treesitter: syntax highlighting
@@ -181,7 +144,7 @@ local function plugins(use)
       "windwp/nvim-ts-autotag",
     },
     config = function()
-      require("config.treesitter")
+      require("config.treesitter").setup()
     end,
   })
   -- Treesitter: convert long function signature to multiline signature
@@ -189,7 +152,7 @@ local function plugins(use)
     "AckslD/nvim-trevJ.lua",
     wants = { "nvim-treesitter" },
     config = function()
-      require("trevj").setup()
+      require("config.trevj").setup()
     end,
   })
   -- code commenting shortcut
@@ -197,7 +160,7 @@ local function plugins(use)
     "numToStr/Comment.nvim",
     wants = "nvim-ts-context-commentstring",
     config = function()
-      require("config.comments")
+      require("config.comments").setup()
     end,
     requires = "JoosepAlviste/nvim-ts-context-commentstring",
   })
@@ -213,23 +176,14 @@ local function plugins(use)
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup({
-        override = {
-          lir_folder_icon = {
-            icon = "",
-            color = "#7ebae4",
-            name = "LirFolderNode",
-          },
-        },
-        default = true,
-      })
+      require("config.devicons").setup()
     end,
   })
   use({
     "norcalli/nvim-terminal.lua",
     ft = "terminal",
     config = function()
-      require("terminal").setup()
+      require("config.terminal").setup()
     end,
   })
   use({
@@ -244,14 +198,14 @@ local function plugins(use)
     wants = { "nvim-web-devicons", "plenary.nvim", "lir-git-status.nvim" },
     requires = { "nvim-lua/plenary.nvim", "tamago324/lir-git-status.nvim" },
     config = function()
-      require("config.lir")
+      require("config.lir").setup()
     end,
   })
   use({
     "kyazdani42/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFileToggle" },
     config = function()
-      require("config.tree")
+      require("config.tree").setup()
     end,
   })
   -- Fuzzy finder
@@ -259,7 +213,7 @@ local function plugins(use)
     "nvim-telescope/telescope.nvim",
     opt = true,
     config = function()
-      require("config.telescope")
+      require("config.telescope").setup()
     end,
     cmd = { "Telescope" },
     keys = { "<leader><space>", "<leader>fd" },
@@ -286,7 +240,7 @@ local function plugins(use)
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
     config = function()
-      require("config.blankline")
+      require("config.blankline").setup()
     end,
   })
   -- Tabs
@@ -295,7 +249,7 @@ local function plugins(use)
   --   event = "BufReadPre",
   --   wants = "nvim-web-devicons",
   --   config = function()
-  --     require("config.bufferline")
+  --     require("config.bufferline").setup()
   --   end,
   -- })
   use({
@@ -306,7 +260,7 @@ local function plugins(use)
   use({
     "akinsho/nvim-toggleterm.lua",
     config = function()
-      require("config.terminal")
+      require("config.toggleterm").setup()
     end,
   })
   -- Smooth Scrolling
@@ -314,14 +268,7 @@ local function plugins(use)
     "karb94/neoscroll.nvim",
     keys = { "<C-u>", "<C-d>", "gg", "G" },
     config = function()
-      require("config.scroll")
-    end,
-  })
-  use({
-    "edluffy/specs.nvim",
-    after = "neoscroll.nvim",
-    config = function()
-      require("config.specs")
+      require("config.scroll").setup()
     end,
   })
   -- Git
@@ -331,7 +278,7 @@ local function plugins(use)
     wants = "plenary.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("config.gitsigns")
+      require("config.gitsigns").setup()
     end,
   })
   use({
@@ -339,7 +286,7 @@ local function plugins(use)
     wants = "plenary.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function()
-      require("config.gitlinker")
+      require("config.gitlinker").setup()
     end,
   })
   use({
@@ -353,30 +300,27 @@ local function plugins(use)
       {
         "sindrets/diffview.nvim",
         config = function()
-          require("diffview").setup({})
+          require("config.diffview").setup()
         end,
         after = "plenary.nvim",
       },
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("config.neogit")
+      require("config.neogit").setup()
     end,
   })
   use({
     "akinsho/git-conflict.nvim",
     config = function()
-      require("git-conflict").setup({
-        disable_diagnostics = true,
-      })
+      require("config.conflict").setup()
     end,
   })
   -- Statusline
   use({
     "famiu/feline.nvim",
-    -- event = "VimEnter",
     config = function()
-      require("config.feline")
+      require("config.feline").setup()
     end,
     wants = "nvim-web-devicons",
   })
@@ -394,7 +338,7 @@ local function plugins(use)
     "ggandor/lightspeed.nvim",
     keys = { "s", "S", "f", "F", "t", "T" },
     config = function()
-      require("config.lightspeed")
+      require("config.lightspeed").setup()
     end,
   })
   use({
@@ -402,7 +346,7 @@ local function plugins(use)
     event = "BufReadPre",
     module = "persistence",
     config = function()
-      require("persistence").setup()
+      require("config.persistence").setup()
     end,
   })
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
@@ -414,23 +358,21 @@ local function plugins(use)
     wants = "twilight.nvim",
     requires = { "folke/twilight.nvim" },
     config = function()
-      require("zen-mode").setup({
-        plugins = { gitsigns = true, kitty = { enabled = true, font = "+2" } },
-      })
+      require("config.zen").setup()
     end,
   })
   use({
     "norcalli/nvim-colorizer.lua",
     event = "BufReadPre",
     config = function()
-      require("config.colorizer")
+      require("config.colorizer").setup()
     end,
   })
   use({
     "folke/todo-comments.nvim",
     event = "BufReadPost",
     config = function()
-      require("config.todo")
+      require("config.todo").setup()
     end,
   })
   use({
@@ -445,14 +387,14 @@ local function plugins(use)
     event = "CursorHold",
     module = "illuminate",
     config = function()
-      vim.g.Illuminate_delay = 1000
-      vim.g.Illuminate_ftblacklist = { "lir", "nvimtree" }
+      require("config.illuminate").setup()
     end,
   })
   use({
     "andymass/vim-matchup",
     event = "CursorMoved",
   })
+  -- kitty terminal integration
   use({
     "knubie/vim-kitty-navigator",
     run = { "cp *.py $HOME/.config/kitty" },
@@ -465,7 +407,7 @@ local function plugins(use)
   use({
     "stevearc/qf_helper.nvim",
     config = function()
-      require("qf_helper").setup()
+      require("config.qfhelper").setup()
     end,
   })
 end
