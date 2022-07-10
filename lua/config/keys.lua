@@ -263,7 +263,7 @@ local leader = {
   },
   ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
   [","] = {
-    "<cmd>Telescope buffers show_all_buffers=true<cr>",
+    "<cmd>Telescope buffers show_all_buffers=true theme=dropdown<cr>",
     "Switch Buffer",
   },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },

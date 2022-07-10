@@ -342,11 +342,9 @@ local function plugins(use)
     end,
   })
   use({
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    module = "persistence",
+    "rmagatti/auto-session",
     config = function()
-      require("config.persistence").setup()
+      require("config.session").setup()
     end,
   })
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })

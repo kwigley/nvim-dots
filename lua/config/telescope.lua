@@ -31,11 +31,7 @@ function M.setup()
   local util = require("util")
 
   util.nnoremap("<Leader><Space>", "<cmd>Telescope find_files<cr>")
-  util.nnoremap("<Leader>fd", function()
-    require("telescope.builtin").git_files({
-      cwd = "~/.config/nvim",
-    })
-  end)
+  util.nnoremap("<Leader>fh", "<cmd>Telescope find_files hidden=true<cr>")
 end
 
 return M
