@@ -112,18 +112,13 @@ local leader = {
   b = {
     name = "+buffer",
     ["b"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
-    ["p"] = { "<cmd>:bp<CR>", "Previous Buffer" },
-    ["["] = { "<cmd>:bp<CR>", "Previous Buffer" },
-    ["n"] = { "<cmd>:bn<CR>", "Next Buffer" },
-    ["]"] = { "<cmd>:bn<CR>", "Next Buffer" },
-    -- ["p"] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-    -- ["["] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-    -- ["n"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
-    -- ["]"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
+    ["p"] = { "<Plug>(CybuPrev)", "Previous Buffer" },
+    ["n"] = { "<Plug>(CybuNext)", "Next Buffer" },
+    ["<s-tab>"] = { "<plug>(CybuLastusedPrev)", "Previous Last Used buffer" },
+    ["<tab>"] = { "<plug>(CybuLastusedNext)", "Next Last Used buffer" },
     ["d"] = { "<cmd>:Bdelete this<CR>", "Delete Buffer" },
     ["o"] = { "<cmd>:Bdelete other<CR>", "Delete Other Buffers" },
     ["a"] = { "<cmd>:Bdelete all<CR>", "Delete All Buffers" },
-    -- ["g"] = { "<cmd>:BufferLinePick<CR>", "Goto Buffer" },
   },
   c = {
     name = "+{qf,loc}list",
@@ -202,14 +197,6 @@ local leader = {
   o = {
     name = "+open",
     p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
-  },
-  p = {
-    name = "+project",
-    p = "Open Project",
-    b = {
-      ":Telescope file_browser cwd=~/workspace<CR>",
-      "Browse ~/workspace",
-    },
   },
   t = {
     name = "toggle",

@@ -408,6 +408,15 @@ local function plugins(use)
       require("config.qfhelper").setup()
     end,
   })
+  -- buffer context
+  use({
+    "ghillb/cybu.nvim",
+    branch = "main", -- timely updates
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require("config.cybu").setup()
+    end,
+  })
 end
 
 return packer.setup(packer_config, plugins)
