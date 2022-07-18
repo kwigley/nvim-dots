@@ -341,12 +341,6 @@ local function plugins(use)
       require("config.lightspeed").setup()
     end,
   })
-  use({
-    "rmagatti/auto-session",
-    config = function()
-      require("config.session").setup()
-    end,
-  })
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
   use({ "mbbill/undotree", cmd = "UndotreeToggle" })
   use({
