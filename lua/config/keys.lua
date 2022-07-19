@@ -93,6 +93,7 @@ local leader = {
     name = "+windows",
     ["w"] = { "<C-W>p", "other-window" },
     ["d"] = { "<C-W>c", "delete-window" },
+    ["c"] = { "<C-W>c", "delete-window" },
     ["-"] = { "<C-W>s", "split-window-below" },
     ["|"] = { "<C-W>v", "split-window-right" },
     ["2"] = { "<C-W>v", "layout-double-columns" },
