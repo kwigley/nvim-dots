@@ -243,15 +243,6 @@ local function plugins(use)
       require("config.blankline").setup()
     end,
   })
-  -- Tabs
-  -- use({
-  --   "akinsho/nvim-bufferline.lua",
-  --   event = "BufReadPre",
-  --   wants = "nvim-web-devicons",
-  --   config = function()
-  --     require("config.bufferline").setup()
-  --   end,
-  -- })
   use({
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },
