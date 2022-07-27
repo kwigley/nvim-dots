@@ -24,9 +24,13 @@ local servers = {
   svelte = {},
   cssls = {},
   jsonls = {
+    init_options = {
+      provideFormatter = false, -- using prettier to format json
+    },
     settings = {
       json = {
         schemas = require("schemastore").json.schemas(),
+        validate = { enable = true },
       },
     },
   },

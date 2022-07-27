@@ -12,6 +12,17 @@ wk.setup({
   key_labels = { ["<leader>"] = "SPC" },
 })
 
+-- HACK
+local show = wk.show
+wk.show = function(keys, opts)
+  if vim.bo.filetype == "TelescopePrompt" then
+    local map = "<c-r>"
+    local key = vim.api.nvim_replace_termcodes(map, true, false, true)
+    vim.api.nvim_feedkeys(key, "i", true)
+  end
+  show(keys, opts)
+end
+
 -- Fat fingers
 util.nnoremap(":Q", ":q<CR>")
 util.nnoremap(":W", ":w<CR>")
