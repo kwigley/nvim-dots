@@ -402,6 +402,15 @@ local function plugins(use)
       require("config.cybu").setup()
     end,
   })
+  -- persist sessions
+  use({
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function()
+      require("config.persistence").setup()
+    end,
+  })
 end
 
 return packer.setup(packer_config, plugins)
