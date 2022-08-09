@@ -66,6 +66,7 @@ function M.setup(client, bufnr)
     function _clippy_toggle()
       clippy:toggle()
     end
+
     local test = Terminal:new({
       cmd = "cargo test",
       close_on_exit = false,
@@ -125,6 +126,16 @@ function M.setup(client, bufnr)
   util.nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   util.nnoremap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+  util.nnoremap(
+    "[e",
+    "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>",
+    opts
+  )
+  util.nnoremap(
+    "]e",
+    "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>",
+    opts
+  )
 
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.document_formatting then
