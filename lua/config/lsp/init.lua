@@ -119,7 +119,7 @@ nls.setup({
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.fish_indent,
     nls.builtins.formatting.reorder_python_imports,
-    -- nls.builtins.formatting.autopep8,
+    nls.builtins.formatting.autopep8,
     nls.builtins.completion.spell.with({
       filetypes = {
         "markdown",
