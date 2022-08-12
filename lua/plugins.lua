@@ -19,6 +19,7 @@ local function plugins(use)
   -- better UI notifications
   use({
     "rcarriga/nvim-notify",
+    tag = "*",
     event = "BufRead",
     config = function()
       require("config.notify").setup()
@@ -28,6 +29,7 @@ local function plugins(use)
   -- TODO: break up this config into more managable pieces
   use({
     "neovim/nvim-lspconfig",
+    tag = "*",
     event = "BufReadPre",
     wants = {
       "nvim-lsp-ts-utils",
@@ -126,6 +128,7 @@ local function plugins(use)
   -- surround selections
   use({
     "kylechui/nvim-surround",
+    tag = "*",
     config = function()
       require("config.surround").setup()
     end,
@@ -158,6 +161,7 @@ local function plugins(use)
   -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
+    tag = "*",
     wants = "nvim-ts-context-commentstring",
     config = function()
       require("config.comments").setup()
@@ -203,6 +207,7 @@ local function plugins(use)
   })
   use({
     "kyazdani42/nvim-tree.lua",
+    tag = "*",
     cmd = { "NvimTreeToggle", "NvimTreeClose", "NvimTreeFindFileToggle" },
     config = function()
       require("config.tree").setup()
@@ -211,6 +216,7 @@ local function plugins(use)
   -- Fuzzy finder
   use({
     "nvim-telescope/telescope.nvim",
+    tag = "*",
     opt = true,
     config = function()
       require("config.telescope").setup()
@@ -250,6 +256,7 @@ local function plugins(use)
   -- Terminal
   use({
     "akinsho/nvim-toggleterm.lua",
+    tag = "*",
     config = function()
       require("config.toggleterm").setup()
     end,
@@ -265,6 +272,7 @@ local function plugins(use)
   -- Git
   use({
     "lewis6991/gitsigns.nvim",
+    tag = "*",
     event = "BufReadPre",
     wants = "plenary.nvim",
     requires = { "nvim-lua/plenary.nvim" },
@@ -303,13 +311,25 @@ local function plugins(use)
   })
   use({
     "akinsho/git-conflict.nvim",
+    tag = "*",
+    event = "VimEnter",
+    cmd = {
+      "GitConflictChooseOurs",
+      "GitConflictChooseTheirs",
+      "GitConflictChooseBoth",
+      "GitConflictChooseNone",
+      "GitConflictNextConflict",
+      "GitConflictPrevConflict",
+      "GitConflictListQf",
+    },
     config = function()
       require("config.conflict").setup()
     end,
   })
   -- Statusline
   use({
-    "famiu/feline.nvim",
+    "feline-nvim/feline.nvim",
+    tag = "*",
     config = function()
       require("config.feline").setup()
     end,
@@ -391,15 +411,6 @@ local function plugins(use)
     "stevearc/qf_helper.nvim",
     config = function()
       require("config.qfhelper").setup()
-    end,
-  })
-  -- buffer context
-  use({
-    "ghillb/cybu.nvim",
-    branch = "main", -- timely updates
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = function()
-      require("config.cybu").setup()
     end,
   })
   -- persist sessions
