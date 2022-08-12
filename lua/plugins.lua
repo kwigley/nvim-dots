@@ -329,7 +329,6 @@ local function plugins(use)
   -- Statusline
   use({
     "feline-nvim/feline.nvim",
-    tag = "*",
     config = function()
       require("config.feline").setup()
     end,
