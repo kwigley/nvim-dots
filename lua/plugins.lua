@@ -161,7 +161,7 @@ local function plugins(use)
   -- code commenting shortcut
   use({
     "numToStr/Comment.nvim",
-    tag = "*",
+    -- tag = "*",
     wants = "nvim-ts-context-commentstring",
     config = function()
       require("config.comments").setup()
