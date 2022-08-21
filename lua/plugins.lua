@@ -272,7 +272,6 @@ local function plugins(use)
   -- Git
   use({
     "lewis6991/gitsigns.nvim",
-    tag = "*",
     event = "BufReadPre",
     wants = "plenary.nvim",
     requires = { "nvim-lua/plenary.nvim" },
