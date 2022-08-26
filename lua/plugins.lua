@@ -390,10 +390,11 @@ local function plugins(use)
       require("config.illuminate").setup()
     end,
   })
-  use({
-    "andymass/vim-matchup",
-    event = "CursorMoved",
-  })
+  -- temp disable https://github.com/andymass/vim-matchup/issues/241
+  -- use({
+  --   "andymass/vim-matchup",
+  --   event = "CursorMoved",
+  -- })
   -- kitty terminal integration
   use({
     "knubie/vim-kitty-navigator",
