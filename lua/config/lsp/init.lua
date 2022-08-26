@@ -7,9 +7,6 @@ local function on_attach(client, bufnr)
   require("config.lsp.keys").setup(client, bufnr)
   require("config.lsp.highlighting").setup(client)
   -- TypeScript specific stuff
-  if client.name == "typescript" or client.name == "tsserver" then
-    require("config.lsp.ts-utils").setup(client)
-  end
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end
@@ -137,3 +134,6 @@ local signature_config = {
   max_width = 80,
 }
 require("lsp_signature").setup(signature_config)
+require("typescript").setup({
+  server = server_opts,
+})

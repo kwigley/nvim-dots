@@ -32,7 +32,6 @@ local function plugins(use)
     tag = "*",
     event = "BufReadPre",
     wants = {
-      "nvim-lsp-ts-utils",
       "null-ls.nvim",
       "lua-dev.nvim",
     },
@@ -49,7 +48,7 @@ local function plugins(use)
       "simrat39/rust-tools.nvim",
       "mfussenegger/nvim-dap",
       "mattn/webapi-vim",
-      "jose-elias-alvarez/nvim-lsp-ts-utils",
+      "jose-elias-alvarez/typescript.nvim",
       "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
       "hrsh7th/cmp-nvim-lsp",
