@@ -25,6 +25,15 @@ local function plugins(use)
       require("config.notify").setup()
     end,
   })
+  use({
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup()
+      end, 100)
+    end,
+  })
   -- LSP
   -- TODO: break up this config into more managable pieces
   use({
@@ -45,6 +54,7 @@ local function plugins(use)
           require("config.navic").setup()
         end,
       },
+      { "zbirenbaum/copilot-cmp", module = "copilot_cmp" },
       "simrat39/rust-tools.nvim",
       "mfussenegger/nvim-dap",
       "mattn/webapi-vim",
