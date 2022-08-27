@@ -54,7 +54,6 @@ local function plugins(use)
           require("config.navic").setup()
         end,
       },
-      { "zbirenbaum/copilot-cmp", module = "copilot_cmp" },
       "simrat39/rust-tools.nvim",
       "mfussenegger/nvim-dap",
       "mattn/webapi-vim",
@@ -88,6 +87,7 @@ local function plugins(use)
       require("config.trouble").setup()
     end,
   })
+  use({ "onsails/lspkind.nvim" })
   -- autocompletion
   use({
     "hrsh7th/nvim-cmp",
@@ -96,8 +96,14 @@ local function plugins(use)
     config = function()
       require("config.cmp").setup()
     end,
-    wants = { "tabout.nvim", "LuaSnip", "nvim-autopairs", "plenary.nvim" },
+    wants = {
+      "tabout.nvim",
+      "LuaSnip",
+      "nvim-autopairs",
+      "plenary.nvim",
+    },
     requires = {
+      { "zbirenbaum/copilot-cmp", module = "copilot_cmp" },
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-path",
