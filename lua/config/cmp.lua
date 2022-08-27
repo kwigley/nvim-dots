@@ -2,6 +2,7 @@ local M = {}
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local lspkind = require("lspkind")
 
 function M.setup()
   cmp.setup({
@@ -39,6 +40,7 @@ function M.setup()
       }),
     }),
     sources = cmp.config.sources({
+      { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "luasnip" },
@@ -49,6 +51,35 @@ function M.setup()
       { name = "calc" },
       { name = "emoji" },
     }),
+    formatting = {
+      format = lspkind.cmp_format({
+        mode = "symbol", -- show only symbol annotations
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        symbol_map = { Copilot = "" },
+      }),
+    },
+    sorting = {
+      priority_weight = 2,
+      comparators = {
+        require("copilot_cmp.comparators").prioritize,
+        require("copilot_cmp.comparators").score,
+
+        -- Below is the default comparitor list and order for nvim-cmp
+        cmp.config.compare.offset,
+        -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+    },
     experimental = {
       ghost_text = {
         hl_group = "LspCodeLens",
