@@ -77,9 +77,9 @@ function M.setup()
         cmp.config.compare.order,
       },
     },
-    window = {
-      completion = cmp.config.window.bordered(),
-    },
+    -- window = {
+    --   completion = cmp.config.window.bordered(),
+    -- },
     experimental = {
       ghost_text = {
         hl_group = "LspCodeLens",
