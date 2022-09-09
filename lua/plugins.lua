@@ -231,7 +231,6 @@ local function plugins(use)
   -- Fuzzy finder
   use({
     "nvim-telescope/telescope.nvim",
-    tag = "*",
     opt = true,
     config = function()
       require("config.telescope").setup()
