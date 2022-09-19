@@ -103,7 +103,13 @@ local function plugins(use)
       "plenary.nvim",
     },
     requires = {
-      { "zbirenbaum/copilot-cmp", module = "copilot_cmp" },
+      {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-path",
