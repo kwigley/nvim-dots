@@ -8,7 +8,8 @@ vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.shortmess:append("I"):append("c") -- don't give the intro message when starting Vim |:intro|
+vim.opt.shortmess:append("I") -- don't give the intro message when starting Vim |:intro|
+vim.opt.shortmess:append("c")
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.hidden = true -- Enable modified buffers in background
