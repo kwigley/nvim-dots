@@ -38,7 +38,6 @@ local function plugins(use)
   -- TODO: break up this config into more managable pieces
   use({
     "neovim/nvim-lspconfig",
-    tag = "*",
     event = "BufReadPre",
     wants = {
       "null-ls.nvim",
