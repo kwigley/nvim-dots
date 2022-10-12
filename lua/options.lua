@@ -101,6 +101,22 @@ vim.api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   { pattern = "*.nix", command = "setfiletype nix" }
 )
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = "*.hcl", command = "setfiletype hcl" }
+)
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = ".terraform,terraform.rc", command = "setfiletype hcl" }
+)
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = "*.tf,*.tfvars", command = "setfiletype terraform" }
+)
+vim.api.nvim_create_autocmd(
+  { "BufRead", "BufNewFile" },
+  { pattern = "*.tfstate,*.tfvars.backup", command = "setfiletype json" }
+)
 
 -- windows to close with "q"
 vim.api.nvim_create_autocmd("Filetype", {
