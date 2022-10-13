@@ -27,11 +27,17 @@ local function plugins(use)
   })
   use({
     "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
+    event = "InsertEnter",
     config = function()
-      vim.defer_fn(function()
+      vim.schedule(function()
         require("copilot").setup()
-      end, 100)
+        -- require("copilot").setup({
+        --   suggestion = {
+        --     enabled = true,
+        --     auto_trigger = false,
+        --   },
+        -- })
+      end)
     end,
   })
   -- LSP
@@ -363,10 +369,20 @@ local function plugins(use)
   })
   use({ "jxnblk/vim-mdx-js" })
   use({
-    "ggandor/lightspeed.nvim",
-    keys = { "s", "S", "f", "F", "t", "T" },
+    "ggandor/leap.nvim",
+    keys = { "s", "S", "x", "X" },
     config = function()
-      require("config.lightspeed").setup()
+      require("config.leap").setup()
+    end,
+  })
+  use({
+    "ggandor/leap-ast.nvim",
+    needs = "leap.nvim",
+    keys = { "f" },
+    config = function()
+      vim.keymap.set({ "n", "x", "o" }, "f", function()
+        require("leap-ast").leap()
+      end, {})
     end,
   })
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
