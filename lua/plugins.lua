@@ -47,7 +47,7 @@ local function plugins(use)
     event = "BufReadPre",
     wants = {
       "null-ls.nvim",
-      "lua-dev.nvim",
+      "neodev.nvim",
     },
     config = function()
       require("config.lsp")
@@ -64,7 +64,7 @@ local function plugins(use)
       "mattn/webapi-vim",
       "jose-elias-alvarez/typescript.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-      "folke/lua-dev.nvim",
+      "folke/neodev.nvim",
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
       "ray-x/lsp_signature.nvim",
