@@ -451,6 +451,10 @@ local function plugins(use)
       require("config.persistence").setup()
     end,
   })
+  use({
+    "kkoomen/vim-doge",
+    run = ":call doge#install()",
+  })
 end
 
 return packer.setup(packer_config, plugins)
