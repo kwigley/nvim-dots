@@ -30,13 +30,7 @@ local function plugins(use)
     event = "InsertEnter",
     config = function()
       vim.schedule(function()
-        require("copilot").setup()
-        -- require("copilot").setup({
-        --   suggestion = {
-        --     enabled = true,
-        --     auto_trigger = false,
-        --   },
-        -- })
+        require("config.copilot").setup()
       end)
     end,
   })
@@ -93,6 +87,13 @@ local function plugins(use)
     end,
   })
   use({ "onsails/lspkind.nvim" })
+  use({
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  })
   -- autocompletion
   use({
     "hrsh7th/nvim-cmp",
@@ -106,15 +107,9 @@ local function plugins(use)
       "LuaSnip",
       "nvim-autopairs",
       "plenary.nvim",
+      "copilot-cmp",
     },
     requires = {
-      {
-        "zbirenbaum/copilot-cmp",
-        after = { "copilot.lua" },
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
       "f3fora/cmp-spell",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-path",

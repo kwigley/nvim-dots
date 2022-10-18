@@ -15,7 +15,11 @@ function M.setup()
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ["<CR>"] = cmp.mapping.confirm(),
+      ["<CR>"] = cmp.mapping.confirm({
+        -- this is the important line
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      }),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-y>"] = cmp.mapping.confirm({ select = true }),
       ["<Tab>"] = cmp.mapping(function(fallback)
@@ -84,6 +88,9 @@ function M.setup()
       ghost_text = {
         hl_group = "LspCodeLens",
       },
+    },
+    formatters = {
+      insert_text = require("copilot_cmp.format").remove_existing,
     },
   })
 
