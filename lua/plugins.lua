@@ -455,6 +455,12 @@ local function plugins(use)
     "kkoomen/vim-doge",
     run = ":call doge#install()",
   })
+  use({
+    "johmsalas/text-case.nvim",
+    config = function()
+      require("config.textcase").setup()
+    end,
+  })
 end
 
 return packer.setup(packer_config, plugins)
