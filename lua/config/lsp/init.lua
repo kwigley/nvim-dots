@@ -46,7 +46,7 @@ local servers = {
   },
   clangd = {},
   gopls = {},
-  sumneko_lua = require("neodev").setup({}),
+  sumneko_lua = {},
   vimls = {},
   terraformls = {},
   prismals = {},

@@ -47,7 +47,7 @@ util.nnoremap("[p", ":pu!<cr>")
 util.nnoremap("]p", ":pu<cr>")
 
 -- Clear search with <esc>
-util.map("", "<esc>", ":noh<cr>")
+util.map("", "<esc>", ":noh<cr>", { silent = true })
 util.nnoremap("gw", "*N")
 util.xnoremap("gw", "*N")
 

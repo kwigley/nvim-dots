@@ -18,14 +18,6 @@ local function plugins(use)
   use({ "wbthomason/packer.nvim", opt = true })
   -- better UI notifications
   use({
-    "rcarriga/nvim-notify",
-    tag = "*",
-    event = "BufRead",
-    config = function()
-      require("config.notify").setup()
-    end,
-  })
-  use({
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     config = function()
@@ -58,7 +50,12 @@ local function plugins(use)
       "mattn/webapi-vim",
       "jose-elias-alvarez/typescript.nvim",
       "jose-elias-alvarez/null-ls.nvim",
-      "folke/neodev.nvim",
+      {
+        "folke/neodev.nvim",
+        config = function()
+          require("config.neodev").setup()
+        end,
+      },
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
       "ray-x/lsp_signature.nvim",
@@ -66,12 +63,6 @@ local function plugins(use)
         "kosayoda/nvim-lightbulb",
         config = function()
           require("config.lightbulb").setup()
-        end,
-      },
-      {
-        "j-hui/fidget.nvim",
-        config = function()
-          require("config.fidget").setup()
         end,
       },
     },
@@ -261,6 +252,17 @@ local function plugins(use)
   })
   -- UI sugar
   use({ "stevearc/dressing.nvim" })
+  use({
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = function()
+      require("config.noice").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  })
   -- Indent Guides
   use({
     "lukas-reineke/indent-blankline.nvim",
@@ -421,11 +423,10 @@ local function plugins(use)
       require("config.illuminate").setup()
     end,
   })
-  -- temp disable https://github.com/andymass/vim-matchup/issues/241
-  -- use({
-  --   "andymass/vim-matchup",
-  --   event = "CursorMoved",
-  -- })
+  use({
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+  })
   -- kitty terminal integration
   use({
     "knubie/vim-kitty-navigator",
