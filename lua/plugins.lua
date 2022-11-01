@@ -58,7 +58,7 @@ local function plugins(use)
       },
       "hrsh7th/cmp-nvim-lsp",
       "b0o/schemastore.nvim",
-      "ray-x/lsp_signature.nvim",
+      -- "ray-x/lsp_signature.nvim",
       {
         "kosayoda/nvim-lightbulb",
         config = function()
