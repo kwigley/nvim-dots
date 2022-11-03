@@ -25,7 +25,7 @@ function M.setup()
     },
   })
 
-  require("telescope").load_extension("fzf")
+  telescope.load_extension("fzf")
   telescope.load_extension("gh")
 
   local util = require("util")

@@ -66,6 +66,9 @@ vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 util.vnoremap("<", "<gv")
 util.vnoremap(">", ">gv")
 
+util.nnoremap("<leader>o", require("portal").jump_backward)
+util.nnoremap("<leader>i", require("portal").jump_forward)
+
 wk.register({
   ["]"] = {
     name = "next",

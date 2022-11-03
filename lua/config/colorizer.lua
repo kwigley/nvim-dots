@@ -1,7 +1,16 @@
 local M = {}
 
 function M.setup()
-  require("colorizer").setup(nil, {
+  require("colorizer").setup({
+    "css",
+    "javascript",
+    "lua",
+    "vim",
+    "toml",
+    "svelte",
+    "typescript",
+    "python",
+  }, {
     RGB = true, -- #RGB hex codes
     RRGGBB = true, -- #RRGGBB hex codes
     names = true, -- "Name" codes like Blue

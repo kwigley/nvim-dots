@@ -262,6 +262,12 @@ local function plugins(use)
       "rcarriga/nvim-notify",
     },
   })
+  use({
+    "cbochs/portal.nvim",
+    config = function()
+      require("config.portal").setup()
+    end,
+  })
   -- Indent Guides
   use({
     "lukas-reineke/indent-blankline.nvim",
