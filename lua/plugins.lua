@@ -250,7 +250,6 @@ local function plugins(use)
     },
   })
   -- UI sugar
-  use({ "stevearc/dressing.nvim" })
   use({
     "folke/noice.nvim",
     event = "VimEnter",
@@ -261,6 +260,12 @@ local function plugins(use)
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
+  })
+  use({
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
   })
   use({
     "cbochs/portal.nvim",
