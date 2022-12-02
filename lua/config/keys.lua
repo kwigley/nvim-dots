@@ -7,6 +7,7 @@ local presets = require("which-key.plugins.presets")
 presets.objects["a("] = nil
 wk.setup({
   show_help = false,
+  show_keys = false,
   triggers = "auto",
   plugins = { spelling = true },
   key_labels = { ["<leader>"] = "SPC" },
