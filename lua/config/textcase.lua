@@ -2,7 +2,12 @@ local M = {}
 
 function M.setup()
   require("textcase").setup({})
-  require("telescope").load_extension("textcase")
+
+  local ok, telescope = pcall(require, "telescope")
+  if not ok then
+    return
+  end
+  telescope.load_extension("textcase")
   vim.api.nvim_set_keymap(
     "n",
     "ga.",
