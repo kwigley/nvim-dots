@@ -472,6 +472,9 @@ local function plugins(use)
       require("config.textcase").setup()
     end,
   })
+  use({
+    "gpanders/editorconfig.nvim",
+  })
 end
 
 return packer.setup(packer_config, plugins)
