@@ -81,16 +81,40 @@ function M.setup(client, bufnr)
       test:toggle()
     end
 
+    local rust_inlay_hints = true
+    ---@diagnostic disable-next-line: lowercase-global
+    function _toggle_rust_inlay_hints()
+      rust_inlay_hints = not rust_inlay_hints
+      local ok, rust_tools = pcall(require, "rust-tools")
+      if not ok then
+        return
+      end
+      if rust_inlay_hints then
+        rust_tools.inlay_hints.enable()
+      else
+        rust_tools.inlay_hints.disable()
+      end
+    end
+
     keymap.c.R = { "<cmd>RustRunnables<CR>", "Rust Runnables" }
     keymap.t = {
-      i = { "<cmd>RustToggleInlayHints<CR>", "Rust Toggle Inlay Hints" },
+      i = {
+        function()
+          _toggle_rust_inlay_hints()
+        end,
+        "Rust Toggle Inlay Hints",
+      },
     }
     keymap.c.c = {
-      "<cmd>lua _clippy_toggle()<CR>",
+      function()
+        _clippy_toggle()
+      end,
       "Run Clippy",
     }
     keymap.c.t = {
-      "<cmd>lua _test_toggle()<CR>",
+      function()
+        _test_toggle()
+      end,
       "Run Tests",
     }
   end
