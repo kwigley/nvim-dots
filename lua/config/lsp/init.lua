@@ -52,6 +52,9 @@ local servers = {
   prismals = {},
   taplo = {},
   yamlls = {},
+  csharp_ls = {
+    cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
+  },
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
