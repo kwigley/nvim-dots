@@ -1,134 +1,88 @@
-_G.dump = function(...)
-  print(vim.inspect(...))
-end
-
-_G.profile = function(cmd, times)
+_G.profile = function(cmd, times, flush)
   times = times or 100
-  local args = {}
-  if type(cmd) == "string" then
-    args = { cmd }
-    cmd = vim.cmd
-  end
   local start = vim.loop.hrtime()
   for _ = 1, times, 1 do
-    local ok = pcall(cmd, unpack(args))
-    if not ok then
-      error(
-        "Command failed: "
-          .. tostring(ok)
-          .. " "
-          .. vim.inspect({ cmd = cmd, args = args })
-      )
+    if flush then
+      jit.flush(cmd, true)
     end
+    cmd()
   end
   print(((vim.loop.hrtime() - start) / 1000000 / times) .. "ms")
 end
 
 local M = {}
 
-M.functions = {}
+function M.require(mod)
+  local ok, ret = M.try(require, mod)
+  return ok and ret
+end
 
-function M.execute(id)
-  local func = M.functions[id]
-  if not func then
-    error("Function doest not exist: " .. id)
+function M.try(fn, ...)
+  local args = { ... }
+
+  return xpcall(function()
+    return fn(unpack(args))
+  end, function(err)
+    local lines = {}
+    table.insert(lines, err)
+    table.insert(lines, debug.traceback("", 3))
+
+    M.error(table.concat(lines, "\n"))
+    return err
+  end)
+end
+
+function M.markdown(msg, opts)
+  opts = vim.tbl_deep_extend("force", {
+    title = "Debug",
+    on_open = function(win)
+      vim.wo[win].conceallevel = 3
+      vim.wo[win].concealcursor = ""
+      vim.wo[win].spell = false
+      local buf = vim.api.nvim_win_get_buf(win)
+      vim.treesitter.start(buf, "markdown")
+    end,
+  }, opts or {})
+  require("notify").notify(msg, vim.log.levels.INFO, opts)
+end
+
+function M.debug_pcall()
+  _G.pcall = function(fn, ...)
+    local args = { ... }
+    return xpcall(fn and function()
+      return fn(unpack(args))
+    end, function(err)
+      if
+        err:find("DevIcon")
+        or err:find("mason")
+        or err:find("Invalid highlight")
+      then
+        return err
+      end
+      vim.api.nvim_echo(
+        { { err, "ErrorMsg" }, { debug.traceback("", 3), "Normal" } },
+        true,
+        {}
+      )
+      return err
+    end)
   end
-  return func()
-end
-
-local map = function(mode, key, cmd, opts, defaults)
-  opts =
-    vim.tbl_deep_extend("force", { silent = true }, defaults or {}, opts or {})
-
-  if type(cmd) == "function" then
-    table.insert(M.functions, cmd)
-    if opts.expr then
-      cmd = ([[luaeval('require("util").execute(%d)')]]):format(#M.functions)
-    else
-      cmd = ("<cmd>lua require('util').execute(%d)<cr>"):format(#M.functions)
-    end
-  end
-  if opts.buffer ~= nil then
-    local buffer = opts.buffer
-    opts.buffer = nil
-    return vim.api.nvim_buf_set_keymap(buffer, mode, key, cmd, opts)
-  else
-    return vim.api.nvim_set_keymap(mode, key, cmd, opts)
-  end
-end
-
-function M.map(mode, key, cmd, opt, defaults)
-  return map(mode, key, cmd, opt, defaults)
-end
-
-function M.nmap(key, cmd, opts)
-  return map("n", key, cmd, opts)
-end
-
-function M.vmap(key, cmd, opts)
-  return map("v", key, cmd, opts)
-end
-
-function M.xmap(key, cmd, opts)
-  return map("x", key, cmd, opts)
-end
-
-function M.imap(key, cmd, opts)
-  return map("i", key, cmd, opts)
-end
-
-function M.omap(key, cmd, opts)
-  return map("o", key, cmd, opts)
-end
-
-function M.smap(key, cmd, opts)
-  return map("s", key, cmd, opts)
-end
-
-function M.nnoremap(key, cmd, opts)
-  return map("n", key, cmd, opts, { noremap = true })
-end
-
-function M.vnoremap(key, cmd, opts)
-  return map("v", key, cmd, opts, { noremap = true })
-end
-
-function M.xnoremap(key, cmd, opts)
-  return map("x", key, cmd, opts, { noremap = true })
-end
-
-function M.inoremap(key, cmd, opts)
-  return map("i", key, cmd, opts, { noremap = true })
-end
-
-function M.onoremap(key, cmd, opts)
-  return map("o", key, cmd, opts, { noremap = true })
-end
-
-function M.snoremap(key, cmd, opts)
-  return map("s", key, cmd, opts, { noremap = true })
 end
 
 function M.t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-function M.log(msg, hl, name)
-  name = name or "Neovim"
-  hl = hl or "Todo"
-  vim.api.nvim_echo({ { name .. ": ", hl }, { msg } }, true, {})
-end
-
 function M.warn(msg, name)
-  vim.notify(msg, vim.log.levels.WARN, { title = name })
+  vim.notify(msg, vim.log.levels.WARN, { title = name or "init.lua" })
 end
 
 function M.error(msg, name)
-  vim.notify(msg, vim.log.levels.ERROR, { title = name })
+  vim.notify(msg, vim.log.levels.ERROR, { title = name or "init.lua" })
 end
 
 function M.info(msg, name)
-  vim.notify(msg, vim.log.levels.INFO, { title = name })
+  vim.notify(msg, vim.log.levels.INFO, { title = name or "init.lua" })
 end
 
 function M.toggle(option, silent)
@@ -146,62 +100,124 @@ function M.toggle(option, silent)
   end
 end
 
-function M.toggle_tabline()
-  local value = vim.api.nvim_get_option_value("showtabline", {})
-
-  if value == 2 then
-    value = 0
-  else
-    value = 2
-  end
-
-  vim.opt.showtabline = value
-
-  M.info("showtabline" .. " set to " .. tostring(value))
-end
-
-local diagnostics_active = true
-function M.toggle_diagnostics()
-  diagnostics_active = not diagnostics_active
-  if diagnostics_active then
-    vim.diagnostic.show()
-  else
-    vim.diagnostic.hide()
-  end
-end
-
-function M.float_terminal(cmd)
+function M.float(fn, opts)
   local buf = vim.api.nvim_create_buf(false, true)
   local vpad = 4
   local hpad = 10
-  local win = vim.api.nvim_open_win(buf, true, {
+
+  opts = vim.tbl_deep_extend("force", {
     relative = "editor",
     width = vim.o.columns - hpad * 2,
     height = vim.o.lines - vpad * 2,
     row = vpad,
     col = hpad,
     style = "minimal",
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  })
-  vim.fn.termopen(cmd)
-  local group = vim.api.nvim_create_augroup("float-term", { clear = true })
-  vim.api.nvim_create_autocmd("TermClose", {
-    buffer = 0,
-    callback = function()
-      vim.api.nvim_win_close(win, { force = true })
+    border = "rounded",
+    noautocmd = true,
+  }, opts or {})
+
+  local enter = opts.enter == nil and true or opts.enter
+  local win = vim.api.nvim_open_win(buf, enter, opts)
+
+  local function close()
+    if vim.api.nvim_buf_is_valid(buf) then
       vim.api.nvim_buf_delete(buf, { force = true })
-    end,
-    group = group,
+    end
+    if vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_win_close(win, true)
+    end
+    vim.cmd([[checktime]])
+  end
+
+  vim.keymap.set("n", "<ESC>", close, { buffer = buf, nowait = true })
+  vim.keymap.set("n", "q", close, { buffer = buf, nowait = true })
+  vim.api.nvim_create_autocmd({ "BufDelete", "BufLeave", "BufHidden" }, {
+    once = true,
+    buffer = buf,
+    callback = close,
   })
-  vim.cmd([[startinsert]])
+  fn(buf, win)
 end
 
-local path_sep = "/"
-M.cache_dir = os.getenv("HOME")
-  .. path_sep
-  .. ".cache"
-  .. path_sep
-  .. "nvim"
-  .. path_sep
+function M.float_cmd(cmd, opts)
+  M.float(function(buf)
+    local output = vim.api.nvim_exec(cmd, true)
+    local lines = vim.split(output, "\n")
+    vim.api.nvim_buf_set_lines(buf, 0, -1, true, lines)
+  end, opts)
+end
+
+function M.float_terminal(cmd, opts)
+  -- require("lazy.util").open_cmd(cmd, {
+  --   terminal = true,
+  --   close_on_exit = true,
+  --   enter = true,
+  -- })
+  M.float(function(buf, win)
+    vim.fn.termopen(cmd)
+    local autocmd = {
+      "autocmd! TermClose <buffer> lua vim.cmd[[checktime]];",
+      string.format("vim.api.nvim_win_close(%d, {force = true});", win),
+      string.format("vim.api.nvim_buf_delete(%d, {force = true});", buf),
+    }
+    vim.cmd(table.concat(autocmd, " "))
+    vim.cmd([[startinsert]])
+  end, opts)
+end
+
+function M.exists(fname)
+  local stat = vim.loop.fs_stat(fname)
+  return (stat and stat.type) or false
+end
+
+function M.fqn(fname)
+  fname = vim.fn.fnamemodify(fname, ":p")
+  return vim.loop.fs_realpath(fname) or fname
+end
+
+function M.debounce(ms, fn)
+  local timer = vim.loop.new_timer()
+  return function(...)
+    local argv = { ... }
+    timer:start(ms, 0, function()
+      timer:stop()
+      vim.schedule_wrap(fn)(unpack(argv))
+    end)
+  end
+end
+
+function M.throttle(ms, fn)
+  local timer = vim.loop.new_timer()
+  local running = false
+  return function(...)
+    if not running then
+      local argv = { ... }
+      local argc = select("#", ...)
+
+      timer:start(ms, 0, function()
+        running = false
+        pcall(vim.schedule_wrap(fn), unpack(argv, 1, argc))
+      end)
+      running = true
+    end
+  end
+end
+
+function M.test(is_file)
+  local file = is_file and vim.fn.expand("%:p") or "./tests"
+  local init = vim.fn.glob("tests/*init*")
+  require("plenary.test_harness").test_directory(file, { minimal_init = init })
+end
+
+function M.version()
+  local v = vim.version()
+  if v and not v.prerelease then
+    vim.notify(
+      ("Neovim v%d.%d.%d"):format(v.major, v.minor, v.patch),
+      vim.log.levels.WARN,
+      { title = "Neovim: not running nightly!" }
+    )
+  end
+end
 
 return M
