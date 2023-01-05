@@ -52,6 +52,8 @@ vim.opt.formatoptions = vim.opt.formatoptions
   + "j" -- Auto-remove comments if possible.
   - "2" -- I'm not in gradeschool anymore
 
+vim.g.python3_host_prog = "/Users/kwigley/.asdf/shims/python"
+
 -- don't load the plugins below
 vim.g.loaded_gzip = 1
 vim.g.loaded_tar = 1
@@ -65,3 +67,5 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0

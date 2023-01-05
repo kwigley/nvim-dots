@@ -7,6 +7,7 @@ function M.setup(options)
   nls.setup({
     save_after_format = false,
     sources = {
+      nls.builtins.code_actions.gitsigns,
       nls.builtins.formatting.prettier.with({
         filetypes = {
           "javascript",
@@ -27,8 +28,7 @@ function M.setup(options)
       }),
       nls.builtins.formatting.stylua,
       nls.builtins.formatting.fish_indent,
-      -- nls.builtins.formatting.reorder_python_imports,
-      -- nls.builtins.formatting.autopep8,
+      nls.builtins.formatting.black,
       nls.builtins.completion.spell.with({
         filetypes = {
           "markdown",

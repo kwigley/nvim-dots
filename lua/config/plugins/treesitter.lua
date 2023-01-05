@@ -80,7 +80,7 @@ return {
             init_selection = "<C-n>",
             node_incremental = "<C-n>",
             scope_incremental = "<C-s>",
-            node_decremental = "<C-p>",
+            node_decremental = "<C-r>",
           },
         },
         query_linter = {

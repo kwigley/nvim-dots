@@ -9,7 +9,6 @@ local M = {
       "startify",
       "dashboard",
       "packer",
-      "neogitstatus",
       "NvimTree",
       "Trouble",
       "lir",

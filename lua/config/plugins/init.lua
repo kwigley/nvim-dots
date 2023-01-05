@@ -7,9 +7,6 @@ return {
   "windwp/nvim-spectre",
   "folke/twilight.nvim",
   "folke/which-key.nvim",
-
-  { "shaunsingh/oxocarbon.nvim", enabled = true },
-
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
