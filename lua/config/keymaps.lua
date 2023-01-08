@@ -129,6 +129,7 @@ local leader = {
     i = { "<Cmd>Telescope gh issues<CR>", "issues" },
     p = { "<Cmd>Telescope gh pull_request<CR>", "PRs" },
     x = { "<Cmd>GitConflictListQf<CR>", "list conflicts" },
+    t = { name = "+toggle" },
     h = { name = "+hunk" },
   },
   ["h"] = {
@@ -275,9 +276,6 @@ local leader = {
   },
   n = {
     name = "+noice",
-  },
-  d = {
-    name = "+dap",
   },
 }
 

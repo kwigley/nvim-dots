@@ -1,5 +1,4 @@
 local M = {
-
   "neovim/nvim-lspconfig",
   event = "BufReadPre",
   dependencies = {
@@ -71,7 +70,9 @@ function M.config()
     csharp_ls = {
       cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
     },
-    zls = {},
+    zls = {
+      cmd = { "/Users/kwigley/workspace/zls/zig-out/bin/zls" },
+    },
   }
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
