@@ -47,7 +47,6 @@ function M.config()
         highlight_dirname = false,
       },
     },
-    hide_cursor = true,
     on_init = function()
       -- use visual mode
       vim.api.nvim_buf_set_keymap(
