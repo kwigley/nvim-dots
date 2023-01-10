@@ -20,17 +20,15 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-github.nvim" },
     { "debugloop/telescope-undo.nvim" },
-    { "johmsalas/text-case.nvim", config = true },
   },
   keys = {
     { "<leader><space>", project_files, desc = "Find File" },
   },
   config = function()
     local telescope = require("telescope")
-    local borderless = true
     telescope.setup({
       defaults = {
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         layout_config = {
           prompt_position = "top",
         },
@@ -52,12 +50,11 @@ return {
         },
         prompt_prefix = " ",
         selection_caret = " ",
-        winblend = borderless and 0 or 10,
+        winblend = 5,
       },
     })
     telescope.load_extension("fzf")
     telescope.load_extension("gh")
-    telescope.load_extension("textcase")
     telescope.load_extension("undo")
   end,
 }

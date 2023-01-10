@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+    { "folke/neodev.nvim", config = true },
   },
   pin = true,
 }
@@ -56,8 +57,11 @@ function M.config()
     sumneko_lua = {
       settings = {
         Lua = {
-          diagnostics = {
-            globals = { "vim" },
+          workspace = {
+            checkThirdParty = false,
+          },
+          completion = {
+            callSnippet = "Replace",
           },
         },
       },

@@ -24,4 +24,5 @@ return {
     cmd = { "Bdelete" },
   },
   { "ellisonleao/glow.nvim", cmd = { "Glow" } },
+  { "johmsalas/text-case.nvim", config = true },
 }
