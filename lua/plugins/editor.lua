@@ -169,4 +169,37 @@ return {
       )
     end,
   },
+  {
+    "folke/trouble.nvim",
+    keys = {
+      {
+        "<leader>xn",
+        function()
+          require("trouble").next({ skip_groups = true, jump = true })
+        end,
+        desc = "Next Item (Trouble)",
+      },
+      {
+        "<leader>xp",
+        function()
+          require("trouble").previous({ skip_groups = true, jump = true })
+        end,
+        desc = "Previous Item (Trouble)",
+      },
+      {
+        "<leader>xgg",
+        function()
+          require("trouble").first({ skip_groups = true, jump = true })
+        end,
+        desc = "First Item (Trouble)",
+      },
+      {
+        "<leader>xG",
+        function()
+          require("trouble").last({ skip_groups = true, jump = true })
+        end,
+        desc = "Last Item (Trouble)",
+      },
+    },
+  },
 }
