@@ -4,12 +4,6 @@
 
 My personal [neovim](https://neovim.io/) config.
 
-## Install
-
-- Clone this repo to where your neovim config lives (`~/.config/nvim`)
-- Start neovim, run `:PackerSync`
-- Profit
-
 ## Highlights
 
 - utilizes the built-in lsp ❤️
@@ -18,6 +12,5 @@ My personal [neovim](https://neovim.io/) config.
 - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
 - [feline](https://github.com/famiu/feline.nvim) - status line
-- [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
 
 You can check out the rest of my [dotfiles](https://dotfiles.github.io/) in https://github.com/kwigley/dots
