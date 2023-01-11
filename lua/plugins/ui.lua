@@ -1,13 +1,24 @@
 return {
   { "goolord/alpha-nvim", enabled = false },
-  { "akinsho/nvim-bufferline.lua", enabled = false },
-  { "nvim-lualine/lualine.nvim", enabled = false },
+  {
+    "akinsho/nvim-bufferline.lua",
+    opts = {
+      options = {
+        hover = {
+          enabled = true,
+          delay = 200,
+          reveal = { "close" },
+        },
+        always_show_bufferline = true,
+      },
+    },
+  },
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    enabled = true,
     opts = function(_, opts)
       local icons = require("lazyvim.config").icons
+      opts.options.section_separators = ""
+      opts.options.component_separators = ""
       opts.sections.lualine_c = {
         {
           "diagnostics",

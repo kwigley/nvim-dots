@@ -12,7 +12,22 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      -- opts = { colorscheme = "catppuccin" },
+      opts = {
+        icons = {
+          diagnostics = {
+            Error = " ",
+            Warn = " ",
+            Info = " ",
+            Hint = " ",
+          },
+          git = {
+            modified = "柳 ",
+          },
+          kinds = {
+            Copilot = " ",
+          },
+        },
+      },
     },
     -- import/override with your plugins
     { import = "plugins" },
@@ -23,7 +38,7 @@ require("lazy").setup({
     lazy = true, -- every plugin is lazy-loaded by default
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax", "catppuccin" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

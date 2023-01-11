@@ -5,7 +5,8 @@ return {
     opts = {
       -- style = "storm",
       on_highlights = function(hl, c)
-        hl.CursorLineNr = { fg = c.orange, bold = true }
+        hl.CursorLineNr = { fg = c.orange }
+        hl.LineNr = { fg = c.fg_dark }
       end,
     },
   },
