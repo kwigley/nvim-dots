@@ -3,168 +3,28 @@ return {
   { "akinsho/nvim-bufferline.lua", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
   {
-    "feline-nvim/feline.nvim",
-    version = nil,
+    "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    config = function()
-      local feline = require("feline")
-      local vi_mode = require("feline.providers.vi_mode")
-      local git = require("feline.providers.git")
-      local theme_colors = require("tokyonight.colors").setup({ transform = true })
-
-      local colors = {
-        bg = theme_colors.bg_dark,
-        fg = theme_colors.fg_dark,
-        yellow = theme_colors.yellow,
-        cyan = theme_colors.cyan,
-        darkblue = theme_colors.blue7,
-        green = theme_colors.green,
-        orange = theme_colors.orange,
-        violet = theme_colors.purple,
-        magenta = theme_colors.magenta,
-        blue = theme_colors.blue,
-        red = theme_colors.red,
-      }
-
-      local vi_mode_colors = {
-        NORMAL = colors.green,
-        INSERT = colors.blue,
-        VISUAL = colors.violet,
-        OP = colors.green,
-        BLOCK = colors.blue,
-        REPLACE = colors.red,
-        ["V-REPLACE"] = colors.red,
-        ENTER = colors.cyan,
-        MORE = colors.cyan,
-        SELECT = colors.orange,
-        COMMAND = colors.magenta,
-        SHELL = colors.green,
-        TERM = colors.blue,
-        NONE = colors.yellow,
-      }
-
-      local components = {
-        active = {},
-        inactive = {},
-      }
-
-      components.active[1] = {
+    enabled = true,
+    opts = function(_, opts)
+      local icons = require("lazyvim.config").icons
+      opts.sections.lualine_c = {
         {
-          provider = "▊ ",
-          hl = {
-            fg = "blue",
+          "diagnostics",
+          symbols = {
+            error = icons.diagnostics.Error,
+            warn = icons.diagnostics.Warn,
+            info = icons.diagnostics.Info,
+            hint = icons.diagnostics.Hint,
           },
         },
         {
-          provider = "vi_mode",
-          hl = function()
-            return {
-              name = vi_mode.get_mode_highlight_name(),
-              fg = vi_mode.get_mode_color(),
-              style = "bold",
-            }
-          end,
-          right_sep = " ",
-          icon = "",
-        },
-        {
-          provider = "git_branch",
-          left_sep = " ",
-          right_sep = " ",
-        },
-        {
-          enabled = function()
-            return vim.bo.filetype ~= ""
-          end,
-          provider = {
-            name = "file_type",
-            opts = {
-              filetype_icon = true,
-              colored_icon = true,
-            },
-          },
-          left_sep = " ",
-          right_sep = " ",
-        },
-        {
-          provider = "diagnostic_errors",
-          hl = { fg = "red" },
-        },
-        {
-          provider = "diagnostic_warnings",
-          hl = { fg = "yellow" },
-        },
-        {
-          provider = "diagnostic_hints",
-          hl = { fg = "cyan" },
-        },
-        {
-          provider = "diagnostic_info",
-          hl = { fg = "skyblue" },
+          "filetype",
+          separator = "",
+          padding = { left = 1, right = 0 },
         },
       }
-      components.active[2] = {
-        {
-          provider = "position_custom",
-          right_sep = " ",
-        },
-        {
-          provider = "git_diff_added",
-          hl = { fg = "green" },
-        },
-        {
-          provider = "git_diff_changed",
-          hl = { fg = "orange" },
-        },
-        {
-          provider = "git_diff_removed",
-          hl = { fg = "red" },
-        },
-        {
-          enabled = function()
-            return git.git_info_exists()
-          end,
-          right_sep = { str = " ", always_visible = true },
-        },
-        {
-          provider = "scroll_bar",
-          hl = {
-            fg = "skyblue",
-            style = "bold",
-          },
-        },
-      }
-
-      feline.setup({
-        components = components,
-        vi_mode_colors = vi_mode_colors,
-        theme = colors,
-        force_inactive = {
-          filetypes = {
-            "^NvimTree$",
-            "^packer$",
-            "^startify$",
-            "^fugitive$",
-            "^fugitiveblame$",
-            "^qf$",
-            "^help$",
-            "^TelescopePrompt$",
-          },
-          buftypes = {
-            "^terminal$",
-            "^nofile$",
-          },
-        },
-        custom_providers = {
-          position_custom = function()
-            local position = vim.api.nvim_win_get_cursor(0)
-            local line, col = position[1], position[2]
-            col = vim.str_utfindex(vim.api.nvim_get_current_line(), col) + 1
-
-            return string.format("Ln %d, Col %d", line, col)
-          end,
-        },
-      })
+      opts.sections.lualine_z = {}
     end,
   },
   {
@@ -201,7 +61,7 @@ return {
     event = "VeryLazy",
     opts = {
       themes = {
-        markdown = { colorscheme = "tokyonight-storm" },
+        -- markdown = { colorscheme = "tokyonight-storm" },
         help = { colorscheme = "oxocarbon", background = "dark" },
       },
     },
