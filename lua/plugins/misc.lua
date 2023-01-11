@@ -1,5 +1,5 @@
 return {
-  "folke/twilight.nvim",
+  { "folke/twilight.nvim" },
   {
     "Wansmer/treesj",
     keys = { { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
