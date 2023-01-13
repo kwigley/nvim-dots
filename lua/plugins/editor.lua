@@ -2,6 +2,9 @@ return {
   {
     "knubie/vim-kitty-navigator",
     event = "VeryLazy",
+    config = function()
+      vim.g.kitty_navigator_no_mappings = true
+    end,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -148,7 +151,10 @@ return {
       require("lir").setup({
         show_hidden_files = false,
         ignore = {}, -- { ".DS_Store" "node_modules" } etc.
-        devicons_enable = true,
+        devicons = {
+          enable = true,
+          -- highlight_dirname = false
+        },
         mappings = {
           ["<CR>"] = actions.edit,
           ["<C-s>"] = actions.split,

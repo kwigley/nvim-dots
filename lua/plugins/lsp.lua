@@ -61,7 +61,6 @@ return {
         "prettier",
         "stylua",
         "selene",
-        "luacheck",
         "eslint_d",
         "shellcheck",
         "deno",

@@ -18,6 +18,11 @@ return {
       opts.options.component_separators = ""
       opts.sections.lualine_c = {
         {
+          "filetype",
+          separator = "",
+          padding = { left = 1, right = 0 },
+        },
+        {
           "diagnostics",
           symbols = {
             error = icons.diagnostics.Error,
@@ -25,11 +30,6 @@ return {
             info = icons.diagnostics.Info,
             hint = icons.diagnostics.Hint,
           },
-        },
-        {
-          "filetype",
-          separator = "",
-          padding = { left = 1, right = 0 },
         },
       }
       opts.sections.lualine_z = {}
@@ -52,7 +52,13 @@ return {
       local colors = require("tokyonight.colors").setup()
       scrollbar.setup({
         handle = { color = colors.bg_highlight },
-        excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify" },
+        excluded_filetypes = {
+          "prompt",
+          "TelescopePrompt",
+          "noice",
+          "notify",
+          "neo-tree",
+        },
         marks = {
           Search = { color = colors.orange },
           Error = { color = colors.error },

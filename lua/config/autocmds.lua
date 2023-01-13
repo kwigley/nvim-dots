@@ -26,3 +26,9 @@ vim.api.nvim_create_autocmd(
   { "BufRead", "BufNewFile" },
   { pattern = "*.tfstate,*.tfvars.backup", command = "setfiletype json" }
 )
+
+-- windows to close with "q"
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "toggleterm",
+  command = "nnoremap <buffer><silent> q :close<CR>",
+})

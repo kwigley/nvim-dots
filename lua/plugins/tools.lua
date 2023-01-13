@@ -20,6 +20,13 @@ return {
   },
   { "norcalli/nvim-terminal.lua", ft = "terminal", config = true },
   {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    opts = {
+      open_mapping = [[<c-\>]],
+    },
+  },
+  {
     "sindrets/diffview.nvim",
     cmd = {
       "DiffviewOpen",
@@ -29,25 +36,6 @@ return {
     },
     config = true,
     keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
-  },
-  {
-    "toppair/peek.nvim",
-    build = "deno task --quiet build:fast",
-    keys = {
-      {
-        "<leader>op",
-        function()
-          local peek = require("peek")
-          if peek.is_open() then
-            peek.close()
-          else
-            peek.open()
-          end
-        end,
-        desc = "Peek (Markdown Preview)",
-      },
-    },
-    opts = { theme = "light" },
   },
   {
     "NvChad/nvim-colorizer.lua",
