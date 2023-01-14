@@ -1,4 +1,30 @@
 return {
+  {
+    "shaunsingh/oxocarbon.nvim",
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      -- style = "storm",
+      on_highlights = function(hl, c)
+        hl.CursorLineNr = { fg = c.orange }
+        -- hl.LineNr = { fg = c.fg_dark }
+      end,
+    },
+  },
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    opts = {
+      plugins = {
+        gitsigns = true,
+        tmux = true,
+        kitty = { enabled = false, font = "+2" },
+      },
+    },
+    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+  },
+  { "folke/twilight.nvim" },
   { "goolord/alpha-nvim", enabled = false },
   {
     "akinsho/nvim-bufferline.lua",
@@ -113,5 +139,26 @@ return {
         },
       })
     end,
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+      filetypes = { "*", "!lazy" },
+      buftype = { "*", "!prompt", "!nofile" },
+      user_default_options = {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        names = false, -- "Name" codes like Blue
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        AARRGGBB = false, -- 0xAARRGGBB hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        mode = "background", -- Set the display mode.
+        virtualtext = "■",
+      },
+    },
   },
 }
