@@ -269,15 +269,6 @@ return {
           cmp.config.compare.order,
         },
       }
-      opts.formatting = {
-        format = function(_, item)
-          local icons = require("lazyvim.config").icons.kinds
-          if icons[item.kind] then
-            item.kind = icons[item.kind] .. item.kind
-          end
-          return item
-        end,
-      }
     end,
   },
 }

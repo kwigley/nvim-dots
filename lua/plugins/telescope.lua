@@ -4,24 +4,7 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-github.nvim" },
-      { "debugloop/telescope-undo.nvim" },
       { "johmsalas/text-case.nvim", config = true },
-    },
-    keys = {
-      {
-        "<leader>sw",
-        "<cmd>Telescope grep_string<cr>",
-        desc = "Current Word",
-      },
-      {
-        "<leader>fp",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = require("lazy.core.config").options.root,
-          })
-        end,
-        desc = "Find Plugin File",
-      },
     },
     opts = {
       defaults = {
@@ -37,7 +20,6 @@ return {
       telescope.setup(opts)
       telescope.load_extension("fzf")
       telescope.load_extension("gh")
-      telescope.load_extension("undo")
       telescope.load_extension("textcase")
       vim.api.nvim_set_keymap(
         "n",
