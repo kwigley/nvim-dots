@@ -224,11 +224,6 @@ return {
           config = true,
         },
       },
-      {
-        "saecki/crates.nvim",
-        ft = "toml",
-        config = true,
-      },
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
@@ -247,7 +242,6 @@ return {
         { name = "copilot" },
         { name = "emoji" },
         { name = "spell" },
-        { name = "crates" },
         { name = "calc" },
       }))
       opts.sorting = {
