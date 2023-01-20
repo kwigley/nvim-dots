@@ -63,7 +63,6 @@ return {
         "selene",
         "eslint_d",
         "shellcheck",
-        "deno",
         "shfmt",
         "black",
         "isort",

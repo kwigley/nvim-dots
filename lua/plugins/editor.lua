@@ -221,7 +221,13 @@ return {
         config = true,
         dependencies = {
           "zbirenbaum/copilot.lua",
-          config = true,
+          opts = {
+            filetypes = {
+              yaml = true,
+              markdown = true,
+              gitcommit = true,
+            },
+          },
         },
       },
     },
