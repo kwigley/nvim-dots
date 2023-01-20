@@ -2,15 +2,6 @@
 
 # nvim dots
 
-My personal [neovim](https://neovim.io/) config.
+My [neovim](https://neovim.io/) config based on [LazyVim](https://github.com/LazyVim/LazyVim).
 
-## Highlights
-
-- utilizes the built-in lsp ❤️
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
-- [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
-- [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
-- [feline](https://github.com/famiu/feline.nvim) - status line
-
-You can check out the rest of my [dotfiles](https://dotfiles.github.io/) in https://github.com/kwigley/dots
+The rest of my [dotfiles](https://dotfiles.github.io/) are located here https://github.com/kwigley/dots
