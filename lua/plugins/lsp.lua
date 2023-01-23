@@ -43,7 +43,7 @@ return {
             end,
           }),
           nls.builtins.diagnostics.shellcheck,
-          nls.builtins.diagnostics.flake8,
+          -- nls.builtins.diagnostics.flake8,
           nls.builtins.diagnostics.golangci_lint,
         },
         root_dir = require("null-ls.utils").root_pattern(
@@ -66,6 +66,7 @@ return {
         "shfmt",
         "black",
         "isort",
+        -- "ruff-lsp",
         "flake8",
       },
     },
@@ -74,12 +75,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        pyright = {},
-        bashls = {},
-        dockerls = {},
-        svelte = {},
-        cssls = {},
-        html = {},
         tailwindcss = {
           root_dir = require("lspconfig/util").root_pattern(
             "tailwind.config.js",
@@ -92,9 +87,6 @@ return {
             ".git"
           ),
         },
-        clangd = {},
-        gopls = {},
-        yamlls = {},
         sumneko_lua = {
           single_file_support = true,
           settings = {
@@ -144,9 +136,6 @@ return {
             },
           },
         },
-        terraformls = {},
-        prismals = {},
-        taplo = {},
         csharp_ls = {
           cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
         },
