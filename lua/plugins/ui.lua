@@ -5,10 +5,8 @@ return {
   {
     "folke/tokyonight.nvim",
     opts = {
-      -- style = "storm",
       on_highlights = function(hl, c)
         hl.CursorLineNr = { fg = c.orange }
-        -- hl.LineNr = { fg = c.fg_dark }
       end,
     },
   },
@@ -103,7 +101,6 @@ return {
     event = "VeryLazy",
     opts = {
       themes = {
-        -- markdown = { colorscheme = "tokyonight-storm" },
         help = { colorscheme = "oxocarbon", background = "dark" },
       },
     },

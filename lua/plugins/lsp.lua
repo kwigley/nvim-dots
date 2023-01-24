@@ -43,7 +43,6 @@ return {
             end,
           }),
           nls.builtins.diagnostics.shellcheck,
-          -- nls.builtins.diagnostics.flake8,
           nls.builtins.diagnostics.golangci_lint,
         },
         root_dir = require("null-ls.utils").root_pattern(
@@ -66,8 +65,7 @@ return {
         "shfmt",
         "black",
         "isort",
-        -- "ruff-lsp",
-        "flake8",
+        "ruff-lsp",
       },
     },
   },

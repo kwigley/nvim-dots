@@ -1,21 +1,16 @@
 return {
-
-  -- add rust to treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, { "rust", "toml" })
     end,
   },
-
-  -- correctly setup mason lsp / dap extensions
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, { "codelldb", "rust-analyzer", "taplo" })
     end,
   },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -32,8 +27,6 @@ return {
       }))
     end,
   },
-
-  -- correctly setup lspconfig for Rust 🚀
   {
     "neovim/nvim-lspconfig",
     dependencies = { "simrat39/rust-tools.nvim" },
