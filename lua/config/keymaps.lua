@@ -35,3 +35,7 @@ vim.keymap.set(
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+
+-- rm floating terminal keymaps
+vim.keymap.del("n", "<leader>ft")
+vim.keymap.del("n", "<leader>fT")

@@ -30,6 +30,29 @@ return {
     keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "DiffView" } },
   },
   {
+    "akinsho/git-conflict.nvim",
+    event = "VimEnter",
+    cmd = {
+      "GitConflictChooseOurs",
+      "GitConflictChooseTheirs",
+      "GitConflictChooseBoth",
+      "GitConflictChooseNone",
+      "GitConflictNextConflict",
+      "GitConflictPrevConflict",
+      "GitConflictListQf",
+    },
+    opts = {
+      disable_diagnostics = true,
+    },
+    keys = {
+      {
+        "<leader>gx",
+        "<Cmd>GitConflictListQf<CR>",
+        desc = "List Git Conflicts",
+      },
+    },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs = {
