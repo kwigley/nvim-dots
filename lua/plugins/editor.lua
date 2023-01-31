@@ -171,15 +171,18 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
-    config = true,
     event = "InsertEnter",
     opts = {
       panel = {
         enabled = false,
       },
+      suggestion = {
+        auto_trigger = true,
+      },
       filetypes = {
         TelescopePrompt = false,
         TelescopeResults = false,
+        yaml = true,
       },
     },
   },
