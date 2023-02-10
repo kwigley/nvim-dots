@@ -13,6 +13,9 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
+  dev = {
+    path = "~/workspace",
+  },
   spec = {
     -- import LazyVim plugins
     {
@@ -30,7 +33,6 @@ require("lazy").setup({
             modified = "柳",
           },
           kinds = {
-            Copilot = " ",
             Snippet = " ",
           },
         },

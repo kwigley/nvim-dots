@@ -6,26 +6,14 @@ return {
       opts.sources =
         cmp.config.sources(vim.list_extend(opts.sources, { { name = "copilot" } }))
       opts.sorting = {
-        -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+        priority_weight = 2,
         comparators = {
+          require("copilot_cmp.comparators").prioritize,
+          require("copilot_cmp.comparators").score,
           cmp.config.compare.offset,
           cmp.config.compare.exact,
           cmp.config.compare.score,
-
-          -- copied from cmp-under, but I don't think I need the plugin for this.
-          -- I might add some more of my own.
-          function(entry1, entry2)
-            local _, entry1_under = entry1.completion_item.label:find("^_+")
-            local _, entry2_under = entry2.completion_item.label:find("^_+")
-            entry1_under = entry1_under or 0
-            entry2_under = entry2_under or 0
-            if entry1_under > entry2_under then
-              return false
-            elseif entry1_under < entry2_under then
-              return true
-            end
-          end,
-
+          require("cmp-under-comparator").under,
           cmp.config.compare.kind,
           cmp.config.compare.sort_text,
           cmp.config.compare.length,
@@ -40,25 +28,29 @@ return {
       })
     end,
     dependencies = {
-      "zbirenbaum/copilot-cmp",
-      config = function()
-        require("copilot_cmp").setup({
-          method = "getCompletionsCycling",
-          formatters = {
-            insert_text = require("copilot_cmp.format").remove_existing,
-          },
-        })
-      end,
-      dependencies = {
-        {
-          "zbirenbaum/copilot.lua",
-          config = true,
-          opts = {
-            panel = { enabled = false },
-            filetypes = {
-              TelescopePrompt = false,
-              TelescopeResults = false,
-              yaml = true,
+      { "lukas-reineke/cmp-under-comparator" },
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup({
+            method = "getCompletionsCycling",
+            formatters = {
+              insert_text = require("copilot_cmp.format").remove_existing,
+            },
+          })
+        end,
+        dependencies = {
+          {
+            "zbirenbaum/copilot.lua",
+            config = true,
+            opts = {
+              suggestion = { enabled = false },
+              panel = { enabled = false },
+              filetypes = {
+                TelescopePrompt = false,
+                TelescopeResults = false,
+                yaml = true,
+              },
             },
           },
         },
