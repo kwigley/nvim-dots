@@ -61,8 +61,11 @@ return {
   },
   {
     "utilyre/barbecue.nvim",
-    version = false,
     event = "BufReadPre",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
     opts = {
       show_modified = true,
       attach_navic = false,
