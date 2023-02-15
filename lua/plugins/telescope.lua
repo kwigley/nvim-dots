@@ -8,6 +8,7 @@ return {
     },
     opts = {
       defaults = {
+        path_display = { "smart" }, -- { "truncate" },
         layout_strategy = "flex",
         layout_config = {
           prompt_position = "top",
