@@ -25,7 +25,7 @@ return {
   { "folke/twilight.nvim" },
   { "goolord/alpha-nvim", enabled = false },
   {
-    "akinsho/nvim-bufferline.lua",
+    "akinsho/bufferline.nvim",
     opts = {
       options = {
         show_buffer_close_icons = false,
