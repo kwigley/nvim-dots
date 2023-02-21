@@ -6,6 +6,9 @@
 vim.keymap.set("n", ":Q", ":q<CR>")
 vim.keymap.set("n", ":W", ":w<CR>")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<leader>o", function()
+  vim.fn.system({ "open", vim.fn.expand("%:p:h") })
+end, { desc = "Open current directory in Finder" })
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set(
