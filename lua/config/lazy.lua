@@ -43,6 +43,7 @@ require("lazy").setup({
     -- import extra plugins from LazyVim
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.coding.copilot" },
   },
   defaults = {
     lazy = true, -- every plugin is lazy-loaded by default
