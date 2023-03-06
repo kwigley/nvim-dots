@@ -18,5 +18,5 @@ return {
     event = "BufReadPre",
     config = true,
   },
-  { "IndianBoy42/tree-sitter-just", event = "BufReadPre", config = true, dev = true },
+  { "IndianBoy42/tree-sitter-just", event = "BufReadPre", config = true },
 }
