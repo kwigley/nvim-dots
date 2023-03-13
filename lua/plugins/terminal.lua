@@ -7,4 +7,9 @@ return {
       open_mapping = [[<c-\>]],
     },
   },
+  {
+    "willothy/flatten.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
 }
