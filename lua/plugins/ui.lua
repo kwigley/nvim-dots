@@ -1,5 +1,9 @@
 return {
   {
+    "rcarriga/nvim-notify",
+    opts = { top_down = false },
+  },
+  {
     "shaunsingh/oxocarbon.nvim",
   },
   {

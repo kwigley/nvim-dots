@@ -31,6 +31,7 @@ return {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.fish_indent,
           nls.builtins.formatting.black,
+          nls.builtins.formatting.xmlformat,
           nls.builtins.completion.spell.with({
             filetypes = {
               "markdown",
