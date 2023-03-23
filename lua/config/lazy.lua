@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  dev = {
-    path = "~/workspace",
-  },
   spec = {
     -- import LazyVim plugins
     {
@@ -43,11 +40,12 @@ require("lazy").setup({
     -- import extra plugins from LazyVim
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
   },
   defaults = {
     lazy = true, -- every plugin is lazy-loaded by default
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
