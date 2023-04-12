@@ -1,11 +1,19 @@
 return {
   {
+    "andrewferrier/wrapping.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("wrapping").setup()
+    end,
+  },
+  {
     "zbirenbaum/copilot.lua",
     opts = {
       filetypes = {
         yaml = true,
         markdown = true,
         gitcommit = true,
+        toml = true,
       },
     },
   },

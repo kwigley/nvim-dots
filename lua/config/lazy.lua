@@ -35,14 +35,14 @@ require("lazy").setup({
         },
       },
     },
-    -- import/override with your plugins
-    { import = "plugins" },
     -- import extra plugins from LazyVim
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
+    -- import/override with your plugins
+    { import = "plugins" },
   },
   defaults = {
     lazy = true, -- every plugin is lazy-loaded by default

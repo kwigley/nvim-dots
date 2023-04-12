@@ -10,24 +10,6 @@ return {
         sources = {
           nls.builtins.code_actions.refactoring,
           nls.builtins.code_actions.gitsigns,
-          -- nls.builtins.formatting.prettier.with({
-          --   filetypes = {
-          --     "javascript",
-          --     "javascriptreact",
-          --     "typescript",
-          --     "typescriptreact",
-          --     "vue",
-          --     "css",
-          --     "scss",
-          --     "less",
-          --     "html",
-          --     "json",
-          --     "yaml",
-          --     "markdown",
-          --     "markdown.mdx",
-          --     "graphql",
-          --   },
-          -- }),
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.fish_indent,
           nls.builtins.formatting.black,
@@ -58,7 +40,6 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- "prettier",
         "stylua",
         "selene",
         "eslint_d",
@@ -74,6 +55,15 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        jsonls = {
+          settings = {
+            json = {
+              format = {
+                enable = false,
+              },
+            },
+          },
+        },
         tailwindcss = {
           root_dir = require("lspconfig/util").root_pattern(
             "tailwind.config.js",
@@ -88,9 +78,6 @@ return {
         },
         csharp_ls = {
           cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
-        },
-        zls = {
-          cmd = { "/Users/kwigley/workspace/zls/zig-out/bin/zls" },
         },
       },
     },
