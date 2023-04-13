@@ -8,7 +8,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "codelldb", "rust-analyzer", "taplo" })
+      vim.list_extend(opts.ensure_installed, { "codelldb", "rust-analyzer" })
     end,
   },
   {
@@ -82,24 +82,6 @@ return {
           })
           require("rust-tools").setup(rust_tools_opts)
           return true
-        end,
-        taplo = function(_, opts)
-          local function show_documentation()
-            if
-              vim.fn.expand("%:t") == "Cargo.toml" and require("crates").popup_available()
-            then
-              require("crates").show_popup()
-            else
-              vim.lsp.buf.hover()
-            end
-          end
-          require("lazyvim.util").on_attach(function(client, buffer)
-            -- stylua: ignore
-            if client.name == "taplo" then
-              vim.keymap.set("n", "K", show_documentation, { buffer = buffer, desc = "Show Crate Documentation" })
-            end
-          end)
-          return false -- make sure the base implementation calls taplo.setup
         end,
       },
     },
