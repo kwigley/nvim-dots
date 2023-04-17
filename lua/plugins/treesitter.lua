@@ -2,6 +2,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      -- nvim-ts-autotag
+      autotag = {
+        enable = true,
+      },
       incremental_selection = {
         enable = true,
         keymaps = {

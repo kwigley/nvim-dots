@@ -1,5 +1,11 @@
 return {
   {
+    "windwp/nvim-ts-autotag",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+    event = "VeryLazy",
+  },
+  {
     "knubie/vim-kitty-navigator",
     event = "VeryLazy",
     config = function()
