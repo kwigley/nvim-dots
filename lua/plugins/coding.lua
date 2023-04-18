@@ -1,5 +1,25 @@
 return {
   {
+    "thenbe/csgithub.nvim",
+    keys = {
+      {
+        "<leader>feg",
+        function()
+          local csgithub = require("csgithub")
+
+          local url = csgithub.search({
+            includeFilename = false,
+            includeExtension = true,
+          })
+
+          csgithub.open(url)
+        end,
+        mode = { "n", "v" },
+        desc = "Search Github",
+      },
+    },
+  },
+  {
     "andrewferrier/wrapping.nvim",
     event = "VeryLazy",
     config = function()
