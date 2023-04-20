@@ -20,14 +20,8 @@ return {
     },
   },
   {
-    "andrewferrier/wrapping.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("wrapping").setup()
-    end,
-  },
-  {
     "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
     opts = {
       filetypes = {
         yaml = true,

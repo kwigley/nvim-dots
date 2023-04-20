@@ -56,6 +56,11 @@ return {
                 liblldb_path
               ),
             },
+            tools = {
+              inlay_hints = {
+                auto = false,
+              },
+            },
             settings = {
               ["rust-analyzer"] = {
                 cargo = {
