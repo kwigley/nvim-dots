@@ -88,7 +88,7 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = "BufReadPre",
     opts = {
-      filetypes = { "*", "!lazy" },
+      filetypes = { "css", "javascript", "lua", "vim", "toml", "svelte", "typescript" },
       buftype = { "*", "!prompt", "!nofile" },
       user_default_options = {
         RGB = true, -- #RGB hex codes
