@@ -24,18 +24,9 @@ return {
     },
   },
   {
-    "echasnovski/mini.bufremove",
-    enabled = false,
-  },
-  {
     "Asheq/close-buffers.vim",
     cmd = { "Bdelete" },
     keys = {
-      {
-        "<leader>bd",
-        "<cmd>:Bdelete this<CR>",
-        desc = "Delete Buffer",
-      },
       {
         "<leader>bo",
         "<cmd>:Bdelete other<CR>",
