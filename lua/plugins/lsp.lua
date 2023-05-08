@@ -110,18 +110,6 @@ return {
             },
           },
         },
-        tailwindcss = {
-          root_dir = require("lspconfig/util").root_pattern(
-            "tailwind.config.js",
-            "tailwind.config.cjs",
-            "tailwind.config.ts",
-            "postcss.config.js",
-            "postcss.config.ts",
-            "package.json",
-            "node_modules",
-            ".git"
-          ),
-        },
         csharp_ls = {
           cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
         },
