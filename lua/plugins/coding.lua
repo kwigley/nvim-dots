@@ -1,14 +1,4 @@
 return {
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   opts = {
-  --     filetypes = {
-  --       yaml = true,
-  --       markdown = true,
-  --       gitcommit = true,
-  --     },
-  --   },
-  -- },
   {
     "simrat39/symbols-outline.nvim",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
