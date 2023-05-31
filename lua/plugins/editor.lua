@@ -8,6 +8,9 @@ return {
   {
     "knubie/vim-kitty-navigator",
     event = "VeryLazy",
+    enabled = function()
+      return vim.g.vscode == nil
+    end,
     config = function()
       vim.g.kitty_navigator_no_mappings = true
     end,
