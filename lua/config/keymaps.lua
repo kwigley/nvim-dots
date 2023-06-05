@@ -41,10 +41,6 @@ vim.keymap.set(
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
--- rm floating terminal keymaps
-vim.keymap.del("n", "<leader>ft")
-vim.keymap.del("n", "<leader>fT")
-
 -- Restore 'gw' to default behavior. First, remove the 'gw' keymap set in LazyVim:
 vim.keymap.del({ "n", "x" }, "gw")
 -- Then, reset formatexpr if null-ls is not providing any formatting generators.
