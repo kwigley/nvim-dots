@@ -169,18 +169,4 @@ return {
     },
     opts = { snippet_engine = "luasnip" },
   },
-  -- add folding range to capabilities
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-    },
-  },
 }
