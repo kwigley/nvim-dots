@@ -43,6 +43,7 @@ vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
 -- Restore 'gw' to default behavior. First, remove the 'gw' keymap set in LazyVim:
 vim.keymap.del({ "n", "x" }, "gw")
+
 -- Then, reset formatexpr if null-ls is not providing any formatting generators.
 -- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
 require("lazyvim.util").on_attach(function(client, buf)
