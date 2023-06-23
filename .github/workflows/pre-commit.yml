@@ -4,7 +4,7 @@ on:
     branches: [main, test-me-*]
 
 jobs:
-  main:
+  pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,5 +12,3 @@ jobs:
         with:
           python-version: 3.x
       - uses: pre-commit/action@v3.0.0
-      - uses: pre-commit-ci/lite-action@v1.0.0
-        if: always()
