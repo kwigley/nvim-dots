@@ -96,10 +96,4 @@ return {
     },
     opts = { snippet_engine = "luasnip" },
   },
-  {
-    "sourcegraph/sg.nvim",
-    event = "VeryLazy",
-    build = "cargo build --workspace",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
 }
