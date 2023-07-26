@@ -46,12 +46,24 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = {
+        enabled = true,
+      },
       servers = {
         astro = {},
         cssls = {},
         dockerls = {},
         ruff_lsp = {},
+        tailwindcss = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+        },
         tsserver = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+          single_file_support = false,
           settings = {
             typescript = {
               inlayHints = {
@@ -59,7 +71,7 @@ return {
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
                 includeInlayFunctionLikeReturnTypeHints = true,
                 includeInlayEnumMemberValueHints = true,
               },
@@ -80,7 +92,6 @@ return {
         svelte = {},
         html = {},
         gopls = {},
-        pyright = {},
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
