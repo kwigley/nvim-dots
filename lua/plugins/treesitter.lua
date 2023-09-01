@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      -- nvim-ts-autotag
       autotag = {
         enable = true,
       },
@@ -19,6 +18,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    enabled = false,
     event = "BufReadPre",
     config = true,
     opts = { mode = "cursor" },
