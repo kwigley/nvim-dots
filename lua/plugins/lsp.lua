@@ -11,6 +11,7 @@ return {
         nls.builtins.formatting.fish_indent,
         nls.builtins.formatting.black,
         nls.builtins.formatting.xmlformat,
+        nls.builtins.formatting.ocamlformat,
         nls.builtins.completion.spell.with({
           filetypes = {
             "markdown",
@@ -89,6 +90,8 @@ return {
             },
           },
         },
+        helm_ls = {},
+        ocamlls = {},
         svelte = {},
         html = {},
         gopls = {},
