@@ -1,4 +1,4 @@
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/kwigley/nvim-dots/main.svg)](https://results.pre-commit.ci/latest/github/kwigley/nvim-dots/main)
+[![pre-commit](https://github.com/kwigley/nvim-dots/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/kwigley/nvim-dots/actions/workflows/pre-commit.yml)
 
 # nvim dots
 
