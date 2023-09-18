@@ -55,10 +55,10 @@ return {
 
       require("lir").setup({
         show_hidden_files = false,
-        ignore = {}, -- { ".DS_Store" "node_modules" } etc.
+        ignore = {},
         devicons = {
           enable = true,
-          -- highlight_dirname = false
+          highlight_dirname = true,
         },
         mappings = {
           ["<CR>"] = actions.edit,
