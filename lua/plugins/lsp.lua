@@ -1,34 +1,5 @@
 return {
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "ThePrimeagen/refactoring.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.code_actions.refactoring,
-        nls.builtins.code_actions.gitsigns,
-        nls.builtins.formatting.stylua,
-        nls.builtins.formatting.fish_indent,
-        nls.builtins.formatting.black,
-        nls.builtins.formatting.xmlformat,
-        nls.builtins.formatting.ocamlformat,
-        nls.builtins.completion.spell.with({
-          filetypes = {
-            "markdown",
-            "markdown.mdx",
-          },
-        }),
-        nls.builtins.diagnostics.selene.with({
-          condition = function(utils)
-            return utils.root_has_file({ "selene.toml" })
-          end,
-        }),
-        nls.builtins.diagnostics.shellcheck,
-        nls.builtins.diagnostics.golangci_lint,
-      })
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
