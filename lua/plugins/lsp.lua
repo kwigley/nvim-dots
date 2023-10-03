@@ -1,30 +1,10 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    enabled = false,
-    dependencies = { "ThePrimeagen/refactoring.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.code_actions.refactoring,
-        nls.builtins.code_actions.gitsigns,
-        nls.builtins.formatting.stylua,
-        nls.builtins.formatting.black,
-        nls.builtins.formatting.xmlformat,
-        nls.builtins.completion.spell.with({
-          filetypes = {
-            "markdown",
-            "markdown.mdx",
-          },
-        }),
-      })
-    end,
-  },
-  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
         python = { "ruff_format", "black" },
+        xml = { "xmlformat" },
       },
     },
   },
