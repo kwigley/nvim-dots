@@ -1,6 +1,7 @@
 return {
   {
     "nvimtools/none-ls.nvim",
+    enabled = false,
     dependencies = { "ThePrimeagen/refactoring.nvim" },
     opts = function(_, opts)
       local nls = require("null-ls")
@@ -16,15 +17,16 @@ return {
             "markdown.mdx",
           },
         }),
-        nls.builtins.diagnostics.selene.with({
-          condition = function(utils)
-            return utils.root_has_file({ "selene.toml" })
-          end,
-        }),
-        nls.builtins.diagnostics.shellcheck,
-        nls.builtins.diagnostics.golangci_lint,
       })
     end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "ruff_format", "black", "ruff_fix" },
+      },
+    },
   },
   {
     "williamboman/mason.nvim",
