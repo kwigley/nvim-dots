@@ -1,0 +1,31 @@
+{
+  "extras": [
+    "vscode",
+    "coding.copilot",
+    "coding.yanky",
+    "dap.core",
+    "dap.nlua",
+    "editor.mini-files",
+    "formatting.prettier",
+    "lang.clangd",
+    "lang.cmake",
+    "lang.docker",
+    "lang.elixir",
+    "lang.go",
+    "lang.json",
+    "lang.python",
+    "lang.omnisharp",
+    "lang.rust",
+    "lang.tailwind",
+    "lang.terraform",
+    "lang.typescript",
+    "lang.yaml",
+    "linting.eslint",
+    "test.core",
+    "ui.edgy"
+  ],
+  "news": {
+    "NEWS.md": "2035",
+    "doc/news.txt": "13995"
+  }
+}

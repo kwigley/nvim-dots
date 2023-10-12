@@ -43,7 +43,7 @@ vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
 -- Then, reset formatexpr if null-ls is not providing any formatting generators.
 -- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-require("lazyvim.util").on_attach(function(client, buf)
+require("lazyvim.util").lsp.on_attach(function(client, buf)
   if client.name == "null-ls" then
     if
       not require("null-ls.generators").can_run(
