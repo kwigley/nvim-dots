@@ -1,5 +1,4 @@
 return {
-  -- { "echasnovski/mini.indentscope", enabled = false },
   {
     "rcarriga/nvim-notify",
     opts = { top_down = false },
@@ -28,7 +27,6 @@ return {
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
   { "folke/twilight.nvim" },
-  { "goolord/alpha-nvim", enabled = false },
   {
     "akinsho/bufferline.nvim",
     opts = {
