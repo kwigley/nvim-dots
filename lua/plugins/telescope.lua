@@ -2,6 +2,13 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+      { "tsakirist/telescope-lazy.nvim" },
+      {
+        "nvim-telescope/telescope-fzy-native.nvim",
+        config = function()
+          require("telescope").load_extension("fzy_native")
+        end,
+      },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
