@@ -12,31 +12,33 @@ vim.keymap.set("n", "<leader>o", function()
   vim.fn.system({ "open", vim.fn.expand("%:p:h") })
 end, { desc = "Open current directory in Finder" })
 
--- Move to window using the <ctrl> hjkl keys
-vim.keymap.set(
-  "n",
-  "<C-h>",
-  "<cmd>KittyNavigateLeft<cr>",
-  { desc = "Go to left window", silent = true, noremap = true }
-)
-vim.keymap.set(
-  "n",
-  "<C-j>",
-  "<cmd>KittyNavigateDown<cr>",
-  { desc = "Go to lower window", silent = true, noremap = true }
-)
-vim.keymap.set(
-  "n",
-  "<C-k>",
-  "<cmd>KittyNavigateUp<cr>",
-  { desc = "Go to upper window", silent = true, noremap = true }
-)
-vim.keymap.set(
-  "n",
-  "<C-l>",
-  "<cmd>KittyNavigateRight<cr>",
-  { desc = "Go to right window", silent = true, noremap = true }
-)
+if not vim.g.vscode then
+  -- Move to window using the <ctrl> hjkl keys
+  vim.keymap.set(
+    "n",
+    "<C-h>",
+    "<cmd>KittyNavigateLeft<cr>",
+    { desc = "Go to left window", silent = true, noremap = true }
+  )
+  vim.keymap.set(
+    "n",
+    "<C-j>",
+    "<cmd>KittyNavigateDown<cr>",
+    { desc = "Go to lower window", silent = true, noremap = true }
+  )
+  vim.keymap.set(
+    "n",
+    "<C-k>",
+    "<cmd>KittyNavigateUp<cr>",
+    { desc = "Go to upper window", silent = true, noremap = true }
+  )
+  vim.keymap.set(
+    "n",
+    "<C-l>",
+    "<cmd>KittyNavigateRight<cr>",
+    { desc = "Go to right window", silent = true, noremap = true }
+  )
+end
 
 -- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
