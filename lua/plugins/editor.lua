@@ -156,4 +156,17 @@ return {
     keys = { { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
   },
+  {
+    "gbprod/yanky.nvim",
+    keys = {
+      {
+        "<leader>p",
+        function()
+          require("telescope").extensions.yank_history.yank_history({})
+        end,
+        mode = { "n", "x" },
+        desc = "Open Yank History",
+      },
+    },
+  },
 }
