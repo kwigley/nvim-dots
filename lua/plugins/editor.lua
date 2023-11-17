@@ -1,5 +1,32 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    keys = function()
+      return {}
+    end,
+  },
+  {
+    "abecodes/tabout.nvim",
+    event = "VeryLazy",
+    opts = "",
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local luasnip = require("luasnip")
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping or {}, {
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          return luasnip.jumpable(1) and luasnip.jump(1) or fallback()
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          return luasnip.jumpable(-1) and luasnip.jump(-1) or fallback()
+        end, { "i", "s" }),
+      })
+    end,
+  },
+  {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
