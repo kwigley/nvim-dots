@@ -40,7 +40,7 @@ if not vim.g.vscode then
   )
 end
 
--- change word with <c-c>
+-- change wmrd with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
 -- Then, reset formatexpr if null-ls is not providing any formatting generators.
