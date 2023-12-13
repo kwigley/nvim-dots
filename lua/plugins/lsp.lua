@@ -98,7 +98,6 @@ return {
             },
           },
         },
-        teal_ls = {},
         vimls = {},
         jsonls = {
           settings = {
