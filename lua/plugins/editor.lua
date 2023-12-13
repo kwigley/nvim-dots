@@ -34,6 +34,7 @@ return {
   },
   {
     "knubie/vim-kitty-navigator",
+    build = "cp ./*.py ~/.config/kitty/",
     event = "VeryLazy",
     enabled = function()
       return vim.g.vscode == nil
