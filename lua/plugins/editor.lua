@@ -1,5 +1,16 @@
 return {
   {
+    "folke/todo-comments.nvim",
+    opts = {
+      search = {
+        -- regex that will be used to match keywords.
+        -- don't replace the (KEYWORDS) placeholder
+        -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+        pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+      },
+    },
+  },
+  {
     "L3MON4D3/LuaSnip",
     keys = function()
       return {}
@@ -82,6 +93,7 @@ return {
       local clipboard_actions = require("lir.clipboard.actions")
 
       require("lir").setup({
+        hide_cursor = false,
         show_hidden_files = false,
         ignore = {},
         devicons = {
