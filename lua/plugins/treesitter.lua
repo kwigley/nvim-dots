@@ -18,9 +18,8 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    enabled = false,
-    event = "BufReadPre",
-    config = true,
+    event = "User LazyFile",
+    enabled = true,
     opts = { mode = "cursor" },
   },
 }
