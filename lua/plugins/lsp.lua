@@ -108,9 +108,6 @@ return {
             },
           },
         },
-        csharp_ls = {
-          cmd = { "/Users/kwigley/.dotnet/tools/csharp-ls" },
-        },
       },
     },
   },
