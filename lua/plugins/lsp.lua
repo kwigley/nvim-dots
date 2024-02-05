@@ -28,6 +28,7 @@ return {
       })
     end,
   },
+  { "towolf/vim-helm", ft = "helm" },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -74,7 +75,13 @@ return {
             },
           },
         },
-        helm_ls = {},
+        helm_ls = {
+          ["helm-ls"] = {
+            yamlls = {
+              path = "yaml-language-server",
+            },
+          },
+        },
         ocamlls = {},
         svelte = {},
         html = {},
