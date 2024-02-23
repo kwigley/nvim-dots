@@ -29,9 +29,6 @@ require("lazy").setup({
             Info = " ",
             Hint = " ",
           },
-          git = {
-            modified = "柳",
-          },
           kinds = {
             Snippet = " ",
           },
