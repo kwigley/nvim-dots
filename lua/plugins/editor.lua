@@ -10,16 +10,9 @@ return {
       },
     },
   },
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   keys = function()
-  --     return {}
-  --   end,
-  -- },
   {
     "abecodes/tabout.nvim",
     event = "VeryLazy",
-    -- opts = "",
   },
   {
     "hrsh7th/nvim-cmp",
