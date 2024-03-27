@@ -11,10 +11,6 @@ return {
     },
   },
   {
-    "abecodes/tabout.nvim",
-    event = "VeryLazy",
-  },
-  {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       local luasnip = require("luasnip")

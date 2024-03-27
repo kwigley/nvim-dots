@@ -1,7 +1,9 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    enabled = false,
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = { virtual_text = { prefix = "icons" } },
+    },
   },
   {
     "stevearc/conform.nvim",
