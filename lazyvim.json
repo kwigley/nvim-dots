@@ -1,8 +1,8 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.cmake",
@@ -16,12 +16,12 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.util.dot",
-    "lazyvim.plugins.extras.vscode"
+    "lazyvim.plugins.extras.vscode",
+    "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
-    "NEWS.md": "2850",
+    "NEWS.md": "3314",
     "doc/news.txt": "13995"
   },
   "version": 3
