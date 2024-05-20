@@ -1,22 +1,5 @@
 return {
   {
-    "folke/todo-comments.nvim",
-    opts = {
-      search = {
-        -- regex that will be used to match keywords.
-        -- don't replace the (KEYWORDS) placeholder
-        -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-        pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-      },
-    },
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-    event = "VeryLazy",
-  },
-  {
     "knubie/vim-kitty-navigator",
     build = "cp ./*.py ~/.config/kitty/",
     event = "VeryLazy",
@@ -35,22 +18,6 @@ return {
       },
       filesystem = {
         hijack_netrw_behavior = "disabled",
-      },
-    },
-  },
-  {
-    "Asheq/close-buffers.vim",
-    cmd = { "Bdelete" },
-    keys = {
-      {
-        "<leader>bo",
-        "<cmd>:Bdelete other<CR>",
-        desc = "Delete Other Buffers",
-      },
-      {
-        "<leader>ba",
-        "<cmd>:Bdelete all<CR>",
-        desc = "Delete All Buffers",
       },
     },
   },
@@ -132,54 +99,8 @@ return {
     end,
   },
   {
-    "folke/trouble.nvim",
-    keys = {
-      {
-        "<leader>xn",
-        function()
-          require("trouble").next({ skip_groups = true, jump = true })
-        end,
-        desc = "Next Item (Trouble)",
-      },
-      {
-        "<leader>xp",
-        function()
-          require("trouble").previous({ skip_groups = true, jump = true })
-        end,
-        desc = "Previous Item (Trouble)",
-      },
-      {
-        "<leader>xgg",
-        function()
-          require("trouble").first({ skip_groups = true, jump = true })
-        end,
-        desc = "First Item (Trouble)",
-      },
-      {
-        "<leader>xG",
-        function()
-          require("trouble").last({ skip_groups = true, jump = true })
-        end,
-        desc = "Last Item (Trouble)",
-      },
-    },
-  },
-  {
     "Wansmer/treesj",
     keys = { { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" } },
     opts = { use_default_keymaps = false, max_join_length = 150 },
-  },
-  {
-    "gbprod/yanky.nvim",
-    keys = {
-      {
-        "<leader>p",
-        function()
-          require("telescope").extensions.yank_history.yank_history({})
-        end,
-        mode = { "n", "x" },
-        desc = "Open Yank History",
-      },
-    },
   },
 }

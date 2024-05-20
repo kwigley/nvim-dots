@@ -43,21 +43,6 @@ end
 -- change wmrd with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
 
--- Then, reset formatexpr if null-ls is not providing any formatting generators.
--- See: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-require("lazyvim.util").lsp.on_attach(function(client, buf)
-  if client.name == "null-ls" then
-    if
-      not require("null-ls.generators").can_run(
-        vim.bo[buf].filetype,
-        require("null-ls.methods").lsp.FORMATTING
-      )
-    then
-      vim.bo[buf].formatexpr = nil
-    end
-  end
-end)
-
 -- scroll lsp docs
 vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
   if not require("noice.lsp").scroll(4) then

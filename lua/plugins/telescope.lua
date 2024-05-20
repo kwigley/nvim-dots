@@ -10,19 +10,6 @@ return {
         end,
       },
       {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        config = function()
-          require("telescope").load_extension("fzf")
-        end,
-      },
-      {
-        "nvim-telescope/telescope-github.nvim",
-        config = function()
-          require("telescope").load_extension("gh")
-        end,
-      },
-      {
         "johmsalas/text-case.nvim",
         config = function()
           require("textcase").setup({})
