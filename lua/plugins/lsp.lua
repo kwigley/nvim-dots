@@ -37,6 +37,9 @@ return {
       inlay_hints = {
         enabled = true,
       },
+      codelens = {
+        enabled = true,
+      },
       servers = {
         astro = {},
         cssls = {},
@@ -55,7 +58,6 @@ return {
         svelte = {},
         html = {},
         gopls = {},
-        rust_analyzer = {},
         yamlls = {
           settings = {
             yaml = {
