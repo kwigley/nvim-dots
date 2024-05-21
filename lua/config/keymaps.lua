@@ -40,5 +40,5 @@ if not vim.g.vscode then
   )
 end
 
--- change wmrd with <c-c>
+-- change word with <c-c>
 vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
