@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "python" },
+  pattern = { "python", "markdown" },
   callback = function()
     vim.bo.textwidth = 80
   end,
