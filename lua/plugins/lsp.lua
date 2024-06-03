@@ -1,11 +1,5 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      diagnostics = { virtual_text = { prefix = "icons" } },
-    },
-  },
-  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
@@ -14,39 +8,19 @@ return {
       },
     },
   },
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "yamllint",
-        "stylua",
-        "selene",
-        "eslint_d",
-        "shellcheck",
-        "shfmt",
-        "black",
-        "isort",
-        "ruff-lsp",
-      })
-    end,
-  },
   { "towolf/vim-helm", ft = "helm" },
   {
     "neovim/nvim-lspconfig",
     opts = {
+      diagnostics = { virtual_text = { prefix = "icons" } },
       -- inlay_hints = {
       --   enabled = true,
       -- },
       -- codelens = {
       --   enabled = true,
       -- },
+      --
       servers = {
-        astro = {},
-        cssls = {},
-        dockerls = {},
-        ruff_lsp = {},
-        tailwindcss = {},
-        tsserver = {},
         helm_ls = {
           ["helm-ls"] = {
             yamlls = {
@@ -54,10 +28,6 @@ return {
             },
           },
         },
-        ocamlls = {},
-        svelte = {},
-        html = {},
-        gopls = {},
         yamlls = {
           settings = {
             yaml = {
@@ -65,7 +35,6 @@ return {
             },
           },
         },
-        vimls = {},
         jsonls = {
           settings = {
             json = {

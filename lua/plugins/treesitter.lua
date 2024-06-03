@@ -16,10 +16,4 @@ return {
       },
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "User LazyFile",
-    enabled = true,
-    opts = { mode = "cursor" },
-  },
 }
