@@ -12,14 +12,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        position = "right",
-      },
-      filesystem = {
-        hijack_netrw_behavior = "disabled",
-      },
-    },
+    enabled = false,
   },
   {
     "tamago324/lir.nvim",

@@ -13,3 +13,6 @@ vim.g.loaded_node_provider = 0
 
 -- turn off autoformatting
 vim.g.autoformat = false
+
+-- turn off autopairs
+vim.g.minipairs_disable = true
