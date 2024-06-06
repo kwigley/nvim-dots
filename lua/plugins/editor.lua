@@ -11,10 +11,6 @@ return {
     end,
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-  {
     "tamago324/lir.nvim",
     event = "VeryLazy",
     dependencies = {
