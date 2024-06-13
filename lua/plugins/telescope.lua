@@ -2,7 +2,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      { "tsakirist/telescope-lazy.nvim" },
       {
         "nvim-telescope/telescope-fzy-native.nvim",
         config = function()

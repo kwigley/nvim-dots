@@ -39,6 +39,3 @@ if not vim.g.vscode then
     { desc = "Go to right window", silent = true, noremap = true }
   )
 end
-
--- change word with <c-c>
-vim.keymap.set("n", "<C-c>", "<cmd>normal! ciw<cr>a")
