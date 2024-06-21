@@ -17,22 +17,63 @@ return {
   },
   {
     "akinsho/git-conflict.nvim",
-    opts = {
-      disable_diagnostics = true,
-      default_mappings = false,
-    },
-    keys = {
-      { "<leader>go", ":GitConflictChooseOurs<cr>", desc = "Choose Ours" },
-      { "<leader>gt", ":GitConflictChooseTheirs<cr>", desc = "Choose Theirs" },
-      { "<leader>gb", ":GitConflictChooseBoth<cr>", desc = "Choose Both" },
-      { "<leader>g0", ":GitConflictChooseNone<cr>", desc = "Choose None" },
-      { "]x", ":GitConflictNextConflict<cr>", desc = "Next Conflict" },
-      { "[x", ":GitConflictPrevConflict<cr>", desc = "Prev Conflict" },
-      {
-        "<leader>gx",
-        "<Cmd>GitConflictListQf<CR>",
-        desc = "List Git Conflicts",
-      },
-    },
+    event = "VeryLazy",
+    config = function()
+      -- GitConflictChooseOurs -- Select the current changes.
+      -- GitConflictChooseTheirs -- Select the incoming changes.
+      -- GitConflictChooseBoth -- Select both changes.
+      -- GitConflictChooseNone -- Select both none of the changes.
+      -- GitConflictNextConflict -- Move to the next conflict.
+      -- GitConflictPrevConflict -- Move to the previous conflict.
+      -- GitConflictListQf -- Get all conflict to quickfix
+
+      require("git-conflict").setup({
+        default_mappings = false, -- disable buffer local mapping created by this plugin
+        disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
+      })
+
+      vim.keymap.set(
+        "n",
+        "<leader>go",
+        "<cmd>GitConflictChooseOurs<cr>",
+        { desc = "Conflict - Choose Ours" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>gt",
+        "<cmd>GitConflictChooseTheirs<cr>",
+        { desc = "Conflict - Choose Theirs" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>gb",
+        "<cmd>GitConflictChooseBoth<cr>",
+        { desc = "Conflict - Choose Both" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>g0",
+        "<cmd>GitConflictChooseNone<cr>",
+        { desc = "Conflict - Choose None" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>gq",
+        "<cmd>GitConflictListQf<cr>",
+        { desc = "Conflict - Quicklist" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>gn",
+        "<cmd>GitConflictNextConflict<cr>",
+        { desc = "Conflict - Goto Next" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>gp",
+        "<cmd>GitConflictPrevConflict<cr>",
+        { desc = "Conflict - Goto Previous" }
+      )
+    end,
   },
 }
