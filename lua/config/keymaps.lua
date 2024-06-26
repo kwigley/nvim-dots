@@ -8,9 +8,9 @@ vim.keymap.set("n", ":W", ":w<CR>")
 vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- Open current direction in Finder
-vim.keymap.set("n", "<leader>o", function()
-  vim.fn.system({ "open", vim.fn.expand("%:p:h") })
-end, { desc = "Open current directory in Finder" })
+-- vim.keymap.set("n", "<leader>o", function()
+--   vim.fn.system({ "open", vim.fn.expand("%:p:h") })
+-- end, { desc = "Open current directory in Finder" })
 
 if not vim.g.vscode then
   -- Move to window using the <ctrl> hjkl keys
