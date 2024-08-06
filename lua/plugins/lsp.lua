@@ -1,5 +1,6 @@
 return {
   { "towolf/vim-helm", ft = "helm" },
+  { import = "lazyvim.plugins.extras.lang.json" },
   {
     "neovim/nvim-lspconfig",
     opts = {
