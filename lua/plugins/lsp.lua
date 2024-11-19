@@ -1,6 +1,11 @@
 return {
-  { "towolf/vim-helm", ft = "helm" },
-  { import = "lazyvim.plugins.extras.lang.json" },
+  {
+    "zbirenbaum/copilot.lua",
+    optional = true,
+    opts = {
+      filetypes = { ["*"] = true },
+    },
+  },
   {
     "neovim/nvim-lspconfig",
     opts = {
