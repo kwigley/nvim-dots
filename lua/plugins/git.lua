@@ -35,25 +35,25 @@ return {
       vim.keymap.set(
         "n",
         "<leader>go",
-        "<cmd>GitConflictChooseOurs<cr>",
+        "<Plug>(git-conflict-ours)",
         { desc = "Conflict - Choose Ours" }
       )
       vim.keymap.set(
         "n",
         "<leader>gt",
-        "<cmd>GitConflictChooseTheirs<cr>",
+        "<Plug>(git-conflict-theirs)",
         { desc = "Conflict - Choose Theirs" }
       )
       vim.keymap.set(
         "n",
         "<leader>gb",
-        "<cmd>GitConflictChooseBoth<cr>",
+        "<Plug>(git-conflict-both)",
         { desc = "Conflict - Choose Both" }
       )
       vim.keymap.set(
         "n",
         "<leader>g0",
-        "<cmd>GitConflictChooseNone<cr>",
+        "<Plug>(git-conflict-none)",
         { desc = "Conflict - Choose None" }
       )
       vim.keymap.set(
@@ -65,13 +65,13 @@ return {
       vim.keymap.set(
         "n",
         "<leader>gn",
-        "<cmd>GitConflictNextConflict<cr>",
+        "<Plug>(git-conflict-next-conflict)",
         { desc = "Conflict - Goto Next" }
       )
       vim.keymap.set(
         "n",
         "<leader>gp",
-        "<cmd>GitConflictPrevConflict<cr>",
+        "<Plug>(git-conflict-prev-conflict)",
         { desc = "Conflict - Goto Previous" }
       )
     end,
