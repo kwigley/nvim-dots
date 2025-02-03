@@ -55,7 +55,6 @@ return {
           },
         },
       }
-      opts.sections.lualine_z = {}
     end,
   },
   {
