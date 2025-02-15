@@ -1,29 +1,5 @@
 return {
   {
-    "shaunsingh/oxocarbon.nvim",
-  },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      on_highlights = function(hl, c)
-        hl.CursorLineNr = { fg = c.orange }
-      end,
-    },
-  },
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+2" },
-      },
-    },
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-  },
-  { "folke/twilight.nvim" },
-  {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
@@ -67,15 +43,6 @@ return {
     opts = {
       show_modified = true,
       attach_navic = false,
-    },
-  },
-  {
-    "folke/styler.nvim",
-    event = "VeryLazy",
-    opts = {
-      themes = {
-        help = { colorscheme = "oxocarbon", background = "dark" },
-      },
     },
   },
 }
