@@ -1,4 +1,5 @@
 return {
+  { "zbirenbaum/copilot.lua", opts = { copilot_model = "claude-3.7-sonnet" } },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     opts = {

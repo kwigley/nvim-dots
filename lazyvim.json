@@ -8,8 +8,10 @@
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.formatting.biome",
     "lazyvim.plugins.extras.lang.astro",
+    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.nix",
+    "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.typescript",
@@ -20,7 +22,7 @@
   "install_version": 8,
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "24450"
+    "doc/news.txt": "24170"
   },
   "version": 8
 }
