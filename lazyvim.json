@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.formatting.biome",
     "lazyvim.plugins.extras.lang.astro",
@@ -16,13 +17,13 @@
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.ui.smear-cursor",
+    "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "install_version": 8,
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "24170"
+    "doc/news.txt": "24450"
   },
   "version": 8
 }
