@@ -45,4 +45,13 @@ return {
       attach_navic = false,
     },
   },
+  -- Remove once https://github.com/LazyVim/LazyVim/pull/5900 is released
+  {
+    {
+      "zbirenbaum/copilot.lua",
+      opts = function()
+        require("copilot.api").status = require("copilot.status")
+      end,
+    },
+  },
 }
