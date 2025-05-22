@@ -4,7 +4,7 @@ return {
     optional = true,
     opts = {
       filetypes = { ["*"] = true },
-      copilot_model = "claude-3.7-sonnet", -- "gpt-4o-copilot" "gemini-2.5-pro"
+      copilot_model = "claude-sonnet-4",
     },
   },
   {
