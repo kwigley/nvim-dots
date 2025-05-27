@@ -4,7 +4,6 @@ return {
     optional = true,
     opts = {
       filetypes = { ["*"] = true },
-      copilot_model = "claude-sonnet-4",
     },
   },
   {
