@@ -39,9 +39,9 @@ end, {
   desc = "Copy current file path to clipboard",
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("BufRead", {
   desc = "Auto select virtualenv Nvim open",
-  pattern = "*",
+  pattern = { "*.py", "pyproject.toml" },
   callback = function()
     local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
     if venv ~= "" then
