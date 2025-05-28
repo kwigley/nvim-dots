@@ -16,6 +16,3 @@ vim.g.loaded_node_provider = 0
 
 -- turn off autopairs
 vim.g.minipairs_disable = true
-
--- use bacon-ls for rust diagnostics
-vim.g.lazyvim_rust_diagnostics = "bacon-ls"
