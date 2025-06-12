@@ -7,26 +7,20 @@ return {
     },
   },
   {
-    "greggh/claude-code.nvim",
-    lazy = false,
-    command = "ClaudeCode",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    "coder/claudecode.nvim",
+    config = true,
     keys = {
-      { "<C-,>", "<cmd>ClaudeCode<cr>", desc = "Claude Code" },
+      { "<leader>a", nil, desc = "AI/Claude Code" },
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>as",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree" },
+      },
     },
-    config = function()
-      require("claude-code").setup({
-        command = "~/.claude/local/claude",
-        window = {
-          split_ratio = 0.3, -- Percentage of screen for the terminal window (height for horizontal, width for vertical splits)
-          position = "vertical", -- Position of the window: "botright", "topleft", "vertical", "rightbelow vsplit", etc.
-          enter_insert = true, -- Whether to enter insert mode when opening Claude Code
-          hide_numbers = true, -- Hide line numbers in the terminal window
-          hide_signcolumn = true, -- Hide the sign column in the terminal window
-        },
-      })
-    end,
   },
 }
