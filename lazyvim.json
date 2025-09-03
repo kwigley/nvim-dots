@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.lang.astro",
     "lazyvim.plugins.extras.lang.docker",
@@ -25,7 +26,7 @@
   "install_version": 8,
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "24841"
+    "doc/news.txt": "25358"
   },
   "version": 8
 }
