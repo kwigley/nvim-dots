@@ -16,3 +16,6 @@ vim.g.loaded_node_provider = 0
 
 -- turn off autopairs
 vim.g.minipairs_disable = true
+
+-- Native inline completions don't support being shown as regular completions
+vim.g.ai_cmp = false
