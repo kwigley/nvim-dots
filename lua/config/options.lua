@@ -12,10 +12,13 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 
 -- turn off autoformatting
--- vim.g.autoformat = false
+vim.g.autoformat = false
 
 -- turn off autopairs
 vim.g.minipairs_disable = true
 
 -- Native inline completions don't support being shown as regular completions
 vim.g.ai_cmp = false
+
+-- Use bacon-ls for Rust diagnostics
+vim.g.lazyvim_rust_diagnostics = "bacon-ls"
