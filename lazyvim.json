@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.claudecode",
     "lazyvim.plugins.extras.ai.copilot-native",
     "lazyvim.plugins.extras.ai.sidekick",
     "lazyvim.plugins.extras.coding.neogen",
@@ -29,7 +28,7 @@
   "install_version": 8,
   "news": {
     "NEWS.md": "11866",
-    "doc/news.txt": "18826"
+    "doc/news.txt": "18932"
   },
   "version": 8
 }
