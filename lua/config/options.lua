@@ -21,4 +21,4 @@ vim.g.minipairs_disable = true
 vim.g.ai_cmp = false
 
 -- Use bacon-ls for Rust diagnostics
--- vim.g.lazyvim_rust_diagnostics = "bacon-ls"
+vim.g.lazyvim_rust_diagnostics = "bacon-ls"
