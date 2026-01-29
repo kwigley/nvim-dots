@@ -23,13 +23,14 @@
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.gh"
   ],
   "install_version": 8,
   "news": {
     "NEWS.md": "11866",
-    "doc/news.txt": "18932"
+    "doc/news.txt": "19776"
   },
   "version": 8
 }
