@@ -23,10 +23,10 @@ The configuration follows LazyVim's convention of separating concerns into disti
 - `lua/plugins/` - Plugin specifications organized by category
   - `lsp.lua` - LSP server configurations (helm_ls, yamlls, jsonls)
   - `editor.lua` - Editor enhancement plugins (venv-selector, treesj)
-  - `ui.lua` - UI customizations (bufferline, lualine, barbecue)
-  - `ai.lua` - AI assistant integrations (copilot, claudecode.nvim)
+  - `ui.lua` - UI customizations (bufferline, lualine)
   - `git.lua` - Git-related plugins (gitlinker, git-conflict)
-  - `treesitter.lua` - Treesitter configuration
+
+AI integrations (Copilot, Sidekick) are pulled in via LazyVim extras in `lazyvim.json`.
 
 ### Plugin Loading Strategy
 - LazyVim plugins are imported via `import = "lazyvim.plugins"`

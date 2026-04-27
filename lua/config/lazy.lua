@@ -32,11 +32,6 @@ require("lazy").setup({
           lazyvim = true,
           neovim = true,
         },
-        icons = {
-          kinds = {
-            Snippet = " ",
-          },
-        },
       },
     },
     { import = "plugins" },
