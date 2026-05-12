@@ -1,19 +1,30 @@
 return {
   {
-    "linrongbin16/gitlinker.nvim",
-    cmd = "GitLink",
+    "folke/snacks.nvim",
     keys = {
-      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+      {
+        "<leader>gy",
+        function()
+          Snacks.gitbrowse({
+            open = function(url)
+              vim.fn.setreg("+", url)
+              vim.notify("Git link yanked: " .. url)
+            end,
+            notify = false,
+          })
+        end,
+        mode = { "n", "v" },
+        desc = "Yank git link",
+      },
+      {
+        "<leader>gY",
+        function()
+          Snacks.gitbrowse()
+        end,
+        mode = { "n", "v" },
+        desc = "Open git link",
+      },
     },
-    config = function()
-      require("gitlinker").setup({
-        opts = {
-          action_callback = require("gitlinker.actions").open_in_browser,
-          print_url = false,
-        },
-      })
-    end,
   },
   {
     "akinsho/git-conflict.nvim",

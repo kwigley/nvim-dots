@@ -9,10 +9,12 @@ This is a personal Neovim configuration based on LazyVim, a modular Neovim distr
 ## Architecture
 
 ### Bootstrap & Entry Point
+
 - `init.lua` - Single-line entry point that loads the lazy.nvim configuration
 - `lua/config/lazy.lua` - Bootstraps lazy.nvim plugin manager and defines the plugin specification structure
 
 ### Configuration Structure
+
 The configuration follows LazyVim's convention of separating concerns into distinct directories:
 
 - `lua/config/` - Core Neovim configurations that are loaded before plugins
@@ -21,14 +23,14 @@ The configuration follows LazyVim's convention of separating concerns into disti
   - `autocmds.lua` - Auto-commands and custom commands (loaded on VeryLazy event)
 
 - `lua/plugins/` - Plugin specifications organized by category
-  - `lsp.lua` - LSP server configurations (helm_ls, yamlls, jsonls)
   - `editor.lua` - Editor enhancement plugins (venv-selector, treesj)
   - `ui.lua` - UI customizations (bufferline, lualine)
-  - `git.lua` - Git-related plugins (gitlinker, git-conflict)
+  - `git.lua` - Git-related plugins (git-conflict, snacks gitbrowse rebind)
 
 AI integrations (Copilot, Sidekick) are pulled in via LazyVim extras in `lazyvim.json`.
 
 ### Plugin Loading Strategy
+
 - LazyVim plugins are imported via `import = "lazyvim.plugins"`
 - Custom plugins in `lua/plugins/` are imported and set to lazy load by default
 - Most plugins use event-based loading (VeryLazy, BufReadPre) for performance
@@ -37,6 +39,7 @@ AI integrations (Copilot, Sidekick) are pulled in via LazyVim extras in `lazyvim
 ## Development Workflow
 
 ### Code Quality & Formatting
+
 ```bash
 # Format Lua code using StyLua (configured in stylua.toml)
 stylua .
@@ -49,18 +52,22 @@ pre-commit install
 ```
 
 **Formatting Standards:**
+
 - 2-space indentation
 - 90 character column width
 - Pre-commit hooks enforce: trailing whitespace removal, EOF fixes, YAML/TOML validation, and StyLua formatting
 
 ### Testing Changes
+
 Since this is a personal Neovim config, testing is done by:
+
 1. Reloading Neovim after changes
 2. Using `:Lazy` to manage plugins (install, update, clean)
 3. Using `:LazyHealth` to check for issues
 4. Verifying plugin functionality through normal usage
 
 ### Plugin Management
+
 ```vim
 :Lazy                " Open plugin manager UI
 :Lazy sync           " Install missing plugins and update existing ones
@@ -71,14 +78,10 @@ Since this is a personal Neovim config, testing is done by:
 
 ## Key Customizations
 
-### LSP Configurations
-LSP servers have custom settings in `lua/plugins/lsp.lua`:
-- `helm_ls` integrates with yaml-language-server
-- `yamlls` has keyOrdering disabled to prevent auto-sorting
-- `jsonls` has formatting disabled
-
 ### Editor Behavior
+
 Notable customizations in `lua/config/options.lua`:
+
 - Relative line numbers disabled
 - Intro message suppressed
 - Auto-pairs disabled (minipairs)
@@ -86,6 +89,7 @@ Notable customizations in `lua/config/options.lua`:
 - Text wrapping disabled by default (formatoptions)
 
 ### Auto-commands
+
 - Cursorline only shows in active window (InsertLeave/WinEnter/InsertEnter/WinLeave)
 - Python and Markdown files have textwidth set to 80
 - `:CopyPath` command copies full file path to clipboard
@@ -93,6 +97,7 @@ Notable customizations in `lua/config/options.lua`:
 ## CI/CD
 
 The repository uses GitHub Actions for continuous integration:
+
 - Workflow: `.github/workflows/pre-commit.yml`
 - Runs on: PRs and pushes to `main` or `test-me-*` branches
 - Executes all pre-commit hooks using Python 3.x

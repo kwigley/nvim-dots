@@ -4,4 +4,4 @@
 
 My [neovim](https://neovim.io/) config based on [LazyVim](https://github.com/LazyVim/LazyVim).
 
-The rest of my [dotfiles](https://dotfiles.github.io/) are located here https://github.com/kwigley/dots
+The rest of my [dotfiles](https://dotfiles.github.io/) are located here <https://github.com/kwigley/dots>
