@@ -35,3 +35,17 @@ end, {
   force = true,
   desc = "Copy current file path to clipboard",
 })
+
+-- Fat fingers. User commands rather than `:Q` normal-mode mappings, which stall
+-- a bare `:` for timeoutlen, or cmdline abbreviations, which also expand mid-line.
+vim.api.nvim_create_user_command("Q", "quit<bang>", {
+  bang = true,
+  desc = "Alias for :q",
+})
+
+vim.api.nvim_create_user_command("W", "write<bang> <args>", {
+  bang = true,
+  nargs = "?",
+  complete = "file",
+  desc = "Alias for :w",
+})

@@ -5,17 +5,11 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
     },
-    opts = {
-      -- Your options go here
-      name = ".venv",
-      -- auto_refresh = false
-    },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    -- Loaded on python buffers so the cached venv auto-activates; the plugin
+    -- hangs that off its own FileType/BufEnter autocmds during setup.
+    ft = "python",
     keys = {
-      -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
-      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+      { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select venv" },
     },
   },
   {

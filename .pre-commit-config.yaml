@@ -4,7 +4,8 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        exclude: ^lazy-lock.json$
+        # both are rewritten by lazy.nvim/LazyVim without a trailing newline
+        exclude: ^(lazy-lock|lazyvim)\.json$
       - id: check-yaml
       - id: check-toml
   - repo: https://github.com/JohnnyMorganz/StyLua

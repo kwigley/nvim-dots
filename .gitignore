@@ -1,3 +1,5 @@
 sessions/
 plugin/
 *.log
+.venv/
+.DS_Store
