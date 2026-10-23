@@ -66,4 +66,11 @@ return {
       },
     },
   },
+  {
+    "bullets-vim/bullets.vim",
+    ft = { "markdown", "gitcommit", "text" },
+    init = function()
+      vim.g.bullets_enabled_file_types = { "markdown", "gitcommit", "text" }
+    end,
+  },
 }

@@ -5,6 +5,7 @@
 vim.opt.shortmess:append("I") -- don't give the intro message when starting Vim |:intro|
 vim.opt.formatoptions:remove("t")
 vim.opt.relativenumber = false -- Relative line numbers
+vim.opt.spelloptions:append("camel") -- treat each camelCase word part as its own word
 
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0
