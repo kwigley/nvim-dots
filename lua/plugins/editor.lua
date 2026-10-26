@@ -1,4 +1,5 @@
 return {
+  { "rawnly/rex.nvim", opts = {} },
   {
     "linux-cultist/venv-selector.nvim",
     branch = "main",
